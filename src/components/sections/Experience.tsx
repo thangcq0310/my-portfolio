@@ -17,7 +17,7 @@ const fadeInUp = {
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-16 space-y-8">
+    <section id="experience" className="py-16 space-y-8" aria-label="Work experience">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -48,18 +48,18 @@ export function ExperienceSection() {
             <motion.div
               key={exp.title + idx}
               variants={fadeInUp}
-              whileHover={{ x: 4 }}
-              className={`glass-card p-6 bg-gradient-to-br ${gradients[idx % 2]} relative overflow-hidden`}
+              whileHover={{ x: 6 }}
+              className={`liquid-glass p-6 bg-gradient-to-br ${gradients[idx % 2]} relative overflow-hidden group`}
             >
               {/* Glow accent */}
-              <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl ${
-                idx === 0 ? "bg-pink-500/10" : "bg-blue-500/10"
+              <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-50 ${
+                idx === 0 ? "bg-pink-500/20" : "bg-blue-500/20"
               }`} />
               
               <div className="relative flex items-start gap-5">
                 {/* Icon/Logo */}
                 <div
-                  className={`w-14 h-14 rounded-xl glass flex items-center justify-center font-bold text-lg shrink-0 ${
+                  className={`w-14 h-14 rounded-xl liquid-glass flex items-center justify-center font-bold text-lg shrink-0 group-hover:scale-110 transition-transform ${
                     idx === 0 ? "text-pink-400" : "text-blue-400"
                   }`}
                 >

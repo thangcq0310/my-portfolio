@@ -81,8 +81,13 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Animated Background */}
-      <div className="fixed inset-0 bg-glow pointer-events-none" />
+      {/* Skip to content for accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+
+      {/* Animated Background - Gradient Mesh */}
+      <div className="fixed inset-0 bg-mesh pointer-events-none" />
       <div className="fixed inset-0 bg-dots pointer-events-none opacity-30" />
 
       {/* Floating Sidebar - Desktop */}
@@ -239,8 +244,8 @@ export function Layout({ children }: LayoutProps) {
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className="lg:ml-72 min-h-screen pt-14 lg:pt-0">
-        <div className="container max-w-4xl mx-auto px-5 py-10 lg:py-16">
+      <main id="main-content" className="lg:ml-72 min-h-screen pt-14 lg:pt-0" tabIndex={-1}>
+        <div className="container max-w-4xl mx-auto px-5 py-10 lg:py-16" tabIndex={-1}>
           {children}
         </div>
       </main>

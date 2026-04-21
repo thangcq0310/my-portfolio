@@ -1,11 +1,11 @@
 import { motion } from "framer-motion"
-import { Code, Zap, Sparkles } from "lucide-react"
+import { Code, Zap, Sparkles, Layers } from "lucide-react"
 import { resume } from "@/data/resume"
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.04,
+      staggerChildren: 0.03,
     },
   },
 }
@@ -24,14 +24,14 @@ const attrIcons: Record<string, React.ElementType> = {
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-16">
-      {/* Technical Arsenal - Glass Card */}
+    <section id="skills" className="py-16" aria-label="Skills and expertise">
+      {/* Technical Arsenal - Liquid Glass */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="glass-card p-8 mb-10"
+        className="liquid-glass p-8 mb-10"
       >
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-xl glass flex items-center justify-center">
@@ -54,8 +54,10 @@ export function SkillsSection() {
             <motion.div
               key={skill}
               variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
-              className="glass px-4 py-2 rounded-full text-xs font-medium cursor-default"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="liquid-glass px-4 py-2 rounded-full text-xs font-medium cursor-default hover-glow"
+              role="listitem"
             >
               {skill}
             </motion.div>
@@ -73,9 +75,9 @@ export function SkillsSection() {
           {resume.attributes.map((attr, idx) => {
             const Icon = attrIcons[attr.icon] || Zap
             const colors = [
-              "from-pink-500/20 to-pink-500/5",
-              "from-blue-500/20 to-blue-500/5",
-              "from-emerald-500/20 to-emerald-500/5",
+              "from-pink-500/20 to-pink-500/5 hover-glow",
+              "from-blue-500/20 to-blue-500/5 hover-glow",
+              "from-emerald-500/20 to-emerald-500/5 hover-glow",
             ]
             
             return (
@@ -85,14 +87,14 @@ export function SkillsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -4 }}
-                className={`glass-card p-6 bg-gradient-to-br ${colors[idx % 3]} space-y-4`}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className={`liquid-glass p-6 bg-gradient-to-br ${colors[idx % 3]} cursor-default`}
               >
-                <div className={`w-12 h-12 rounded-xl glass flex items-center justify-center ${attr.color}`}>
+                <div className={`w-12 h-12 rounded-xl glass flex items-center justify-center ${attr.color} mb-4`}>
                   <Icon className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-semibold">{attr.label}</h4>
-                <p className="text-sm text-muted-foreground">{attr.description}</p>
+                <p className="text-sm text-muted-foreground mt-2">{attr.description}</p>
               </motion.div>
             )
           })}

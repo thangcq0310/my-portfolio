@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { ExternalLink, GitBranch, Folder } from "lucide-react"
+import { ExternalLink, GitBranch, Folder, ArrowUpRight } from "lucide-react"
 import { resume } from "@/data/resume"
 
 const staggerContainer = {
@@ -18,7 +18,7 @@ const fadeInUp = {
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-16">
+    <section id="portfolio" className="py-16" aria-label="Featured projects">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -44,13 +44,14 @@ export function PortfolioSection() {
           <motion.div
             key={project.title}
             variants={fadeInUp}
-            whileHover={{ y: -8 }}
-            className="glass-card overflow-hidden group"
+            whileHover={{ y: -8, scale: 1.01 }}
+            className="liquid-glass overflow-hidden group"
+            role="article"
           >
             {/* Project Image Placeholder */}
             <div className="relative h-48 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-blue-500/10">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center">
+                <div className="w-16 h-16 rounded-2xl liquid-glass flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Folder className="w-8 h-8 text-pink-400" />
                 </div>
               </div>
@@ -62,10 +63,12 @@ export function PortfolioSection() {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-btn px-5 py-2.5 text-sm flex items-center gap-2"
+                    className="glass-btn px-5 py-2.5 text-sm flex items-center gap-2 hover-shine touch-target"
+                    aria-label={`View ${project.title} demo`}
                   >
                     <ExternalLink className="w-4 h-4" />
                     Demo
+                    <ArrowUpRight className="w-3 h-3" />
                   </a>
                 )}
                 {project.repoUrl && (
@@ -73,7 +76,8 @@ export function PortfolioSection() {
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="glass-btn-outline px-5 py-2.5 text-sm flex items-center gap-2"
+                    className="glass-btn-outline px-5 py-2.5 text-sm flex items-center gap-2 hover-lift touch-target"
+                    aria-label={`View ${project.title} code`}
                   >
                     <GitBranch className="w-4 h-4" />
                     Code
@@ -85,7 +89,10 @@ export function PortfolioSection() {
             {/* Content */}
             <div className="p-6 space-y-4">
               <div>
-                <h3 className="text-lg font-bold">{project.title}</h3>
+                <h3 className="text-lg font-bold flex items-center gap-2">
+                  {project.title}
+                  <ArrowUpRight className="w-4 h-4 text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </h3>
                 <p className="text-xs text-pink-400/80 mt-0.5">{project.client}</p>
               </div>
 
@@ -96,7 +103,7 @@ export function PortfolioSection() {
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
-                  <span key={tech} className="glass-badge">
+                  <span key={tech} className="glass-badge hover-scale cursor-pointer">
                     {tech}
                   </span>
                 ))}
