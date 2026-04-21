@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
+import { NavLink } from "react-router-dom"
 import { resume } from "@/data/resume"
 import { MapPin, ExternalLink, Send, Sparkles } from "lucide-react"
 
@@ -47,32 +48,35 @@ export function AboutSection() {
   }, [displayText, isDeleting, currentWordIndex])
 
   return (
-    <section id="about" className="min-h-[60vh] flex items-center py-3" aria-label="About me">
+    <section id="about" className="min-h-[75vh] py-6" aria-label="About me">
+      {/* Hero - Hiển thị ngay không animation */}
+      <div className="w-full space-y-8 mb-8">
+        <h2 className="text-5xl lg:text-6xl font-bold leading-[1.2]">
+          Hi, I'm{" "}
+          <span className="text-gradient">{resume.name}</span>
+        </h2>
+
+        <div className="text-xl lg:text-2xl font-medium flex items-center gap-2 min-h-[2rem]">
+          <span className="text-white/70">I build</span>
+          <span className="text-pink-400">
+            {displayText}
+            <span className="cursor-blink"></span>
+          </span>
+        </div>
+      </div>
+
+      {/* Các phần còn lại với animation */}
       <motion.div
         variants={staggerChildren}
         initial="initial"
-        animate="animate"
+        whileInView="animate"
+        viewport={{ once: true }}
         className="w-full space-y-6"
       >
-        {/* Hero */}
-        <motion.div variants={fadeInUp} className="space-y-6">
-          <h2 className="text-5xl lg:text-6xl font-bold leading-[1.2]">
-            Hi, I'm{" "}
-            <span className="text-gradient">{resume.name}</span>
-          </h2>
-
-          <div className="text-xl lg:text-2xl font-medium flex items-center gap-2">
-            <span className="text-white/70">I build</span>
-            <span className="text-pink-400">
-              {displayText}
-              <span className="cursor-blink"></span>
-            </span>
-          </div>
-        </motion.div>
 
         {/* Bio Cards - Liquid Glass */}
         <motion.div variants={fadeInUp} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div className="liquid-glass p-4 hover-lift">
+          <div className="liquid-glass p-5 hover-lift">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-pink-400" />
               <span className="text-xs font-medium text-pink-400 uppercase tracking-wider">Overview</span>
@@ -85,7 +89,7 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="liquid-glass p-4 hover-lift border-l-2 border-pink-500/50">
+          <div className="liquid-glass p-5 hover-lift border-l-2 border-pink-500/50">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-blue-400" />
               <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">Mission</span>
@@ -107,22 +111,22 @@ export function AboutSection() {
           variants={fadeInUp}
           className="flex flex-wrap gap-3"
         >
-          <button
-            onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
+          <NavLink
+            to="/portfolio"
             className="glass-btn px-6 py-3 text-sm font-semibold flex items-center gap-2 hover-shine touch-target voice-focus"
             aria-label="View my projects"
           >
             <ExternalLink className="w-4 h-4" />
             View My Work
-          </button>
-          <button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+          </NavLink>
+          <NavLink
+            to="/contact"
             className="glass-btn-outline px-6 py-3 text-sm font-semibold flex items-center gap-2 hover-lift touch-target voice-focus"
             aria-label="Get in touch"
           >
             <Send className="w-4 h-4" />
             Get in Touch
-          </button>
+          </NavLink>
         </motion.div>
 
         {/* Quick Stats */}

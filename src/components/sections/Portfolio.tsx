@@ -38,18 +38,18 @@ export function PortfolioSection() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-3"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr"
       >
         {resume.projects.map((project) => (
           <motion.div
             key={project.title}
             variants={fadeInUp}
             whileHover={{ y: -8, scale: 1.01 }}
-            className="liquid-glass overflow-hidden group"
+            className="liquid-glass overflow-hidden group h-full flex flex-col min-h-[20rem]"
             role="article"
           >
             {/* Project Image Placeholder */}
-            <div className="relative h-48 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-blue-500/10">
+            <div className="relative h-48 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-blue-500/10 flex-shrink-0">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-16 h-16 rounded-2xl liquid-glass flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Folder className="w-8 h-8 text-pink-400" />
@@ -87,7 +87,7 @@ export function PortfolioSection() {
             </div>
 
             {/* Content */}
-            <div className="p-4 space-y-4">
+            <div className="p-4 space-y-4 flex-1 flex flex-col">
               <div>
                 <h3 className="text-lg font-bold flex items-center gap-2">
                   {project.title}
@@ -96,7 +96,7 @@ export function PortfolioSection() {
                 <p className="text-xs text-pink-400/80 mt-0.5">{project.client}</p>
               </div>
 
-               <p className="text-base text-muted-foreground leading-relaxed">
+               <p className="text-base text-muted-foreground leading-relaxed flex-1">
                 {project.description}
               </p>
 

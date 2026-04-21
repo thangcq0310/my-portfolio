@@ -1,19 +1,22 @@
+import { Routes, Route } from "react-router-dom"
 import { Layout } from "@/components/Layout"
-import { AboutSection } from "@/components/sections/About"
-import { SkillsSection } from "@/components/sections/Skills"
-import { PortfolioSection } from "@/components/sections/Portfolio"
-import { ExperienceSection } from "@/components/sections/Experience"
-import { ContactSection } from "@/components/sections/Contact"
+import { AboutPage } from "@/pages/AboutPage"
+import { SkillsPage } from "@/pages/SkillsPage"
+import { PortfolioPage } from "@/pages/PortfolioPage"
+import { ExperiencePage } from "@/pages/ExperiencePage"
+import { ContactPage } from "@/pages/ContactPage"
 
 function App() {
   return (
-    <Layout>
-      <AboutSection />
-      <SkillsSection />
-      <PortfolioSection />
-      <ExperienceSection />
-      <ContactSection />
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<AboutPage />} />
+        <Route path="skills" element={<SkillsPage />} />
+        <Route path="portfolio" element={<PortfolioPage />} />
+        <Route path="experience" element={<ExperiencePage />} />
+        <Route path="contact" element={<ContactPage />} />
+      </Route>
+    </Routes>
   )
 }
 
