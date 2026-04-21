@@ -48,35 +48,33 @@ export function Layout({ children }: LayoutProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Desktop Sidebar - Glassmorphism */}
-      <aside className="fixed left-0 top-0 h-full w-80 glass hidden lg:flex flex-col z-50">
+    <div className="min-h-screen bg-background bg-glow">
+      {/* Desktop Sidebar - Enhanced Glass */}
+      <aside className="fixed left-0 top-0 h-full w-80 glass-sidebar hidden lg:flex flex-col z-50">
         {/* Logo & Name */}
-        <div className="p-6">
-          <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
-            <span className="text-white font-bold text-xl">
+        <div className="p-8">
+          <div className="glass-avatar flex items-center justify-center animate-float">
+            <span className="text-white font-bold text-2xl">
               {resume.name.charAt(0)}
             </span>
           </div>
-          <h1 className="text-2xl font-bold mt-4">{resume.name}</h1>
-          <p className="text-muted-foreground">{resume.role}</p>
-          <div className="flex items-center gap-1 mt-2 text-sm text-muted-foreground">
-            <MapPin className="w-4 h-4" />
+          <h1 className="text-2xl font-bold mt-6 text-gradient">{resume.name}</h1>
+          <p className="text-muted-foreground mt-1 text-sm">{resume.role}</p>
+          <div className="flex items-center gap-1.5 mt-3 text-xs text-muted-foreground">
+            <MapPin className="w-3.5 h-3.5" />
             <span>{resume.location}</span>
           </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 px-3 py-2 space-y-1">
+        <nav className="flex-1 px-4 py-2 space-y-1">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
-                "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all",
-                activeSection === item.id
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                "glass-nav-item w-full flex items-center gap-3 px-4 py-3 text-sm font-medium",
+                activeSection === item.id ? "active" : ""
               )}
             >
               <item.icon className="w-5 h-5" />
@@ -86,7 +84,7 @@ export function Layout({ children }: LayoutProps) {
         </nav>
 
         {/* Social Links */}
-        <div className="p-6 pt-0">
+        <div className="p-6 pt-2">
           <div className="flex gap-3">
             {resume.contact.socials.map((social) => {
               const Icon = socialIcons[social.icon] || Ghost
@@ -96,9 +94,9 @@ export function Layout({ children }: LayoutProps) {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+                  className="glass-social"
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                 </a>
               )
             })}
@@ -106,24 +104,24 @@ export function Layout({ children }: LayoutProps) {
         </div>
       </aside>
 
-      {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 h-16 glass z-50 flex items-center justify-between px-4">
+      {/* Mobile Header - Enhanced Glass */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 h-16 glass-header z-50 flex items-center justify-between px-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+          <div className="w-9 h-9 rounded-lg glass items-center justify-center flex">
             <span className="text-white font-bold">
               {resume.name.charAt(0)}
             </span>
           </div>
           <div>
-            <h1 className="font-bold">{resume.name}</h1>
-            <p className="text-xs text-muted-foreground">{resume.role}</p>
+            <h1 className="font-bold text-sm">{resume.name}</h1>
+            <p className="text-[10px] text-muted-foreground">Logistics & Developer</p>
           </div>
         </div>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="w-10 h-10 rounded-lg flex items-center justify-center"
+          className="w-10 h-10 rounded-lg glass flex items-center justify-center"
         >
-          {mobileMenuOpen ? <X /> : <Menu />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </header>
 
@@ -134,7 +132,7 @@ export function Layout({ children }: LayoutProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden fixed inset-0 top-16 bg-background z-40"
+            className="lg:hidden fixed inset-0 top-16 glass z-40"
           >
             <nav className="p-4 space-y-2">
               {navItems.map((item) => (
@@ -142,10 +140,8 @@ export function Layout({ children }: LayoutProps) {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={cn(
-                    "w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all",
-                    activeSection === item.id
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-white/5"
+                    "glass-nav-item w-full flex items-center gap-3 px-4 py-3 text-sm font-medium",
+                    activeSection === item.id ? "active" : ""
                   )}
                 >
                   <item.icon className="w-5 h-5" />
@@ -159,7 +155,7 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Main Content */}
       <main className="lg:ml-80 min-h-screen pt-16 lg:pt-0">
-        <div className="container max-w-6xl mx-auto px-6 py-12">
+        <div className="container max-w-5xl mx-auto px-6 py-12">
           {children}
         </div>
       </main>

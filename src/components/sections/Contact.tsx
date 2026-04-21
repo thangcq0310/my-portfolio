@@ -2,15 +2,11 @@ import { useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Send, Mail, MapPin } from "lucide-react"
 import { resume } from "@/data/resume"
-import { GlassCard } from "@/components/ui/glass-card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+  transition: { duration: 0.6 },
 }
 
 export function ContactSection() {
@@ -45,116 +41,122 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-12 max-w-2xl">
+    <section id="contact" className="py-16 max-w-xl">
       <motion.div variants={fadeInUp} initial="initial" animate="animate">
-        <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <span className="text-gradient">Get in Touch</span>
+          </h2>
+          <p className="text-sm text-muted-foreground mt-1">
+            Let's connect and build something great together
+          </p>
+        </div>
 
-        <GlassCard className="space-y-6">
-          {/* Contact Info */}
-          <div className="flex flex-col gap-4 pb-4 border-b border-white/10">
+        {/* Contact Info */}
+        <div className="glass-card p-6 mb-6">
+          <div className="flex flex-wrap gap-6">
+            <a
+              href={`mailto:${resume.email}`}
+              className="flex items-center gap-3 hover:text-pink-400 transition-colors group"
+            >
+              <div className="w-10 h-10 rounded-xl glass flex items-center justify-center group-hover:glow-pink transition-all">
+                <Mail className="w-4 h-4" />
+              </div>
+              <span className="text-sm">{resume.email}</span>
+            </a>
             <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-pink-500" />
-              <a href={`mailto:${resume.email}`} className="hover:text-pink-500 transition-colors">
-                {resume.email}
-              </a>
+              <div className="w-10 h-10 rounded-xl glass flex items-center justify-center">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <span className="text-sm text-muted-foreground">{resume.location}</span>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-pink-500" />
-              <span className="text-muted-foreground">{resume.location}</span>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="glass-card p-6 space-y-5"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="space-y-2">
+              <label htmlFor="name" className="text-sm font-medium">
+                Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+                className="glass-input w-full px-4 py-3"
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-sm font-medium">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="your@email.com"
+                required
+                className="glass-input w-full px-4 py-3"
+              />
             </div>
           </div>
 
-          {/* Contact Form */}
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="text-sm font-medium mb-2 block"
-                >
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                  className="bg-white/5 border-white/10"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="text-sm font-medium mb-2 block"
-                >
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  required
-                  className="bg-white/5 border-white/10"
-                />
-              </div>
-            </div>
+          <div className="space-y-2">
+            <label htmlFor="subject" className="text-sm font-medium">
+              Subject
+            </label>
+            <input
+              id="subject"
+              name="subject"
+              placeholder="What's this about?"
+              required
+              className="glass-input w-full px-4 py-3"
+            />
+          </div>
 
-            <div>
-              <label
-                htmlFor="subject"
-                className="text-sm font-medium mb-2 block"
-              >
-                Subject
-              </label>
-              <Input
-                id="subject"
-                name="subject"
-                placeholder="What's this about?"
-                required
-                className="bg-white/5 border-white/10"
-              />
-            </div>
+          <div className="space-y-2">
+            <label htmlFor="message" className="text-sm font-medium">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your message..."
+              rows={5}
+              required
+              className="glass-input w-full px-4 py-3 resize-none"
+            />
+          </div>
 
-            <div>
-              <label
-                htmlFor="message"
-                className="text-sm font-medium mb-2 block"
-              >
-                Message
-              </label>
-              <Textarea
-                id="message"
-                name="message"
-                placeholder="Your message..."
-                rows={5}
-                required
-                className="bg-white/5 border-white/10 resize-none"
-              />
-            </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="glass-btn w-full py-3.5 text-sm font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
+          >
+            {isSubmitting ? (
+              "Sending..."
+            ) : (
+              <>
+                <Send className="w-4 h-4" />
+                Send Message
+              </>
+            )}
+          </button>
 
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-pink-500 hover:bg-pink-600 disabled:opacity-50"
-            >
-              {isSubmitting ? (
-                "Sending..."
-              ) : (
-                <>
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </>
-              )}
-            </Button>
-
-            {submitted && (
-              <p className="text-green-500 text-sm text-center">
+          {submitted && (
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center">
+              <p className="text-sm text-emerald-400">
                 Thanks for your message! I'll get back to you soon.
               </p>
-            )}
-          </form>
-        </GlassCard>
+            </div>
+          )}
+        </form>
       </motion.div>
     </section>
   )

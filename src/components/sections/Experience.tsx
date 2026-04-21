@@ -1,32 +1,35 @@
 import { motion } from "framer-motion"
 import { resume } from "@/data/resume"
-import { GlassCard } from "@/components/ui/glass-card"
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 }
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5 },
 }
 
-const variantMap: Record<string, "pink" | "blue" | "emerald" | "amber"> = {
-  pink: "pink",
-  blue: "blue",
-  emerald: "emerald",
-  amber: "amber",
-}
-
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-12 space-y-6">
-      <h2 className="text-3xl font-bold mb-8">Experience & Education</h2>
+    <section id="experience" className="py-16 space-y-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-2xl font-bold flex items-center gap-2">
+          <span className="text-gradient">Experience</span>
+        </h2>
+        <p className="text-sm text-muted-foreground mt-1">
+          My professional journey
+        </p>
+      </motion.div>
 
       <motion.div
         variants={staggerContainer}
@@ -36,48 +39,66 @@ export function ExperienceSection() {
         className="space-y-6"
       >
         {resume.experience.map((exp, idx) => {
-          const variant = variantMap[
-            ["pink", "blue", "emerald", "amber"][idx % 4]
-          ] as "pink" | "blue" | "emerald" | "amber"
-
+          const gradients = [
+            "from-pink-500/10 to-pink-500/5",
+            "from-blue-500/10 to-blue-500/5",
+          ]
+          
           return (
-            <motion.div key={exp.title + idx} variants={fadeInUp}>
-              <GlassCard variant={variant} className="p-6">
-                <div className="flex items-start gap-4">
-                  {/* Logo/Icon */}
-                  <div
-                    className={`w-12 h-12 rounded-lg flex items-center justify-center font-bold text-lg ${exp.containerClass || "bg-white/10"} ${exp.textClass || "text-white"}`}
-                  >
-                    {exp.icon || exp.company.charAt(0)}
-                  </div>
+            <motion.div
+              key={exp.title + idx}
+              variants={fadeInUp}
+              whileHover={{ x: 4 }}
+              className={`glass-card p-6 bg-gradient-to-br ${gradients[idx % 2]} relative overflow-hidden`}
+            >
+              {/* Glow accent */}
+              <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl ${
+                idx === 0 ? "bg-pink-500/10" : "bg-blue-500/10"
+              }`} />
+              
+              <div className="relative flex items-start gap-5">
+                {/* Icon/Logo */}
+                <div
+                  className={`w-14 h-14 rounded-xl glass flex items-center justify-center font-bold text-lg shrink-0 ${
+                    idx === 0 ? "text-pink-400" : "text-blue-400"
+                  }`}
+                >
+                  {exp.icon || exp.company.substring(0, 2)}
+                </div>
 
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3
-                      className={`text-lg font-semibold ${exp.textClass}`}
-                    >
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className={`text-lg font-bold ${
+                      idx === 0 ? "text-pink-400" : "text-blue-400"
+                    }`}>
                       {exp.title}
                     </h3>
-                    <p className="text-muted-foreground">{exp.company}</p>
-                    <p className="text-sm text-muted-foreground mb-3">
+                    <span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full glass">
                       {exp.period}
-                    </p>
-
-                    {/* Highlights */}
-                    <ul className="space-y-2">
-                      {exp.highlights.map((highlight, highlightIdx) => (
-                        <li
-                          key={highlightIdx}
-                          className="text-sm flex items-start gap-2"
-                        >
-                          <span className="text-pink-500">•</span>
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
+                    </span>
                   </div>
+                  
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    {exp.company}
+                  </p>
+
+                  {/* Highlights */}
+                  <ul className="mt-4 space-y-2.5">
+                    {exp.highlights.map((highlight, highlightIdx) => (
+                      <li
+                        key={highlightIdx}
+                        className="text-sm text-white/80 flex items-start gap-3"
+                      >
+                        <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${
+                          idx === 0 ? "bg-pink-400" : "bg-blue-400"
+                        }`} />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </GlassCard>
+              </div>
             </motion.div>
           )
         })}

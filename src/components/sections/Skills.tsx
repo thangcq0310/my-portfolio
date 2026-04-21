@@ -1,13 +1,11 @@
 import { motion } from "framer-motion"
-import { Code, Accessibility, Zap, MessageSquareText } from "lucide-react"
+import { Code, Zap, Sparkles } from "lucide-react"
 import { resume } from "@/data/resume"
-import { GlassCard } from "@/components/ui/glass-card"
-import { Badge } from "@/components/ui/badge"
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.04,
     },
   },
 }
@@ -18,26 +16,31 @@ const fadeInUp = {
   transition: { duration: 0.4 },
 }
 
-const skillColors = [
-  "pink",
-  "blue",
-  "emerald",
-  "amber",
-] as const
-
 const attrIcons: Record<string, React.ElementType> = {
-  Accessibility,
   Zap,
-  MessageSquareText,
+  Code,
+  Sparkles,
 }
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-12">
-      <GlassCard>
+    <section id="skills" className="py-16">
+      {/* Technical Arsenal - Glass Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="glass-card p-8 mb-10"
+      >
         <div className="flex items-center gap-3 mb-6">
-          <Code className="w-6 h-6 text-pink-500" />
-          <h3 className="text-2xl font-bold">Technical Arsenal</h3>
+          <div className="w-10 h-10 rounded-xl glass flex items-center justify-center">
+            <Code className="w-5 h-5 text-pink-400" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold">Technical Arsenal</h3>
+            <p className="text-xs text-muted-foreground">Skills & Technologies</p>
+          </div>
         </div>
 
         <motion.div
@@ -45,37 +48,52 @@ export function SkillsSection() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="flex flex-wrap gap-3"
+          className="flex flex-wrap gap-2"
         >
-          {resume.skills.map((skill, idx) => (
-            <motion.div key={skill} variants={fadeInUp}>
-              <Badge
-                variant={skillColors[idx % skillColors.length]}
-                className="px-4 py-1.5 text-sm"
-              >
-                {skill}
-              </Badge>
+          {resume.skills.map((skill) => (
+            <motion.div
+              key={skill}
+              variants={fadeInUp}
+              whileHover={{ scale: 1.05 }}
+              className="glass px-4 py-2 rounded-full text-xs font-medium cursor-default"
+            >
+              {skill}
             </motion.div>
           ))}
         </motion.div>
-      </GlassCard>
+      </motion.div>
 
-      {/* Attributes */}
-      <div className="mt-8">
-        <h3 className="text-2xl font-bold mb-6">What to Expect</h3>
+      {/* What to Expect - Bento Grid */}
+      <div className="mb-6">
+        <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+          <span className="text-gradient">What to Expect</span>
+        </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {resume.attributes.map((attr, idx) => {
-            const Icon = attrIcons[attr.icon] || Accessibility
+            const Icon = attrIcons[attr.icon] || Zap
+            const colors = [
+              "from-pink-500/20 to-pink-500/5",
+              "from-blue-500/20 to-blue-500/5",
+              "from-emerald-500/20 to-emerald-500/5",
+            ]
+            
             return (
-              <GlassCard
+              <motion.div
                 key={attr.label}
-                variant={skillColors[idx % skillColors.length] as "pink" | "blue" | "emerald" | "amber"}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -4 }}
+                className={`glass-card p-6 bg-gradient-to-br ${colors[idx % 3]} space-y-4`}
               >
-                <Icon className={`w-8 h-8 ${attr.color}`} />
+                <div className={`w-12 h-12 rounded-xl glass flex items-center justify-center ${attr.color}`}>
+                  <Icon className="w-6 h-6" />
+                </div>
                 <h4 className="text-lg font-semibold">{attr.label}</h4>
-                <p className="text-muted-foreground">{attr.description}</p>
-              </GlassCard>
+                <p className="text-sm text-muted-foreground">{attr.description}</p>
+              </motion.div>
             )
           })}
         </div>
