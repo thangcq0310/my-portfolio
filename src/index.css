@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@source "../src/**/*.{js,ts,jsx,tsx}";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, Consolas, monospace;
+}
+
+@layer base {
+  :root {
+    /* Dark theme */
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 100%;
+    
+    /* Primary: Pink from candy-glass */
+    --primary: 346 77% 50%;
+    --primary-foreground: 0 0% 100%;
+    /* Secondary: Blue accent */
+    --secondary: 217.2 91% 50%;
+    --secondary-foreground: 0 0% 100%;
+    /* Muted */
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 63%;
+    --accent: 217.2 91% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 346 77% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Enhanced Glassmorphism - Candy Glass Portfolio Style */
+@layer utilities {
+  /* Main glass effect - used for cards and containers */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Glass card with hover effect */
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-card:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(236, 72, 153, 0.1);
+  }
+  
+  /* Glass sidebar */
+  .glass-sidebar {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Glass header for mobile */
+  .glass-header {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Glass button */
+  .glass-btn {
+    background: rgba(236, 72, 153, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(236, 72, 153, 0.3);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .glass-btn:hover {
+    background: rgba(236, 72, 153, 0.25);
+    border-color: rgba(236, 72, 153, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
+  }
+  
+  /* Glass input */
+  .glass-input {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .glass-input:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(236, 72, 153, 0.4);
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+  }
+  
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-pink {
+    background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Glowing accent */
+  .glow-pink {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.4);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  }
+  
+  /* Background patterns */
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .bg-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* Animated background glow */
+  .bg-glow {
+    background: radial-gradient(ellipse at top, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  }
+}
