@@ -24,22 +24,22 @@ const attrIcons: Record<string, React.ElementType> = {
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-16" aria-label="Skills and expertise">
+    <section id="skills" className="py-8" aria-label="Skills and expertise">
       {/* Technical Arsenal - Liquid Glass */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="liquid-glass p-8 mb-10"
+        className="liquid-glass p-4 mb-4"
       >
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-xl glass flex items-center justify-center">
             <Code className="w-5 h-5 text-pink-400" />
           </div>
           <div>
-            <h3 className="text-xl font-bold">Technical Arsenal</h3>
-            <p className="text-xs text-muted-foreground">Skills & Technologies</p>
+            <h3 className="text-2xl font-bold">Technical Arsenal</h3>
+            <p className="text-sm text-muted-foreground">Skills & Technologies</p>
           </div>
         </div>
 
@@ -66,12 +66,12 @@ export function SkillsSection() {
       </motion.div>
 
       {/* What to Expect - Bento Grid */}
-      <div className="mb-6">
-        <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+      <div className="mb-4">
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
           <span className="text-gradient">What to Expect</span>
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {resume.attributes.map((attr, idx) => {
             const Icon = attrIcons[attr.icon] || Zap
             const colors = [
@@ -88,13 +88,13 @@ export function SkillsSection() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className={`liquid-glass p-6 bg-gradient-to-br ${colors[idx % 3]} cursor-default`}
+                className={`liquid-glass p-4 bg-gradient-to-br ${colors[idx % 3]} cursor-default`}
               >
                 <div className={`w-12 h-12 rounded-xl glass flex items-center justify-center ${attr.color} mb-4`}>
                   <Icon className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-semibold">{attr.label}</h4>
-                <p className="text-sm text-muted-foreground mt-2">{attr.description}</p>
+                <h4 className="text-xl font-semibold">{attr.label}</h4>
+                <p className="text-base text-muted-foreground mt-2">{attr.description}</p>
               </motion.div>
             )
           })}

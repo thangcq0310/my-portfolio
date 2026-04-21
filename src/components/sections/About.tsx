@@ -47,21 +47,21 @@ export function AboutSection() {
   }, [displayText, isDeleting, currentWordIndex])
 
   return (
-    <section id="about" className="min-h-[85vh] flex items-center py-8" aria-label="About me">
+    <section id="about" className="min-h-[60vh] flex items-center py-3" aria-label="About me">
       <motion.div
         variants={staggerChildren}
         initial="initial"
         animate="animate"
-        className="w-full space-y-10"
+        className="w-full space-y-6"
       >
         {/* Hero */}
         <motion.div variants={fadeInUp} className="space-y-6">
-          <h2 className="text-4xl lg:text-5xl font-bold leading-[1.2]">
+          <h2 className="text-5xl lg:text-6xl font-bold leading-[1.2]">
             Hi, I'm{" "}
             <span className="text-gradient">{resume.name}</span>
           </h2>
 
-          <div className="text-lg lg:text-xl font-medium flex items-center gap-2">
+          <div className="text-xl lg:text-2xl font-medium flex items-center gap-2">
             <span className="text-white/70">I build</span>
             <span className="text-pink-400">
               {displayText}
@@ -71,21 +71,21 @@ export function AboutSection() {
         </motion.div>
 
         {/* Bio Cards - Liquid Glass */}
-        <motion.div variants={fadeInUp} className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <div className="liquid-glass p-6 hover-lift">
+        <motion.div variants={fadeInUp} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="liquid-glass p-4 hover-lift">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-pink-400" />
               <span className="text-xs font-medium text-pink-400 uppercase tracking-wider">Overview</span>
             </div>
-            <p className="text-sm text-white/90 leading-relaxed">
+            <p className="text-base text-white/90 leading-relaxed">
               {resume.bio[0]}
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+            <p className="text-base text-muted-foreground leading-relaxed mt-3">
               {resume.bio[1]}
             </p>
           </div>
 
-          <div className="liquid-glass p-6 hover-lift border-l-2 border-pink-500/50">
+          <div className="liquid-glass p-4 hover-lift border-l-2 border-pink-500/50">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-blue-400" />
               <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">Mission</span>
@@ -105,7 +105,7 @@ export function AboutSection() {
         {/* CTA - Micro-interactions */}
         <motion.div
           variants={fadeInUp}
-          className="flex flex-wrap gap-4"
+          className="flex flex-wrap gap-3"
         >
           <button
             onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
@@ -126,12 +126,12 @@ export function AboutSection() {
         </motion.div>
 
         {/* Quick Stats */}
-        <motion.div variants={fadeInUp} className="flex flex-wrap gap-6 pt-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground hover-glow px-3 py-2 rounded-lg transition-colors">
+        <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-2">
+          <div className="flex items-center gap-2 text-base text-muted-foreground hover-glow px-3 py-2 rounded-lg transition-colors">
             <MapPin className="w-4 h-4 text-pink-400" aria-hidden="true" />
             <span>{resume.location}</span>
           </div>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground px-3 py-2 rounded-lg transition-colors">
+          <div className="flex items-center gap-2 text-base text-muted-foreground px-3 py-2 rounded-lg transition-colors">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
             <span>Available for opportunities</span>
           </div>

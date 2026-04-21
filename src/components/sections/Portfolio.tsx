@@ -18,17 +18,17 @@ const fadeInUp = {
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-16" aria-label="Featured projects">
+    <section id="portfolio" className="py-8" aria-label="Featured projects">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-8"
+        className="mb-5"
       >
-        <h2 className="text-2xl font-bold flex items-center gap-2">
+        <h2 className="text-3xl font-bold flex items-center gap-2">
           <span className="text-gradient">Featured Projects</span>
         </h2>
-        <p className="text-sm text-muted-foreground mt-1">
+        <p className="text-base text-muted-foreground mt-1">
           Solutions I've built for real-world operations
         </p>
       </motion.div>
@@ -38,7 +38,7 @@ export function PortfolioSection() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-3"
       >
         {resume.projects.map((project) => (
           <motion.div
@@ -87,7 +87,7 @@ export function PortfolioSection() {
             </div>
 
             {/* Content */}
-            <div className="p-6 space-y-4">
+            <div className="p-4 space-y-4">
               <div>
                 <h3 className="text-lg font-bold flex items-center gap-2">
                   {project.title}
@@ -96,7 +96,7 @@ export function PortfolioSection() {
                 <p className="text-xs text-pink-400/80 mt-0.5">{project.client}</p>
               </div>
 
-              <p className="text-sm text-muted-foreground leading-relaxed">
+               <p className="text-base text-muted-foreground leading-relaxed">
                 {project.description}
               </p>
 
@@ -111,7 +111,7 @@ export function PortfolioSection() {
 
               {/* Timeline */}
               <div className="pt-2 border-t border-white/5">
-                <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+                <p className="text-sm text-muted-foreground flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   {project.timeline}
                 </p>

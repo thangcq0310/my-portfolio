@@ -17,16 +17,16 @@ const fadeInUp = {
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-16 space-y-8" aria-label="Work experience">
+    <section id="experience" className="py-8 space-y-3" aria-label="Work experience">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-2xl font-bold flex items-center gap-2">
+        <h2 className="text-3xl font-bold flex items-center gap-2">
           <span className="text-gradient">Experience</span>
         </h2>
-        <p className="text-sm text-muted-foreground mt-1">
+        <p className="text-base text-muted-foreground mt-1">
           My professional journey
         </p>
       </motion.div>
@@ -36,7 +36,7 @@ export function ExperienceSection() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="space-y-6"
+        className="space-y-3"
       >
         {resume.experience.map((exp, idx) => {
           const gradients = [
@@ -49,7 +49,7 @@ export function ExperienceSection() {
               key={exp.title + idx}
               variants={fadeInUp}
               whileHover={{ x: 6 }}
-              className={`liquid-glass p-6 bg-gradient-to-br ${gradients[idx % 2]} relative overflow-hidden group`}
+              className={`liquid-glass p-4 bg-gradient-to-br ${gradients[idx % 2]} relative overflow-hidden group`}
             >
               {/* Glow accent */}
               <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-50 ${
@@ -74,12 +74,12 @@ export function ExperienceSection() {
                     }`}>
                       {exp.title}
                     </h3>
-                    <span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full glass">
+                    <span className="text-sm text-muted-foreground px-2 py-0.5 rounded-full glass">
                       {exp.period}
                     </span>
                   </div>
                   
-                  <p className="text-sm text-muted-foreground mt-0.5">
+                  <p className="text-base text-muted-foreground mt-0.5">
                     {exp.company}
                   </p>
 
@@ -88,7 +88,7 @@ export function ExperienceSection() {
                     {exp.highlights.map((highlight, highlightIdx) => (
                       <li
                         key={highlightIdx}
-                        className="text-sm text-white/80 flex items-start gap-3"
+                        className="text-base text-white/80 flex items-start gap-3"
                       >
                         <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${
                           idx === 0 ? "bg-pink-400" : "bg-blue-400"

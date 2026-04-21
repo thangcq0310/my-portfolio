@@ -11,6 +11,7 @@ import {
   Circle,
   Square,
   MapPin,
+  ChevronLeft,
   ArrowDown,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -39,6 +40,7 @@ export function Layout({ children }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("about")
   const [scrolled, setScrolled] = useState(false)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
 
   // Track scroll for header effect
   useEffect(() => {
@@ -90,49 +92,83 @@ export function Layout({ children }: LayoutProps) {
       <div className="fixed inset-0 bg-mesh pointer-events-none" />
       <div className="fixed inset-0 bg-dots pointer-events-none opacity-30" />
 
-      {/* Floating Sidebar - Desktop */}
-      <aside className="fixed left-0 top-0 h-full w-72 hidden lg:flex flex-col z-50">
-        {/* Sidebar Background */}
-        <div className="absolute inset-0 glass-sidebar" />
-        
-        {/* Content */}
-        <div className="relative z-10 flex flex-col h-full p-6">
-          {/* Logo & Name */}
-          <div className="text-center mb-8">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="w-20 h-20 mx-auto rounded-2xl glass-card flex items-center justify-center cursor-pointer glow-pink"
-            >
-              <span className="text-3xl font-bold text-gradient">
-                {resume.name.charAt(0)}
-              </span>
-            </motion.div>
-            <h1 className="text-xl font-bold mt-5">{resume.name}</h1>
-            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
-              {resume.role}
-            </p>
-            <div className="flex items-center justify-center gap-1.5 mt-2 text-xs text-muted-foreground">
-              <MapPin className="w-3 h-3" />
-              <span>{resume.location}</span>
+       {/* Floating Sidebar - Desktop */}
+       <aside className={cn(
+         "fixed left-0 top-0 h-full transition-all duration-300 hidden lg:flex flex-col z-50",
+         sidebarCollapsed ? "w-20" : "w-72"
+       )}>
+         {/* Sidebar Background */}
+         <div className="absolute inset-0 glass-sidebar" />
+         
+         {/* Content */}
+         <div className="relative z-10 flex flex-col h-full p-6">
+            {/* Logo & Name */}
+            <div className={cn("text-center", sidebarCollapsed ? "mb-4" : "mb-8")}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="w-20 h-20 mx-auto rounded-2xl glass-card flex items-center justify-center cursor-pointer glow-pink"
+              >
+                <span className="text-3xl font-bold text-gradient">
+                  {resume.name.charAt(0)}
+                </span>
+              </motion.div>
+              {!sidebarCollapsed && (
+                <>
+                  <h1 className="text-xl font-bold mt-5">
+                    {resume.name}
+                  </h1>
+                  <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+                    {resume.role}
+                  </p>
+                  <div className="flex items-center justify-center gap-1.5 mt-2 text-xs text-muted-foreground">
+                    <MapPin className="w-3 h-3" />
+                    <span>{resume.location}</span>
+                  </div>
+                </>
+              )}
             </div>
-          </div>
+
+           {/* Collapse Toggle Button */}
+           <button
+             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+             className="absolute -right-3 top-1/2 w-6 h-6 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors z-20"
+             aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+           >
+            <motion.div
+              initial={false}
+              animate={{ rotate: sidebarCollapsed ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+               <ChevronLeft className="w-3.5 h-3.5" />
+             </motion.div>
+           </button>
 
           {/* Navigation */}
           <nav className="flex-1 space-y-1.5">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={cn(
-                  "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
-                  activeSection === item.id
-                    ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-white border border-pink-500/30"
-                    : "text-muted-foreground hover:bg-white/5 hover:text-white"
-                )}
-              >
-                <item.icon className="w-4 h-4" />
-                {item.label}
-                {activeSection === item.id && (
+               <button
+                 key={item.id}
+                 onClick={() => scrollToSection(item.id)}
+                 className={cn(
+                   "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
+                   sidebarCollapsed && "gap-0 justify-center px-2",
+                   activeSection === item.id
+                     ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-white border border-pink-500/30"
+                     : "text-muted-foreground hover:bg-white/5 hover:text-white"
+                 )}
+               >
+                <item.icon className="w-4 h-4 shrink-0" />
+                <motion.span
+                  initial={false}
+                  animate={{ 
+                    opacity: sidebarCollapsed ? 0 : 1,
+                    width: sidebarCollapsed ? 0 : "auto"
+                  }}
+                  className="overflow-hidden whitespace-nowrap"
+                >
+                  {item.label}
+                </motion.span>
+                {activeSection === item.id && !sidebarCollapsed && (
                   <motion.div
                     layoutId="active-dot"
                     className="ml-auto w-1.5 h-1.5 rounded-full bg-pink-500"
@@ -143,16 +179,30 @@ export function Layout({ children }: LayoutProps) {
           </nav>
 
           {/* CTA Button */}
-          <button
+          <motion.button
+            initial={false}
             onClick={() => scrollToSection("contact")}
-            className="mt-4 w-full py-3 rounded-xl glass-btn text-sm font-semibold flex items-center justify-center gap-2"
+            animate={{ 
+              opacity: sidebarCollapsed ? 0 : 1,
+              height: sidebarCollapsed ? 0 : "auto",
+              marginTop: sidebarCollapsed ? 0 : 16
+            }}
+            className="w-full py-3 rounded-xl glass-btn text-sm font-semibold flex items-center justify-center gap-2 overflow-hidden"
           >
-            Let's Talk
-            <ArrowDown className="w-4 h-4" />
-          </button>
+            <span className="shrink-0">Let's Talk</span>
+            <ArrowDown className="w-4 h-4 shrink-0" />
+          </motion.button>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-3 mt-6">
+          <motion.div 
+            initial={false}
+            animate={{ 
+              opacity: sidebarCollapsed ? 0 : 1,
+              height: sidebarCollapsed ? 0 : "auto",
+              marginTop: sidebarCollapsed ? 0 : 24
+            }}
+            className="flex justify-center gap-3 overflow-hidden"
+          >
             {resume.contact.socials.map((social) => {
               const Icon = socialIcons[social.icon] || Ghost
               return (
@@ -167,7 +217,7 @@ export function Layout({ children }: LayoutProps) {
                 </a>
               )
             })}
-          </div>
+          </motion.div>
         </div>
       </aside>
 
@@ -243,12 +293,19 @@ export function Layout({ children }: LayoutProps) {
         )}
       </AnimatePresence>
 
-      {/* Main Content */}
-      <main id="main-content" className="lg:ml-72 min-h-screen pt-14 lg:pt-0" tabIndex={-1}>
-        <div className="container max-w-4xl mx-auto px-5 py-10 lg:py-16" tabIndex={-1}>
-          {children}
-        </div>
-      </main>
+       {/* Main Content */}
+        <main 
+          id="main-content" 
+          className={cn(
+            "min-h-screen pt-14 lg:pt-0 transition-all duration-300",
+            sidebarCollapsed ? "lg:ml-20" : "lg:ml-72"
+          )} 
+          tabIndex={-1}
+        >
+          <div className="container max-w-7xl mx-auto px-4 py-6 lg:py-8" tabIndex={-1}>
+            {children}
+          </div>
+        </main>
     </div>
   )
 }
