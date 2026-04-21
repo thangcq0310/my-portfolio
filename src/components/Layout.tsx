@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   User,
@@ -11,6 +11,7 @@ import {
   Circle,
   Square,
   MapPin,
+  ArrowDown,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { resume } from "@/data/resume"
@@ -27,16 +28,47 @@ interface LayoutProps {
 }
 
 const navItems = [
-  { id: "about", label: "About me", icon: User },
+  { id: "about", label: "About", icon: User },
   { id: "skills", label: "Skills", icon: Code },
-  { id: "portfolio", label: "Portfolio", icon: Briefcase },
+  { id: "portfolio", label: "Work", icon: Briefcase },
   { id: "experience", label: "Experience", icon: Briefcase },
-  { id: "contact", label: "Contact me", icon: Mail },
+  { id: "contact", label: "Contact", icon: Mail },
 ]
 
 export function Layout({ children }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("about")
+  const [scrolled, setScrolled] = useState(false)
+
+  // Track scroll for header effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Track active section on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    navItems.forEach((item) => {
+      const el = document.getElementById(item.id)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -48,44 +80,74 @@ export function Layout({ children }: LayoutProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background bg-glow">
-      {/* Desktop Sidebar - Enhanced Glass */}
-      <aside className="fixed left-0 top-0 h-full w-80 glass-sidebar hidden lg:flex flex-col z-50">
-        {/* Logo & Name */}
-        <div className="p-8">
-          <div className="glass-avatar flex items-center justify-center animate-float">
-            <span className="text-white font-bold text-2xl">
-              {resume.name.charAt(0)}
-            </span>
-          </div>
-          <h1 className="text-2xl font-bold mt-6 text-gradient">{resume.name}</h1>
-          <p className="text-muted-foreground mt-1 text-sm">{resume.role}</p>
-          <div className="flex items-center gap-1.5 mt-3 text-xs text-muted-foreground">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>{resume.location}</span>
-          </div>
-        </div>
+    <div className="min-h-screen bg-background">
+      {/* Animated Background */}
+      <div className="fixed inset-0 bg-glow pointer-events-none" />
+      <div className="fixed inset-0 bg-dots pointer-events-none opacity-30" />
 
-        {/* Navigation */}
-        <nav className="flex-1 px-4 py-2 space-y-1">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={cn(
-                "glass-nav-item w-full flex items-center gap-3 px-4 py-3 text-sm font-medium",
-                activeSection === item.id ? "active" : ""
-              )}
+      {/* Floating Sidebar - Desktop */}
+      <aside className="fixed left-0 top-0 h-full w-72 hidden lg:flex flex-col z-50">
+        {/* Sidebar Background */}
+        <div className="absolute inset-0 glass-sidebar" />
+        
+        {/* Content */}
+        <div className="relative z-10 flex flex-col h-full p-6">
+          {/* Logo & Name */}
+          <div className="text-center mb-8">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="w-20 h-20 mx-auto rounded-2xl glass-card flex items-center justify-center cursor-pointer glow-pink"
             >
-              <item.icon className="w-5 h-5" />
-              {item.label}
-            </button>
-          ))}
-        </nav>
+              <span className="text-3xl font-bold text-gradient">
+                {resume.name.charAt(0)}
+              </span>
+            </motion.div>
+            <h1 className="text-xl font-bold mt-5">{resume.name}</h1>
+            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+              {resume.role}
+            </p>
+            <div className="flex items-center justify-center gap-1.5 mt-2 text-xs text-muted-foreground">
+              <MapPin className="w-3 h-3" />
+              <span>{resume.location}</span>
+            </div>
+          </div>
 
-        {/* Social Links */}
-        <div className="p-6 pt-2">
-          <div className="flex gap-3">
+          {/* Navigation */}
+          <nav className="flex-1 space-y-1.5">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={cn(
+                  "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
+                  activeSection === item.id
+                    ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-white border border-pink-500/30"
+                    : "text-muted-foreground hover:bg-white/5 hover:text-white"
+                )}
+              >
+                <item.icon className="w-4 h-4" />
+                {item.label}
+                {activeSection === item.id && (
+                  <motion.div
+                    layoutId="active-dot"
+                    className="ml-auto w-1.5 h-1.5 rounded-full bg-pink-500"
+                  />
+                )}
+              </button>
+            ))}
+          </nav>
+
+          {/* CTA Button */}
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="mt-4 w-full py-3 rounded-xl glass-btn text-sm font-semibold flex items-center justify-center gap-2"
+          >
+            Let's Talk
+            <ArrowDown className="w-4 h-4" />
+          </button>
+
+          {/* Social Links */}
+          <div className="flex justify-center gap-3 mt-6">
             {resume.contact.socials.map((social) => {
               const Icon = socialIcons[social.icon] || Ghost
               return (
@@ -94,7 +156,7 @@ export function Layout({ children }: LayoutProps) {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-social"
+                  className="w-9 h-9 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -104,58 +166,81 @@ export function Layout({ children }: LayoutProps) {
         </div>
       </aside>
 
-      {/* Mobile Header - Enhanced Glass */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 h-16 glass-header z-50 flex items-center justify-between px-4">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg glass items-center justify-center flex">
-            <span className="text-white font-bold">
-              {resume.name.charAt(0)}
-            </span>
+      {/* Mobile Header - Floating */}
+      <header 
+        className={cn(
+          "lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          scrolled ? "h-14" : "h-16"
+        )}
+      >
+        <div className={cn(
+          "absolute inset-0 transition-all duration-300",
+          scrolled ? "glass glass-header" : "bg-transparent"
+        )} />
+        <div className="relative z-10 flex items-center justify-between h-full px-4">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg glass flex items-center justify-center">
+              <span className="text-sm font-bold">{resume.name.charAt(0)}</span>
+            </div>
+            <div>
+              <h1 className="font-bold text-sm">{resume.name}</h1>
+              <p className="text-[9px] text-muted-foreground">Logistics & Developer</p>
+            </div>
           </div>
-          <div>
-            <h1 className="font-bold text-sm">{resume.name}</h1>
-            <p className="text-[10px] text-muted-foreground">Logistics & Developer</p>
-          </div>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="w-9 h-9 rounded-lg glass flex items-center justify-center"
+          >
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
         </div>
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="w-10 h-10 rounded-lg glass flex items-center justify-center"
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
       </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden fixed inset-0 top-16 glass z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lg:hidden fixed inset-0 top-14 z-40 bg-background/95 backdrop-blur-xl"
           >
             <nav className="p-4 space-y-2">
-              {navItems.map((item) => (
-                <button
+              {navItems.map((item, idx) => (
+                <motion.button
                   key={item.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
                   onClick={() => scrollToSection(item.id)}
                   className={cn(
-                    "glass-nav-item w-full flex items-center gap-3 px-4 py-3 text-sm font-medium",
-                    activeSection === item.id ? "active" : ""
+                    "w-full flex items-center gap-3 px-5 py-4 rounded-xl text-sm font-medium transition-all",
+                    activeSection === item.id
+                      ? "bg-pink-500/20 text-pink-400 border border-pink-500/30"
+                      : "text-muted-foreground hover:bg-white/5"
                   )}
                 >
                   <item.icon className="w-5 h-5" />
                   {item.label}
-                </button>
+                </motion.button>
               ))}
+              <motion.button
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.05 }}
+                onClick={() => scrollToSection("contact")}
+                className="w-full mt-4 py-4 rounded-xl glass-btn text-sm font-semibold flex items-center justify-center gap-2"
+              >
+                Let's Talk
+              </motion.button>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className="lg:ml-80 min-h-screen pt-16 lg:pt-0">
-        <div className="container max-w-5xl mx-auto px-6 py-12">
+      <main className="lg:ml-72 min-h-screen pt-14 lg:pt-0">
+        <div className="container max-w-4xl mx-auto px-5 py-10 lg:py-16">
           {children}
         </div>
       </main>

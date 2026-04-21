@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { resume } from "@/data/resume"
+import { MapPin, ExternalLink, Send } from "lucide-react"
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
+  transition: { duration: 0.7, ease: "easeOut" },
+}
+
+const staggerChildren = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
 }
 
 export function AboutSection() {
@@ -32,110 +41,92 @@ export function AboutSection() {
           setCurrentWordIndex((prev) => (prev + 1) % words.length)
         }
       }
-    }, isDeleting ? 60 : 100)
+    }, isDeleting ? 50 : 100)
 
     return () => clearTimeout(timer)
   }, [displayText, isDeleting, currentWordIndex])
 
   return (
-    <section id="about" className="min-h-[85vh] flex items-center py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
-        {/* Text Content */}
-        <motion.div
-          variants={fadeInUp}
-          initial="initial"
-          animate="animate"
-          className="space-y-8"
-        >
-          {/* Heading */}
-          <div className="space-y-2">
-            <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
-              Hi, I'm{" "}
-              <span className="text-gradient">{resume.name}</span>
-            </h2>
-            <div className="text-xl font-medium h-9 flex items-center">
-              <span className="text-white/80">I build </span>
-              <span className="text-pink-400 ml-2">
-                {displayText}
-                <span className="cursor-blink"></span>
-              </span>
-            </div>
-          </div>
+    <section id="about" className="min-h-[85vh] flex items-center py-8">
+      <motion.div
+        variants={staggerChildren}
+        initial="initial"
+        animate="animate"
+        className="w-full space-y-10"
+      >
+        {/* Hero */}
+        <motion.div variants={fadeInUp} className="space-y-6">
+          <h2 className="text-4xl lg:text-5xl font-bold leading-[1.2]">
+            Hi, I'm{" "}
+            <span className="text-gradient">{resume.name}</span>
+          </h2>
 
-          {/* Bio Cards */}
+          <div className="text-lg lg:text-xl font-medium flex items-center gap-2">
+            <span className="text-white/70">I build</span>
+            <span className="text-pink-400">
+              {displayText}
+              <span className="cursor-blink"></span>
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Bio Cards */}
+        <motion.div variants={fadeInUp} className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="glass-card p-6 space-y-4">
-            <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
-              {resume.bio.map((paragraph, idx) => (
-                <p key={idx}>{paragraph}</p>
-              ))}
+            <p className="text-sm text-white/90 leading-relaxed">
+              {resume.bio[0]}
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {resume.bio[1]}
+            </p>
+          </div>
+
+          <div className="glass-card p-6 space-y-4 border-l-2 border-pink-500/50">
+            <p className="text-sm text-white/70 leading-relaxed italic">
+              "As Head of Logistics directly managing import-export warehouse operations for 5 large-scale factories, I have the most practical insight into operational bottlenecks."
+            </p>
+            <div className="flex flex-wrap gap-2 pt-2">
+              <span className="glass-badge">SAP</span>
+              <span className="glass-badge">Firebase</span>
+              <span className="glass-badge">n8n</span>
+              <span className="glass-badge">AI Agents</span>
             </div>
-          </div>
-
-          {/* Quote */}
-          <div className="border-l-2 border-pink-500/60 pl-5 py-2">
-            <p className="text-sm leading-relaxed text-white/70 italic">
-              "As Head of Logistics directly managing import-export warehouse operations for 5 large-scale factories, I have the most practical insight into operational bottlenecks. I don't just code software; I build digital solutions to thoroughly solve real-world problems."
-            </p>
-            <p className="text-xs text-pink-400/70 mt-2 font-mono">
-              SAP + Firebase + n8n/AI Agents
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 pt-2">
-            <button
-              onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
-              className="glass-btn px-8 py-3 text-sm font-semibold"
-            >
-              View Projects
-            </button>
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="glass-btn-outline px-8 py-3 text-sm font-semibold"
-            >
-              Get in Touch
-            </button>
           </div>
         </motion.div>
 
-        {/* Portrait Card - Glass Effect */}
+        {/* CTA */}
         <motion.div
           variants={fadeInUp}
-          initial="initial"
-          animate="animate"
-          transition={{ delay: 0.3 }}
-          className="relative"
+          className="flex flex-wrap gap-4"
         >
-          {/* Glowing background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 via-purple-500/20 to-blue-500/30 rounded-3xl blur-3xl animate-pulse-glow" />
-          
-          {/* Main glass card */}
-          <div className="relative glass-card p-10 text-center">
-            {/* Avatar */}
-            <div className="w-32 h-32 mx-auto mb-6 rounded-2xl glass flex items-center justify-center glow-pink">
-              <span className="text-5xl font-bold text-gradient">
-                {resume.name.charAt(0)}
-              </span>
-            </div>
-
-            {/* Info */}
-            <h3 className="text-xl font-bold text-white">{resume.name}</h3>
-            <p className="text-sm text-muted-foreground mt-1">{resume.role}</p>
-            
-            {/* Skills badge */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="glass-badge">React</span>
-              <span className="glass-badge">Firebase</span>
-              <span className="glass-badge">SAP</span>
-              <span className="glass-badge">n8n</span>
-            </div>
-          </div>
-
-          {/* Decorative elements */}
-          <div className="absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-purple-500 opacity-60 blur-sm" />
-          <div className="absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 opacity-40 blur-sm" />
+          <button
+            onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
+            className="glass-btn px-6 py-3 text-sm font-semibold flex items-center gap-2"
+          >
+            <ExternalLink className="w-4 h-4" />
+            View My Work
+          </button>
+          <button
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            className="glass-btn-outline px-6 py-3 text-sm font-semibold flex items-center gap-2"
+          >
+            <Send className="w-4 h-4" />
+            Get in Touch
+          </button>
         </motion.div>
-      </div>
+
+        {/* Quick Stats */}
+        <motion.div variants={fadeInUp} className="flex flex-wrap gap-6 pt-4">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <MapPin className="w-4 h-4 text-pink-400" />
+            <span>{resume.location}</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span>Available for opportunities</span>
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
