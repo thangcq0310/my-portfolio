@@ -49,7 +49,7 @@ export function ExperienceSection() {
               key={exp.title + idx}
               variants={fadeInUp}
               whileHover={{ x: 6 }}
-              className={`liquid-glass p-4 bg-gradient-to-br ${gradients[idx % 2]} relative overflow-hidden group`}
+              className={`bg-gray-900/50 border border-white/10 rounded-xl p-4 bg-gradient-to-br ${gradients[idx % 2]} relative overflow-hidden group`}
             >
               {/* Glow accent */}
               <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-50 ${
@@ -59,7 +59,7 @@ export function ExperienceSection() {
               <div className="relative flex items-start gap-5">
                 {/* Icon/Logo */}
                 <div
-                  className={`w-14 h-14 rounded-xl liquid-glass flex items-center justify-center font-bold text-lg shrink-0 group-hover:scale-110 transition-transform ${
+                  className={`w-14 h-14 rounded-xl bg-gray-900/50 border border-white/10 flex items-center justify-center font-bold text-lg shrink-0 group-hover:scale-110 transition-transform ${
                     idx === 0 ? "text-pink-400" : "text-blue-400"
                   }`}
                 >

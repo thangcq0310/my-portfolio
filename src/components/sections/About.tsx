@@ -75,7 +75,7 @@ export function AboutSection() {
 
         {/* Bio Cards - Liquid Glass */}
         <motion.div variants={fadeInUp} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div className="liquid-glass p-5 hover-lift">
+          <div className="bg-gray-900/50 border border-white/10 rounded-xl p-5 hover-lift">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-pink-400" />
               <span className="text-xs font-medium text-pink-400 uppercase tracking-wider">Overview</span>
@@ -88,7 +88,7 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="liquid-glass p-5 hover-lift border-l-2 border-pink-500/50">
+          <div className="bg-gray-900/50 border border-white/10 rounded-xl p-5 hover-lift border-l-2 border-pink-500/50">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-blue-400" />
               <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">Mission</span>
@@ -136,7 +136,7 @@ export function AboutSection() {
           </div>
           <div className="flex items-center gap-2 text-base text-muted-foreground px-3 py-2 rounded-lg transition-colors">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
-            <span>Available for opportunities</span>
+            <span>Contact me for more information</span>
           </div>
         </motion.div>
       </motion.div>

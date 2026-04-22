@@ -65,16 +65,16 @@ export function Layout({ children }: LayoutProps) {
       </a>
 
       {/* Animated Background - Gradient Mesh */}
-      <div className="fixed inset-0 bg-mesh pointer-events-none" />
-      <div className="fixed inset-0 bg-dots pointer-events-none opacity-30" />
+      {/* TEMP DISABLED: <div className="fixed inset-0 bg-mesh pointer-events-none" /> */}
+      {/* TEMP DISABLED: <div className="fixed inset-0 bg-dots pointer-events-none opacity-30" /> */}
 
        {/* Floating Sidebar - Desktop */}
        <aside className={cn(
          "fixed left-0 top-0 h-full transition-all duration-300 hidden lg:flex flex-col z-50",
          sidebarCollapsed ? "w-20" : "w-72"
        )}>
-         {/* Sidebar Background */}
-         <div className="absolute inset-0 glass-sidebar" />
+{/* Sidebar Background */}
+          {/* TEMP DISABLED: <div className="absolute inset-0 glass-sidebar" /> */}
          
          {/* Content */}
          <div className="relative z-10 flex flex-col h-full p-6">
@@ -82,7 +82,7 @@ export function Layout({ children }: LayoutProps) {
             <div className={cn("text-center", sidebarCollapsed ? "mb-4" : "mb-8")}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-20 h-20 mx-auto rounded-2xl glass-card flex items-center justify-center cursor-pointer glow-pink"
+                className="w-20 h-20 mx-auto rounded-2xl bg-gray-900/50 border border-white/10 rounded-xl flex items-center justify-center cursor-pointer glow-pink"
               >
                 <span className="text-3xl font-bold text-gradient">
                   {resume.name.charAt(0)}
@@ -214,6 +214,7 @@ export function Layout({ children }: LayoutProps) {
         <div className={cn(
           "absolute inset-0 transition-all duration-300",
           scrolled ? "glass glass-header" : "bg-transparent"
+          /* TEMP DISABLED glass effects */
         )} />
         <div className="relative z-10 flex items-center justify-between h-full px-4">
           <div className="flex items-center gap-3">

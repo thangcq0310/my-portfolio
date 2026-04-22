@@ -45,13 +45,13 @@ export function PortfolioSection() {
             key={project.title}
             variants={fadeInUp}
             whileHover={{ y: -8, scale: 1.01 }}
-            className="liquid-glass overflow-hidden group h-full flex flex-col min-h-[20rem]"
+            className="bg-gray-900/50 border border-white/10 rounded-xl overflow-hidden group h-full flex flex-col min-h-[20rem]"
             role="article"
           >
             {/* Project Image Placeholder */}
             <div className="relative h-48 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-blue-500/10 flex-shrink-0">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-2xl liquid-glass flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-2xl bg-gray-900/50 border border-white/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Folder className="w-8 h-8 text-pink-400" />
                 </div>
               </div>
