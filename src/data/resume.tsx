@@ -9,7 +9,7 @@ export const resume: SiteConfig = {
     "efficient logistics solutions.",
     "automated enterprise workflows.",
     "full-stack web applications.",
-    "data-driven trading tools.",
+    "AI-powered automation.",
   ],
   bio: [
     "I bridge the gap between Strategic Operations and Modern Technology.",

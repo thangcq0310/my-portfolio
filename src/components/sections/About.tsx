@@ -53,7 +53,9 @@ export function AboutSection() {
       <div className="w-full space-y-8 mb-8">
         <h2 className="text-5xl lg:text-6xl font-bold leading-[1.2]">
           Hi, I'm{" "}
-          <span className="text-gradient">{resume.name}</span>
+          <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+            {resume.name}
+          </span>
         </h2>
 
         <div className="text-xl lg:text-2xl font-medium flex items-center gap-2 min-h-[2rem]">
