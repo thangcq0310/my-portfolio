@@ -36,8 +36,8 @@
 }
 
 @layer utilities {
-  /* --- Gradient Text --- */
-  .text-gradient {
+/* --- Gradient Text --- */
+.text-gradient {
     @apply bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent;
   }
 
@@ -47,6 +47,43 @@
 
   .text-gradient-blue {
     @apply bg-gradient-to-br from-blue-500 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  /* --- Glass Card (using raw CSS since v3 @apply doesn't support opacity) --- */
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* --- Glass --- */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* --- Glass Input --- */
+  .glass-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.75rem;
+    color: white;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .glass-input:focus {
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
   }
 
   /* --- Typewriter Cursor --- */

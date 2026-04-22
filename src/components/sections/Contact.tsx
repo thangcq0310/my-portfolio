@@ -41,7 +41,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-8 max-w-xl" aria-label="Contact">
+    <section id="contact" className="py-8 max-w-xl mx-auto" aria-label="Contact">
       <motion.div variants={fadeInUp} initial="initial" animate="animate">
         <div className="mb-4">
           <h2 className="text-3xl font-bold flex items-center gap-2">
