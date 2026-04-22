@@ -42,6 +42,12 @@ export function Layout({ children }: LayoutProps) {
   const [scrolled, setScrolled] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const location = useLocation()
+
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50)
+  }
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
