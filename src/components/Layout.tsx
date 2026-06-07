@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, type ElementType } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   User,
   Briefcase,
-  Code,
   Mail,
   Menu,
   X,
@@ -13,49 +12,48 @@ import {
   MapPin,
   ChevronLeft,
   ArrowDown,
+  Package,
 } from "lucide-react"
 import { NavLink, Outlet, useLocation } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { resume } from "@/data/resume"
 
-const socialIcons: Record<string, React.ElementType> = {
+const socialIcons: Record<string, ElementType> = {
   Github: Ghost,
   LinkedIn: Circle,
   Facebook: Square,
   Mail,
 }
 
-interface LayoutProps {
-  children: React.ReactNode
-}
-
 const navItems = [
   { id: "about", label: "About", icon: User },
-  { id: "skills", label: "Skills", icon: Code },
-  { id: "portfolio", label: "Work", icon: Briefcase },
-  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "profile", label: "Profile", icon: Briefcase },
+  { id: "scm", label: "SCM", icon: Package },
   { id: "contact", label: "Contact", icon: Mail },
 ]
 
-export function Layout({ children }: LayoutProps) {
+const getNavPath = (id: string) => (id === "about" ? "/" : `/${id}`)
+
+export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const location = useLocation()
 
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 50)
-  }
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scrollToSection = (sectionId: string) => {
-    navigate(`/${sectionId}`)
+  useEffect(() => {
     setMobileMenuOpen(false)
-  }
+  }, [location.pathname])
 
   return (
     <div className="min-h-screen bg-background">
@@ -122,41 +120,42 @@ export function Layout({ children }: LayoutProps) {
           {/* Navigation */}
           <nav className="flex-1 space-y-1.5">
             {navItems.map((item) => {
-              const getPath = () => {
-                if (item.id === "about") return "/"
-                return `/${item.id}`
-              }
-              const path = getPath()
-              const isActive = location.pathname === path
+              const path = getNavPath(item.id)
               return (
                 <NavLink
                   key={item.id}
                   to={path}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
-                    sidebarCollapsed && "gap-0 justify-center px-2",
-                    isActive
-                      ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-white border border-pink-500/30"
-                      : "text-muted-foreground hover:bg-white/5 hover:text-white"
-                  )}
+                  end={path === "/"}
+                  className={({ isActive }) =>
+                    cn(
+                      "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
+                      sidebarCollapsed && "gap-0 justify-center px-2",
+                      isActive
+                        ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-white border border-pink-500/30"
+                        : "text-muted-foreground hover:bg-white/5 hover:text-white"
+                    )
+                  }
                 >
-                  <item.icon className="w-4 h-4 shrink-0" />
-                  <motion.span
-                    initial={false}
-                    animate={{ 
-                      opacity: sidebarCollapsed ? 0 : 1,
-                      width: sidebarCollapsed ? 0 : "auto"
-                    }}
-                    className="overflow-hidden whitespace-nowrap"
-                  >
-                    {item.label}
-                  </motion.span>
-                  {isActive && !sidebarCollapsed && (
-                    <motion.div
-                      layoutId="active-dot"
-                      className="ml-auto w-1.5 h-1.5 rounded-full bg-pink-500"
-                    />
+                  {({ isActive }) => (
+                    <>
+                      <item.icon className="w-4 h-4 shrink-0" />
+                      <motion.span
+                        initial={false}
+                        animate={{
+                          opacity: sidebarCollapsed ? 0 : 1,
+                          width: sidebarCollapsed ? 0 : "auto",
+                        }}
+                        className="overflow-hidden whitespace-nowrap"
+                      >
+                        {item.label}
+                      </motion.span>
+                      {isActive && !sidebarCollapsed && (
+                        <motion.div
+                          layoutId="active-dot"
+                          className="ml-auto w-1.5 h-1.5 rounded-full bg-pink-500"
+                        />
+                      )}
+                    </>
                   )}
                 </NavLink>
               )
@@ -229,6 +228,8 @@ export function Layout({ children }: LayoutProps) {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="w-9 h-9 rounded-lg glass flex items-center justify-center"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
@@ -245,24 +246,21 @@ export function Layout({ children }: LayoutProps) {
             className="lg:hidden fixed inset-0 top-14 z-40 bg-background/95 backdrop-blur-xl"
           >
              <nav className="p-4 space-y-2">
-               {navItems.map((item, idx) => {
-                 const getPath = () => {
-                   if (item.id === "about") return "/"
-                   return `/${item.id}`
-                 }
-                 const path = getPath()
-                 const isActive = location.pathname === path
+               {navItems.map((item) => {
+                 const path = getNavPath(item.id)
                  return (
                    <NavLink
                      key={item.id}
                      to={path}
-                     onClick={() => setMobileMenuOpen(false)}
-                     className={cn(
-                       "w-full flex items-center gap-3 px-5 py-4 rounded-xl text-sm font-medium transition-all",
-                       isActive
-                         ? "bg-pink-500/20 text-pink-400 border border-pink-500/30"
-                         : "text-muted-foreground hover:bg-white/5"
-                     )}
+                     end={path === "/"}
+                     className={({ isActive }) =>
+                       cn(
+                         "w-full flex items-center gap-3 px-5 py-4 rounded-xl text-sm font-medium transition-all",
+                         isActive
+                           ? "bg-pink-500/20 text-pink-400 border border-pink-500/30"
+                           : "text-muted-foreground hover:bg-white/5"
+                       )
+                     }
                    >
                      <item.icon className="w-5 h-5" />
                      {item.label}
