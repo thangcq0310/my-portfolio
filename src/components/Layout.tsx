@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import {
   User,
   Mail,
+  ShoppingCart,
   Menu,
   X,
   Ghost,
@@ -38,6 +39,7 @@ const navItems = [
       { id: "checklist", label: "Checklist", path: "/scm/checklist" }
     ]
   },
+  { id: "order", label: "Đặt Mua", icon: ShoppingCart },
   { id: "contact", label: "Contact", icon: Mail },
 ]
 
