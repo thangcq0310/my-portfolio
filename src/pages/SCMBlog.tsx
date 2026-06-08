@@ -5,30 +5,31 @@ import SCMBlogDetail from "./SCMBlogDetail";
 export default function SCMBlog() {
   return (
     <div className="min-h-[calc(100vh-4rem)] p-6">
-      <h1 className="text-2xl font-bold mb-6">SCM Blog</h1>
+      <h1 className="text-2xl font-bold mb-2">SCM Blog</h1>
       <p className="text-muted-foreground mb-8">
         Đọc các bài viết thực chiến về tồn kho, logistics, và chuỗi cung ứng
       </p>
 
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {scmBlogPosts.map((post) => (
           <Link
             key={post.id}
             to={post.link}
-            className="block hover:shadow-lg transition-shadow"
+            className="group block hover:shadow-lg transition-all hover:-translate-y-1"
           >
-            <div className="glass-card p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center">
-                  <span className="text-sm font-medium text-white">{post.id}</span>
+            <div className="glass-card p-5 h-full flex flex-col">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex-shrink-0 h-8 w-8 rounded-lg bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center">
+                  <span className="text-xs font-medium text-white">{post.id}</span>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-2 text-gray-100">{post.title}</h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3">
-                    {post.description}
-                  </p>
-                </div>
+                <span className="text-xs text-muted-foreground mt-1">Bài viết</span>
               </div>
+              <h3 className="font-semibold mb-2 text-gray-100 line-clamp-2 group-hover:text-pink-400 transition-colors">
+                {post.title}
+              </h3>
+              <p className="text-muted-foreground text-sm line-clamp-3 mt-auto">
+                {post.description}
+              </p>
             </div>
           </Link>
         ))}
