@@ -28,7 +28,17 @@ const socialIcons: Record<string, ElementType> = {
 const navItems = [
   { id: "about", label: "About", icon: User },
   { id: "profile", label: "Profile", icon: Briefcase },
-  { id: "scm", label: "SCM", icon: Package },
+  {
+    id: "scm",
+    label: "SCM",
+    icon: Package,
+    children: [
+      { id: "blog", label: "Blog", path: "/scm/blog" },
+      { id: "ebook", label: "eBook", path: "/scm/ebook" },
+      { id: "templates", label: "Templates", path: "/scm/templates" },
+      { id: "services", label: "Services", path: "/scm/services" }
+    ]
+  },
   { id: "contact", label: "Contact", icon: Mail },
 ]
 
@@ -38,6 +48,7 @@ export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [scmMenuOpen, setScmMenuOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -120,6 +131,62 @@ export function Layout() {
           {/* Navigation */}
           <nav className="flex-1 space-y-1.5">
             {navItems.map((item) => {
+              if (item.id === "scm" && item.children) {
+                const isScmActive = location.pathname.startsWith("/scm")
+                return (
+                  <div key={item.id} className="space-y-1">
+                    <button
+                      onClick={() => setScmMenuOpen(!scmMenuOpen)}
+                      className={cn(
+                        "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
+                        sidebarCollapsed && "gap-0 justify-center px-2",
+                        isScmActive
+                          ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-white border border-pink-500/30"
+                          : "text-muted-foreground hover:bg-white/5 hover:text-white"
+                      )}
+                    >
+                      <item.icon className="w-4 h-4 shrink-0" />
+                      {!sidebarCollapsed && (
+                        <>
+                          <span className="overflow-hidden whitespace-nowrap">{item.label}</span>
+                          <motion.div
+                            animate={{ rotate: scmMenuOpen ? 90 : 0 }}
+                            className="ml-auto"
+                          >
+                            <ChevronLeft className="w-3 h-3" />
+                          </motion.div>
+                        </>
+                      )}
+                    </button>
+                    <AnimatePresence>
+                      {scmMenuOpen && !sidebarCollapsed && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden ml-4 space-y-1"
+                        >
+                          {item.children.map((child) => (
+                            <NavLink
+                              key={child.id}
+                              to={child.path}
+                              className={({ isActive }) =>
+                                cn(
+                                  "w-full flex items-center gap-3 px-4 py-2 rounded-lg text-xs font-medium transition-all",
+                                  isActive ? "text-pink-400" : "text-muted-foreground hover:text-white"
+                                )
+                              }
+                            >
+                              <span>{child.label}</span>
+                            </NavLink>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )
+              }
+
               const path = getNavPath(item.id)
               return (
                 <NavLink
