@@ -135,7 +135,8 @@ export function Layout() {
                 const isScmActive = location.pathname.startsWith("/scm")
                 return (
                   <div key={item.id} className="space-y-1">
-                    <button
+                    <NavLink
+                      to="/scm"
                       onClick={() => setScmMenuOpen(!scmMenuOpen)}
                       className={cn(
                         "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
@@ -157,7 +158,7 @@ export function Layout() {
                           </motion.div>
                         </>
                       )}
-                    </button>
+                    </NavLink>
                     <AnimatePresence>
                       {scmMenuOpen && !sidebarCollapsed && (
                         <motion.div
