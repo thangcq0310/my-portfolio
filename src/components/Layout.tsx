@@ -36,13 +36,19 @@ const navItems = [
       { id: "blog", label: "Blog", path: "/scm/blog" },
       { id: "ebook", label: "eBook", path: "/scm/ebook" },
       { id: "templates", label: "Templates", path: "/scm/templates" },
-      { id: "services", label: "Services", path: "/scm/services" }
+      { id: "services", label: "Services", path: "/scm/services" },
+      { id: "checklist", label: "Checklist", path: "/scm/checklist" }
     ]
   },
+  { id: "order", label: "Đặt Mua", icon: Briefcase },
   { id: "contact", label: "Contact", icon: Mail },
 ]
 
-const getNavPath = (id: string) => (id === "about" ? "/" : `/${id}`)
+const getNavPath = (id: string) => {
+  if (id === "about") return "/"
+  if (id === "order") return "/order"
+  return `/${id}`
+}
 
 export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

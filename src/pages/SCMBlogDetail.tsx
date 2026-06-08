@@ -1,4 +1,5 @@
 import { scmBlogPosts } from "@/data/scm-blog";
+import type { SCMArticle } from "@/types/scm";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Calendar, Clock, ArrowLeft, BookOpen, FileText, Star, ChevronRight } from "lucide-react";
@@ -99,7 +100,7 @@ const articleContent = {
 
 const SCMBlogDetail = () => {
   const { slug } = useParams();
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<SCMArticle | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {

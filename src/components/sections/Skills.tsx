@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Code, Zap, Sparkles, Layers } from "lucide-react"
+import { Code, Zap, Sparkles } from "lucide-react"
 import { resume } from "@/data/resume"
 
 const staggerContainer = {
