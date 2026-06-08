@@ -2,7 +2,6 @@ import { useState, useEffect, type ElementType } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   User,
-  Briefcase,
   Mail,
   Menu,
   X,
@@ -27,10 +26,9 @@ const socialIcons: Record<string, ElementType> = {
 
 const navItems = [
   { id: "about", label: "About", icon: User },
-  { id: "profile", label: "Profile", icon: Briefcase },
   {
     id: "scm",
-    label: "SCM",
+    label: "SCM Hub",
     icon: Package,
     children: [
       { id: "blog", label: "Blog", path: "/scm/blog" },
@@ -40,7 +38,6 @@ const navItems = [
       { id: "checklist", label: "Checklist", path: "/scm/checklist" }
     ]
   },
-  { id: "order", label: "Đặt Mua", icon: Briefcase },
   { id: "contact", label: "Contact", icon: Mail },
 ]
 

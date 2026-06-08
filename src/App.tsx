@@ -3,7 +3,6 @@ import { HelmetProvider } from "react-helmet-async"
 import { Analytics } from "@/components/Analytics"
 import { Layout } from "@/components/Layout"
 import { AboutPage } from "@/pages/AboutPage"
-import { ProfilePage } from "@/pages/ProfilePage"
 import { ContactPage } from "@/pages/ContactPage"
 import { SCMPage } from "@/pages/SCMPage"
 import { SCMHub } from "@/pages/SCMHub"
@@ -22,7 +21,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<AboutPage />} />
-          <Route path="profile" element={<ProfilePage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="scm" element={<SCMHub />}>
             <Route index element={<SCMPage />} />
