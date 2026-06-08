@@ -9,6 +9,7 @@ import SCMBlog from "@/pages/SCMBlog"
 import SCMEbook from "@/pages/SCMEbook"
 import SCMTemplates from "@/pages/SCMTemplates"
 import SCMServices from "@/pages/SCMServices"
+import SCMBlogDetail from "@/pages/SCMBlogDetail"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="scm" element={<SCMHub />}>
           <Route index element={<SCMPage />} />
           <Route path="blog" element={<SCMBlog />} />
+          <Route path="blog/:slug" element={<SCMBlogDetail />} />
           <Route path="ebook" element={<SCMEbook />} />
           <Route path="templates" element={<SCMTemplates />} />
           <Route path="services" element={<SCMServices />} />

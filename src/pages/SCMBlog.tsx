@@ -1,5 +1,6 @@
 import { scmBlogPosts } from "@/data/scm-blog";
 import { Link } from "react-router-dom";
+import SCMBlogDetail from "./SCMBlogDetail";
 
 export default function SCMBlog() {
   return (
