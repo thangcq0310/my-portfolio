@@ -51,7 +51,6 @@ export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
-  const [scmMenuOpen, setScmMenuOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -135,12 +134,12 @@ export function Layout() {
           <nav className="flex-1 space-y-1.5">
             {navItems.map((item) => {
               if (item.id === "scm" && item.children) {
-                const isScmActive = location.pathname.startsWith("/scm")
+                const isScmActive = location.pathname.startsWith("/scm") || location.pathname === "/scm"
+                const showSublinks = !sidebarCollapsed
                 return (
                   <div key={item.id} className="space-y-1">
                     <NavLink
                       to="/scm"
-                      onClick={() => setScmMenuOpen(!scmMenuOpen)}
                       className={cn(
                         "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
                         sidebarCollapsed && "gap-0 justify-center px-2",
@@ -151,19 +150,11 @@ export function Layout() {
                     >
                       <item.icon className="w-4 h-4 shrink-0" />
                       {!sidebarCollapsed && (
-                        <>
-                          <span className="overflow-hidden whitespace-nowrap">{item.label}</span>
-                          <motion.div
-                            animate={{ rotate: scmMenuOpen ? 90 : 0 }}
-                            className="ml-auto"
-                          >
-                            <ChevronLeft className="w-3 h-3" />
-                          </motion.div>
-                        </>
+                        <span className="overflow-hidden whitespace-nowrap">{item.label}</span>
                       )}
                     </NavLink>
                     <AnimatePresence>
-                      {scmMenuOpen && !sidebarCollapsed && (
+                      {showSublinks && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
@@ -174,6 +165,7 @@ export function Layout() {
                             <NavLink
                               key={child.id}
                               to={child.path}
+                              end
                               className={({ isActive }) =>
                                 cn(
                                   "w-full flex items-center gap-3 px-4 py-2 rounded-lg text-xs font-medium transition-all",
