@@ -1,34 +1,27 @@
-import { useParams, Link } from "react-router-dom";
-import { Clock, User, ArrowLeft } from "lucide-react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import { seedArticles } from "../data/seedData";
+import { useParams, Link } from "react-router-dom"
+import { Clock, User, ArrowLeft } from "lucide-react"
+import { seedArticles } from "../data/seedData"
 
-export default function ArticleDetail() {
-  const { slug } = useParams();
-  const article = seedArticles.find(a => a.slug === slug);
+export function ArticleDetail() {
+  const { slug } = useParams()
+  const article = seedArticles.find(a => a.slug === slug)
   
   if (!article) {
     return (
-      <div className="min-h-screen bg-slate-50">
-        <Navbar />
-        <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Bài viết không tồn tại</h1>
-          <Link to="/articles" className="text-sky-600 hover:text-sky-700">← Quay lại bài viết</Link>
-        </div>
-        <Footer />
+      <div className="py-12 text-center">
+        <h1 className="text-2xl font-bold text-slate-900 mb-4">Bài viết không tồn tại</h1>
+        <Link to="/articles" className="text-sky-600 hover:text-sky-700">← Quay lại bài viết</Link>
       </div>
-    );
+    )
   }
   
   const related = seedArticles
     .filter(a => a.id !== article.id && a.tags.some(t => article.tags.includes(t)))
-    .slice(0, 3);
+    .slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Navbar />
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="py-12">
+      <article className="max-w-3xl">
         <Link to="/articles" className="inline-flex items-center gap-1 text-sky-600 hover:text-sky-700 mb-6">
           <ArrowLeft className="w-4 h-4" /> Quay lại
         </Link>
@@ -61,11 +54,11 @@ export default function ArticleDetail() {
       </article>
       
       {related.length > 0 && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t">
+        <div className="mt-12 pt-12 border-t">
           <h2 className="text-xl font-bold text-slate-900 mb-6">Bài viết liên quan</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {related.map(a => (
-              <Link key={a.id} to={`/articles/${a.slug}`} className="block bg-white rounded-xl border border-slate-200 p-4 hover:shadow-lg">
+              <Link key={a.id} to={`/articles/${a.slug}`} className="block bg-white rounded-xl border border-slate-200 p-4 hover:shadow-lg transition-shadow">
                 <h3 className="font-semibold text-slate-900 mb-2">{a.title}</h3>
                 <p className="text-sm text-slate-500 line-clamp-2">{a.excerpt}</p>
               </Link>
@@ -73,8 +66,6 @@ export default function ArticleDetail() {
           </div>
         </div>
       )}
-      
-      <Footer />
     </div>
-  );
+  )
 }
