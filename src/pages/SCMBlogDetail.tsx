@@ -76,7 +76,7 @@ const articleContent = {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-2">
               <span className="text-pink-400 font-bold">01.</span>
-              <span><strong>Vẽ luồng vật liệu:</strong> Vẽ đồ thị cho thấy nguyên liệu vào, xử lý và thành phẩm ra sao.</span>
+              <span><strong>Vẽ luồng vật liệu:</strong> Vẽ sơ đồ cho thấy nguyên liệu vào, xử lý và thành phẩm ra sao.</span>
             </li>
             <li className="flex gap-2">
               <span className="text-pink-400 font-bold">02.</span>
