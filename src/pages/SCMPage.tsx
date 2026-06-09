@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { HeroSection } from "../sections/scm/HeroSection";
 import { PainPointsSection } from "../sections/scm/PainPointsSection";
 import { ValueSection } from "../sections/scm/ValueSection";
@@ -11,34 +12,41 @@ import { SCMFooter } from "../sections/scm/SCMFooter";
 
 export function SCMPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section - Title & CTA */}
-      <HeroSection />
+    <>
+      <Helmet>
+        <title>SCM Thực Chiến | Kiến thức, template và công cụ Supply Chain cho doanh nghiệp VN</title>
+        <meta name="description" content="Kiến thức, template và công cụ giúp doanh nghiệp Việt Nam quản trị Supply Chain thực chiến — từ planning, procurement, inventory, warehouse đến logistics cost." />
+      </Helmet>
       
-      {/* Pain Points - Nỗi đau */}
-      <PainPointsSection />
-      
-      {/* Value Props - Website giúp gì */}
-      <ValueSection />
-      
-      {/* Free Tools - Công cụ miễn phí */}
-      <FreeToolsSection />
-      
-      {/* Products - Sách & Template */}
-      <ProductsSection />
-      
-      {/* Articles - Bài viết */}
-      <ArticlesSection />
-      
-      {/* Services - Dịch vụ */}
-      <ServicesSection />
-      
-      {/* About - Về tác giả */}
-      <AboutSection />
-      
-      {/* CTA + Footer */}
-      <CTASection />
-      <SCMFooter />
-    </div>
+      <div className="min-h-screen">
+        {/* Hero Section - Title & CTA */}
+        <HeroSection />
+        
+        {/* Pain Points - Nỗi đau */}
+        <PainPointsSection />
+        
+        {/* Value Props - Website giúp gì */}
+        <ValueSection />
+        
+        {/* Free Tools - Công cụ miễn phí */}
+        <FreeToolsSection />
+        
+        {/* Products - Sách & Template */}
+        <ProductsSection />
+        
+        {/* Articles - Bài viết */}
+        <ArticlesSection />
+        
+        {/* Services - Dịch vụ */}
+        <ServicesSection />
+        
+        {/* About - Về tác giả */}
+        <AboutSection />
+        
+        {/* CTA + Footer */}
+        <CTASection />
+        <SCMFooter />
+      </div>
+    </>
   );
 }

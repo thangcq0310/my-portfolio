@@ -4,14 +4,14 @@ const authorInfo = {
   name: "SCM Thực Chiến",
   initials: "CQT",
   role: "Chuyên gia Supply Chain",
-  description: "Người xây dựng SCM Thực Chiến là chuyên gia logistics & warehouse với nhiều năm kinh nghiệm xử lý các bài toán thực tế: quản lý kho lạnh, tồn kho, thuê kho ngoài, triển khai SAP, chuẩn hóa master data. Mục tiêu là giúp doanh nghiệp Việt Nam tiếp cận kiến thức supply chain một cách thực chiến và áp dụng được.",
+  description: "Người xây dựng SCM Thực Chiến là chuyên gia logistics & warehouse với nhiều năm kinh nghiệm xử lý các bài toán thực tế: quản lý kho lạnh, tồn kho, thuê kho ngoài, triển khai SAP, chuẩn hóa master data, planning coordination, cost optimization và digital tools. Mục tiêu là giúp doanh nghiệp Việt Nam tiếp cận kiến thức supply chain một cách thực chiến và áp dụng được.",
   expertise: [
-    "Kho lạnh & Cold Chain",
-    "Tồn kho & Inventory Control", 
-    "Thuê kho ngoài & 3PL",
-    "SAP Master Data",
-    "Quy trình kho vận",
-    "Cost Optimization"
+    "Warehouse & Logistics",
+    "Inventory Management", 
+    "3PL & Outsourcing",
+    "SAP / Master Data",
+    "Planning & Coordination",
+    "Digital Tools"
   ]
 };
 
@@ -25,11 +25,11 @@ export function AboutSection() {
           </h2>
         </div>
 
-        <div className="glass-card p-8 md:p-10 rounded-2xl">
+        <div className="glass-card p-8 md:p-10 rounded-2xl border-blue-500/20">
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Avatar */}
             <div className="flex-shrink-0">
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center">
                 <span className="text-3xl font-bold text-white">{authorInfo.initials}</span>
               </div>
             </div>
@@ -39,7 +39,7 @@ export function AboutSection() {
               <h3 className="text-xl font-semibold mb-2 text-white">
                 {authorInfo.name}
               </h3>
-              <p className="text-pink-400 mb-4">
+              <p className="text-blue-400 mb-4">
                 {authorInfo.role}
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -53,7 +53,7 @@ export function AboutSection() {
                   {authorInfo.expertise.map((item, idx) => (
                     <span 
                       key={idx} 
-                      className="px-3 py-1 rounded-full text-xs bg-white/10 text-gray-300"
+                      className="px-3 py-1 rounded-full text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20"
                     >
                       {item}
                     </span>

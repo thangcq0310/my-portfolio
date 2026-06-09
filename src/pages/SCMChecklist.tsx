@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react"
-import { CheckCircle2, XCircle, AlertTriangle, Download, Mail } from "lucide-react"
-import { SEO } from "@/components/SEO"
+import { Helmet } from "react-helmet-async"
+import { CheckCircle2, XCircle, AlertTriangle, Download, Mail, Send } from "lucide-react"
 import { inventoryChecklist, checklistCategories, type ChecklistItem } from "@/data/lead-magnet"
 
 function SCMChecklist() {
   const [email, setEmail] = useState("")
+  const [fullName, setFullName] = useState("")
+  const [company, setCompany] = useState("")
+  const [role, setRole] = useState("")
+  const [needs, setNeeds] = useState("")
   const [emailError, setEmailError] = useState("")
   const [submitted, setSubmitted] = useState(false)
 
@@ -52,7 +56,8 @@ function SCMChecklist() {
     setEmailError("")
     setSubmitted(true)
     localStorage.setItem("scm-checklist-email", email)
-    // In real app, send to backend/email service
+    // TODO: Kết nối backend - gửi email + thông tin user đến API
+    // Trong thực tế, gọi API để lưu lead và gửi checklist qua email
   }
 
   const groupedChecklist = checklistCategories.map((category) => ({
@@ -62,61 +67,88 @@ function SCMChecklist() {
 
   return (
     <>
-      <SEO
-        title="30 Điểm Kiểm Tra Tồn Kho | SCM Thực Chiến"
-        description="Download miễn phí checklist 30 điểm kiểm tra hệ thống tồn kho. Giúp bạn đánh giá nhanh tình trạng kho và phát hiện vấn đề tiềm ẩn."
-        type="article"
-      />
+      <Helmet>
+        <title>Checklist 50 điểm tự đánh giá năng lực Supply Chain | SCM Thực Chiến</title>
+        <meta name="description" content="Checklist 50 điểm tự đánh giá năng lực Supply Chain miễn phí. Đánh giá 6 nhóm: Planning, Procurement, Inventory, Warehouse, Logistics, Data & Digital." />
+      </Helmet>
       
       <div className="min-h-[calc(100vh-4rem)] p-6">
         <div className="max-w-4xl mx-auto">
           <header className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-pink-500/20 text-pink-400 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
               <Download className="w-4 h-4" />
               Miễn phí - Tải về ngay
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
-              30 Điểm Kiểm Tra Tồn Kho
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              Checklist 50 điểm tự đánh giá năng lực <span className="text-blue-400">Supply Chain</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Checklist toàn diện giúp đánh giá nhanh hệ thống kho của bạn. 
+              Checklist toàn diện giúp đánh giá nhanh hệ thống Supply Chain của bạn. 
               Xác định điểm mạnh, phát hiện rủi ro trước khi gây thiệt hại.
             </p>
           </header>
 
-          {/* Email capture */}
+          {/* Email capture form */}
           {!submitted ? (
-            <div className="glass-card p-8 mb-12 text-center">
-              <h2 className="text-xl font-bold mb-4">Nhận checklist miễn phí</h2>
-              <p className="text-muted-foreground mb-6">
-                Nhập email để nhận file PDF ngay trong hộp thư
-              </p>
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <div className="flex-1">
-                  <input
-                    type="email"
-                    placeholder="email@cuaban.com"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value)
-                      if (emailError) setEmailError("")
-                    }}
-                    required
-                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${emailError ? "border-red-500" : "border-white/10"} focus:border-pink-500/50 focus:outline-none transition-colors`}
-                  />
-                  {emailError && (
-                    <p className="text-red-400 text-xs mt-1">{emailError}</p>
-                  )}
+            <div className="glass-card p-8 mb-12 border-blue-500/20">
+              <h2 className="text-xl font-bold mb-6 text-center">Nhận checklist miễn phí</h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Họ tên"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value)
+                        if (emailError) setEmailError("")
+                      }}
+                      required
+                      className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${emailError ? "border-red-500" : "border-white/10"} focus:border-blue-500/50 focus:outline-none transition-colors`}
+                    />
+                    {emailError && (
+                      <p className="text-red-400 text-xs mt-1">{emailError}</p>
+                    )}
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Doanh nghiệp / Vai trò"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Nhu cầu (VD: cải thiện inventory...)"
+                      value={needs}
+                      onChange={(e) => setNeeds(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500/50 focus:outline-none transition-colors"
+                    />
+                  </div>
                 </div>
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-pink-600 hover:bg-pink-700 rounded-xl font-bold transition-colors flex items-center gap-2 justify-center"
+                  className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-bold transition-colors flex items-center gap-2 justify-center"
                 >
                   <Mail className="w-4 h-4" />
-                  Gửi cho tôi
+                  Nhận checklist
                 </button>
               </form>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-xs text-muted-foreground mt-4 text-center">
                 ✓ Không spam. ✓ Unsubscribe bất cứ lúc nào.
               </p>
             </div>
@@ -130,13 +162,13 @@ function SCMChecklist() {
             </div>
           )}
 
-          {/* Preview */}
+          {/* Preview - Updated to show 50 points structure */}
           <div className="space-y-8">
-            <h2 className="text-xl font-bold text-center mb-6">Xem trước nội dung</h2>
+            <h2 className="text-xl font-bold text-center mb-6">Xem trước nội dung - 6 nhóm đánh giá</h2>
             
             {groupedChecklist.map(({ category, items }) => (
-              <div key={category} className="glass-card p-6">
-                <h3 className="text-lg font-bold mb-4 text-pink-400">{category}</h3>
+              <div key={category} className="glass-card p-6 border-blue-500/10">
+                <h3 className="text-lg font-bold mb-4 text-blue-400">{category}</h3>
                 <div className="space-y-3">
                   {items.map((item) => (
                     <div
@@ -160,7 +192,7 @@ function SCMChecklist() {
           <div className="text-center mt-12">
             <p className="text-muted-foreground">
               Cần hỗ trợ đánh giá?{" "}
-              <a href="/scm/services" className="text-pink-400 hover:underline">
+              <a href="/scm/services" className="text-blue-400 hover:underline">
                 Xem dịch vụ tư vấn
               </a>
             </p>
