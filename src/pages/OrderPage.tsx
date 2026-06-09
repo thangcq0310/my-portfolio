@@ -1,11 +1,62 @@
-import { useState } from "react"
-import { Check, Send, FileText, Users, Sparkles } from "lucide-react"
+import { useState, useMemo } from "react"
+import { useSearchParams } from "react-router-dom"
+import { Check, Send, FileText, Users, Sparkles, ArrowLeft, ShoppingCart } from "lucide-react"
+import { Link } from "react-router-dom"
 import { SEO } from "@/components/SEO"
-import { products, services, formatPrice } from "@/data/products"
+
+// Products for order page
+const products = [
+  {
+    id: "kiem-kho-thong-minh",
+    slug: "kiem-kho-thong-minh",
+    name: "Kiểm kê thông minh",
+    description: "Quy trình và template kiểm kê tồn kho chuẩn SCM",
+    price: 499000,
+    features: ["Quy trình 6 bước", "Template Excel", "Dashboard tự động", "Hướng dẫn chi tiết"],
+  },
+  {
+    id: "scm-thuc-chien",
+    slug: "scm-thuc-chien",
+    name: "SCM Thực Chiến",
+    description: "eBook toàn diện 200+ trang về quản lý tồn kho",
+    price: 199000,
+    features: ["200+ trang nội dung", "Case study thực tế", "Biểu mẫu kèm theo", "Cập nhật miễn phí"],
+  },
+  {
+    id: "excel-inventory",
+    slug: "excel-inventory",
+    name: "Excel Inventory",
+    description: "Template Excel quản lý tồn kho với dashboard",
+    price: 99000,
+    features: ["Template Excel ready", "Dashboard trực quan", "Tự động tính toán", "Hỗ trợ VBA"],
+  },
+]
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 0,
+  }).format(price)
+}
 
 function OrderPage() {
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
+  const [searchParams] = useSearchParams()
+  const productParam = searchParams.get("product")
+  
+  // Auto-select product from URL
+  const preselectedProduct = useMemo(() => {
+    return productParam || null
+  }, [productParam])
+
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(preselectedProduct)
   const [selectedService, setSelectedService] = useState<string | null>(null)
+
+  // Get selected product data by slug
+  const selectedProductData = useMemo(() => {
+    if (!selectedProduct) return null
+    return products.find(p => p.id === selectedProduct || p.slug === selectedProduct) || null
+  }, [selectedProduct])
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,17 +66,19 @@ function OrderPage() {
   })
   const [submitted, setSubmitted] = useState(false)
 
+  // Empty services array (for future use)
+  const services: unknown[] = []
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if ((selectedProduct || selectedService) && formData.email) {
+    if ((selectedProductData || selectedService) && formData.email) {
       setSubmitted(true)
       // In real app, send to backend
     }
   }
 
-  const selectedProductData = products.find((p) => p.id === selectedProduct)
-  const selectedServiceData = services.find((s) => s.id === selectedService)
-  const totalPrice = (selectedProductData?.price || 0) + (selectedServiceData?.price || 0)
+  const selectedServiceData = null
+  const totalPrice = (selectedProductData?.price || 0) + ((selectedServiceData as { price: number })?.price || 0)
 
   return (
     <>
@@ -39,11 +92,22 @@ function OrderPage() {
         <div className="max-w-5xl mx-auto">
           <header className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
-              Đặt Mua Sản Phẩm
+              {selectedProductData ? `Đặt: ${selectedProductData.name}` : "Đặt Mua Sản Phẩm"}
             </h1>
             <p className="text-muted-foreground">
-              Chọn sản phẩm hoặc dịch vụ bên dưới, điền thông tin để nhận tư vấn
+              {selectedProductData 
+                ? `Điền thông tin để xác nhận đơn hàng`
+                : "Chọn sản phẩm hoặc dịch vụ bên dưới, điền thông tin để nhận tư vấn"}
             </p>
+            {!selectedProductData && (
+              <Link 
+                to="/scm/shop" 
+                className="inline-flex items-center gap-2 mt-4 text-pink-400 hover:underline"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Quay lại shop
+              </Link>
+            )}
           </header>
 
           {!submitted ? (

@@ -26,12 +26,13 @@ const socialIcons: Record<string, ElementType> = {
 }
 
 const navItems = [
-  { id: "about", label: "About", icon: User },
+  { id: "about", label: "Trang chủ", icon: User },
   {
     id: "scm",
-    label: "SCM Hub",
+    label: "SCM",
     icon: Package,
     children: [
+      { id: "shop", label: "Shop", path: "/scm/shop" },
       { id: "blog", label: "Blog", path: "/scm/blog" },
       { id: "ebook", label: "eBook", path: "/scm/ebook" },
       { id: "templates", label: "Templates", path: "/scm/templates" },
@@ -39,14 +40,22 @@ const navItems = [
       { id: "checklist", label: "Checklist", path: "/scm/checklist" }
     ]
   },
-  { id: "order", label: "Đặt Mua", icon: ShoppingCart },
-  { id: "contact", label: "Contact", icon: Mail },
+  { id: "contact", label: "Liên hệ", icon: Mail },
 ]
 
 const getNavPath = (id: string) => {
   if (id === "about") return "/"
-  if (id === "order") return "/order"
+  if (id === "scm") return "/scm"
   return `/${id}`
+}
+
+// Scroll anchor helper for main page sections
+const handleNavClick = (e: React.MouseEvent, id: string) => {
+  if (id === "about" && location.pathname === "/") {
+    e.preventDefault()
+    const el = document.getElementById("about")
+    el?.scrollIntoView({ behavior: "smooth" })
+  }
 }
 
 export function Layout() {

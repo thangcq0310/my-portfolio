@@ -1,11 +1,25 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { CheckCircle2, XCircle, AlertTriangle, Download, Mail } from "lucide-react"
 import { SEO } from "@/components/SEO"
 import { inventoryChecklist, checklistCategories, type ChecklistItem } from "@/data/lead-magnet"
 
 function SCMChecklist() {
   const [email, setEmail] = useState("")
+  const [emailError, setEmailError] = useState("")
   const [submitted, setSubmitted] = useState(false)
+
+  // Check localStorage on mount
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("scm-checklist-email")
+    if (savedEmail) {
+      setEmail(savedEmail)
+      setSubmitted(true)
+    }
+  }, [])
+
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
 
   const getStatusIcon = (status: ChecklistItem["status"]) => {
     switch (status) {
@@ -31,10 +45,14 @@ function SCMChecklist() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) {
-      setSubmitted(true)
-      // In real app, send to backend/email service
+    if (!isValidEmail(email)) {
+      setEmailError("Vui lòng nhập email hợp lệ")
+      return
     }
+    setEmailError("")
+    setSubmitted(true)
+    localStorage.setItem("scm-checklist-email", email)
+    // In real app, send to backend/email service
   }
 
   const groupedChecklist = checklistCategories.map((category) => ({
@@ -74,14 +92,22 @@ function SCMChecklist() {
                 Nhập email để nhận file PDF ngay trong hộp thư
               </p>
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="email@cuaban.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-pink-500/50 focus:outline-none transition-colors"
-                />
+                <div className="flex-1">
+                  <input
+                    type="email"
+                    placeholder="email@cuaban.com"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value)
+                      if (emailError) setEmailError("")
+                    }}
+                    required
+                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${emailError ? "border-red-500" : "border-white/10"} focus:border-pink-500/50 focus:outline-none transition-colors`}
+                  />
+                  {emailError && (
+                    <p className="text-red-400 text-xs mt-1">{emailError}</p>
+                  )}
+                </div>
                 <button
                   type="submit"
                   className="px-6 py-3 bg-pink-600 hover:bg-pink-700 rounded-xl font-bold transition-colors flex items-center gap-2 justify-center"

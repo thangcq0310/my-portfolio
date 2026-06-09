@@ -12,6 +12,7 @@ import SCMTemplates from "@/pages/SCMTemplates"
 import SCMServices from "@/pages/SCMServices"
 import SCMBlogDetail from "@/pages/SCMBlogDetail"
 import SCMChecklist from "@/pages/SCMChecklist"
+import SCMShop from "@/pages/SCMShop"
 import OrderPage from "@/pages/OrderPage"
 import BlogEditor from "@/pages/BlogEditor"
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="scm" element={<SCMHub />}>
             <Route index element={<SCMPage />} />
+            <Route path="shop" element={<SCMShop />} />
             <Route path="blog" element={<SCMBlog />} />
             <Route path="blog/:slug" element={<SCMBlogDetail />} />
             <Route path="ebook" element={<SCMEbook />} />
