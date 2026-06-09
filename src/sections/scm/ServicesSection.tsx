@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Search, BarChart3, Settings, MessageCircle, TrendingDown, Package, FileSpreadsheet, Bot } from "lucide-react";
+import { Search, BarChart3, Settings, MessageCircle, Bot } from "lucide-react";
 
 const services = [
   {

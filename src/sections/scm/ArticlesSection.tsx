@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, FileSpreadsheet, Package, TrendingDown, Clock, BarChart3, BookOpen, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const articles = [
   {

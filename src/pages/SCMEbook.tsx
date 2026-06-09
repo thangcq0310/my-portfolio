@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async"
 import React from "react"
 import { Link } from "react-router-dom"
-import { BookOpen, CheckCircle2, ArrowRight, Download, Mail, Send } from "lucide-react"
+import { BookOpen, CheckCircle2, Send } from "lucide-react"
 
 const ebookPackages = [
   {

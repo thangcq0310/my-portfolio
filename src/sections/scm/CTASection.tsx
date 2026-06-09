@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Download, MessageCircle, ArrowRight } from "lucide-react";
+import { Download, MessageCircle } from "lucide-react";
 
 export function CTASection() {
   return (

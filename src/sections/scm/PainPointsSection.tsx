@@ -1,8 +1,5 @@
 import { 
-  FileSpreadsheet, 
-  GitBranch, 
   Package, 
-  BarChart3, 
   DollarSign, 
   Database, 
   Smartphone,

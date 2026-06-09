@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Package, TrendingUp, FileSpreadsheet, Download, BarChart3, ClipboardCheck, Users, Truck, Clock } from "lucide-react";
+import { ArrowRight, Download, BarChart3, ClipboardCheck } from "lucide-react";
 
 export function HeroSection() {
   return (

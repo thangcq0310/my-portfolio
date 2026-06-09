@@ -7,7 +7,7 @@ function SCMChecklist() {
   const [email, setEmail] = useState("")
   const [fullName, setFullName] = useState("")
   const [company, setCompany] = useState("")
-  const [role, setRole] = useState("")
+  // const [role, setRole] = useState("") // TODO: add when needed
   const [needs, setNeeds] = useState("")
   const [emailError, setEmailError] = useState("")
   const [submitted, setSubmitted] = useState(false)

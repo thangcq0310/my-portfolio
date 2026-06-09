@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Download, BarChart3, FileSpreadsheet, ClipboardCheck, Truck, Clock, Calendar, FileCheck, CheckCircle } from "lucide-react";
+import { Download, BarChart3, FileSpreadsheet, ClipboardCheck, Truck, Clock, Calendar, FileCheck } from "lucide-react";
 
 const freeTools = [
   {

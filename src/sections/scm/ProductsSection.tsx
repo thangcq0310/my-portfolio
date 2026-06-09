@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, FileSpreadsheet, BarChart3, FileCheck, Package, Truck, ArrowRight, Bell } from "lucide-react";
+import { BookOpen, FileSpreadsheet, BarChart3, FileCheck, Package, Truck, ArrowRight } from "lucide-react";
 
 const products = [
   {

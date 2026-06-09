@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async"
 import { Link } from "react-router-dom"
-import { Package, BookOpen, FileSpreadsheet, ShoppingCart, ArrowRight, Calendar, Truck, FileCheck } from "lucide-react"
+import { Package, BookOpen, FileSpreadsheet, ShoppingCart, Calendar, Truck, FileCheck } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 
 const products = [
@@ -53,21 +53,6 @@ const products = [
     badge: "Sắp ra mắt"
   }
 ]
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-}
 
 function SCMShop() {
   return (

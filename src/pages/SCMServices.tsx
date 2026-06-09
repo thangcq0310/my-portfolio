@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async"
 import React from "react"
 import { Link } from "react-router-dom"
-import { MessageCircle, Search, BarChart3, Settings, Bot, ArrowRight, Mail, Send, CheckCircle2 } from "lucide-react"
+import { Search, BarChart3, Settings, Bot, Send, CheckCircle2 } from "lucide-react"
 
 const scmServices = [
   {
