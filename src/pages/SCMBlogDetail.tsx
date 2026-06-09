@@ -51,22 +51,48 @@ const articleContent = {
           Theo tiêu chuẩn SCOR (Supply Chain Operations Reference), một chuỗi cung ứng tiêu chuẩn bao gồm 6 luồng hoạt động chính:
         </p>
         <div className="space-y-3 mb-6">
-          {[
-            { name: "Plan (Lập kế hoạch)", desc: "Dự báo nhu cầu, lập kế hoạch sản xuất và phân phối." },
-            { name: "Source (Thu mua)", desc: "Lựa chọn nhà cung cấp, đàm phán hợp đồng, quản lý đầu vào." },
-            { name: "Make (Sản xuất)", desc: "Chuyển hóa nguyên vật liệu thành sản phẩm hoàn thiện." },
-            { name: "Deliver (Vận chuyển)", desc: "Quản lý đơn hàng, kho bãi và phân phối sản phẩm." },
-            { name: "Return (Xử lý trả hàng)", desc: "Quản lý trả hàng, xử lý lỗi và tái chế sản phẩm." },
-            { name: "Enable (Hỗ trợ)", desc: "Quản lý nhân sự, rủi ro, công nghệ và hiệu suất." },
-          ].map((item, i) => (
-            <div key={i} className="flex gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-bold">{i+1}</span>
-              <div>
-                <strong className="text-gray-200">{item.name}:</strong>
-                <span className="text-muted-foreground ml-1">{item.desc}</span>
-              </div>
+          <div className="flex gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-bold">1</span>
+            <div>
+              <strong className="text-gray-200">Plan (Lập kế hoạch):</strong>
+              <span className="text-muted-foreground ml-1">Dự báo nhu cầu, lập kế hoạch sản xuất và phân phối.</span>
             </div>
-          ))}
+          </div>
+          <div className="flex gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-bold">2</span>
+            <div>
+              <strong className="text-gray-200">Source (Thu mua):</strong>
+              <span className="text-muted-foreground ml-1">Lựa chọn nhà cung cấp, đàm phán hợp đồng, quản lý đầu vào.</span>
+            </div>
+          </div>
+          <div className="flex gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-bold">3</span>
+            <div>
+              <strong className="text-gray-200">Make (Sản xuất):</strong>
+              <span className="text-muted-foreground ml-1">Chuyển hóa nguyên vật liệu thành sản phẩm hoàn thiện.</span>
+            </div>
+          </div>
+          <div className="flex gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-bold">4</span>
+            <div>
+              <strong className="text-gray-200">Deliver (Vận chuyển):</strong>
+              <span className="text-muted-foreground ml-1">Quản lý đơn hàng, kho bãi và phân phối sản phẩm.</span>
+            </div>
+          </div>
+          <div className="flex gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-bold">5</span>
+            <div>
+              <strong className="text-gray-200">Return (Xử lý trả hàng):</strong>
+              <span className="text-muted-foreground ml-1">Quản lý trả hàng, xử lý lỗi và tái chế sản phẩm.</span>
+            </div>
+          </div>
+          <div className="flex gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
+            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs font-bold">6</span>
+            <div>
+              <strong className="text-gray-200">Enable (Hỗ trợ):</strong>
+              <span className="text-muted-foreground ml-1">Quản lý nhân sự, rủi ro, công nghệ và hiệu suất.</span>
+            </div>
+          </div>
         </div>
         
         <div className="bg-gradient-to-br from-pink-500/10 to-purple-600/10 border border-pink-500/20 rounded-2xl p-6 mt-8">
