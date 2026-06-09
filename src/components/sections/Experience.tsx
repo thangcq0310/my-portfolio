@@ -24,7 +24,7 @@ export function ExperienceSection() {
         viewport={{ once: true }}
       >
         <h2 className="text-3xl font-bold flex items-center gap-2">
-          <span className="text-gradient">Experience</span>
+          <span className="text-gradient">Kinh nghiệm</span>
         </h2>
         <p className="text-base text-muted-foreground mt-1">
           My professional journey

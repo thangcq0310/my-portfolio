@@ -78,7 +78,7 @@ export function AboutSection() {
           <div className="bg-gray-900/50 border border-white/10 rounded-xl p-5 hover-lift">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-pink-400" />
-              <span className="text-xs font-medium text-pink-400 uppercase tracking-wider">Overview</span>
+              <span className="text-xs font-medium text-pink-400 uppercase tracking-wider">Tổng quan</span>
             </div>
             <p className="text-base text-white/90 leading-relaxed">
               {resume.bio[0]}
@@ -91,7 +91,7 @@ export function AboutSection() {
           <div className="bg-gray-900/50 border border-white/10 rounded-xl p-5 hover-lift border-l-2 border-pink-500/50">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-blue-400" />
-              <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">Mission</span>
+              <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">Sứ mệnh</span>
             </div>
             <p className="text-sm text-white/70 leading-relaxed italic">
               "As Head of Logistics directly managing import-export warehouse operations for 5 large-scale factories, I have the most practical insight into operational bottlenecks."

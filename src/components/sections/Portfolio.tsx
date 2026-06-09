@@ -26,7 +26,7 @@ export function PortfolioSection() {
         className="mb-5"
       >
         <h2 className="text-3xl font-bold flex items-center gap-2">
-          <span className="text-gradient">Featured Projects</span>
+          <span className="text-gradient">Dự án nổi bật</span>
         </h2>
         <p className="text-base text-muted-foreground mt-1">
           Solutions I've built for real-world operations

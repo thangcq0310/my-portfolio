@@ -65,7 +65,7 @@ export function SCMPage() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             <span className="text-gradient">SCM Thực Chiến</span>
             <br />
-            <span className="text-gray-300">Playbook</span>
+            <span className="text-gray-300">Sổ tay</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">

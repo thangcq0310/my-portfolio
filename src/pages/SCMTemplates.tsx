@@ -53,7 +53,7 @@ const SCMTemplates: React.FC = () => {
                     <span className="text-xs font-bold text-pink-400 uppercase tracking-wider">
                       {template.category}
                     </span>
-                    <span className="text-xs text-muted-foreground">Free</span>
+                    <span className="text-xs text-muted-foreground">Miễn phí</span>
                   </div>
                   <h3 className="text-xl font-bold mb-3 group-hover:text-pink-400 transition-colors">
                     {template.name}
