@@ -1,26 +1,45 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Articles from "./pages/Articles";
-import ArticleDetail from "./pages/ArticleDetail";
-import Books from "./pages/Books";
-import Tools from "./pages/Tools";
-import Services from "./pages/Services";
-import Checklist from "./pages/Checklist";
-import About from "./pages/About";
+import { Routes, Route } from "react-router-dom"
+import { HelmetProvider } from "react-helmet-async"
+import { Analytics } from "@/components/Analytics"
+import { Layout } from "@/components/Layout"
+import { AboutPage } from "@/pages/AboutPage"
+import { ContactPage } from "@/pages/ContactPage"
+import { SCMPage } from "@/pages/SCMPage"
+import { SCMHub } from "@/pages/SCMHub"
+import SCMBlog from "@/pages/SCMBlog"
+import SCMEbook from "@/pages/SCMEbook"
+import SCMTemplates from "@/pages/SCMTemplates"
+import SCMServices from "@/pages/SCMServices"
+import SCMBlogDetail from "@/pages/SCMBlogDetail"
+import SCMChecklist from "@/pages/SCMChecklist"
+import SCMShop from "@/pages/SCMShop"
+import OrderPage from "@/pages/OrderPage"
+import BlogEditor from "@/pages/BlogEditor"
 
 function App() {
   return (
-    <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/:slug" element={<ArticleDetail />} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/tools" element={<Tools />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/checklist" element={<Checklist />} />
-        <Route path="/about" element={<About />} />
+    <HelmetProvider>
+      <Analytics />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<AboutPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="scm" element={<SCMHub />}>
+            <Route index element={<SCMPage />} />
+            <Route path="shop" element={<SCMShop />} />
+            <Route path="blog" element={<SCMBlog />} />
+            <Route path="blog/:slug" element={<SCMBlogDetail />} />
+            <Route path="ebook" element={<SCMEbook />} />
+            <Route path="templates" element={<SCMTemplates />} />
+            <Route path="services" element={<SCMServices />} />
+            <Route path="checklist" element={<SCMChecklist />} />
+          </Route>
+          <Route path="order" element={<OrderPage />} />
+          <Route path="scm/blog/new" element={<BlogEditor />} />
+        </Route>
       </Routes>
-  );
+    </HelmetProvider>
+  )
 }
 
-export default App;
+export default App
