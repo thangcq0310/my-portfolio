@@ -45,7 +45,7 @@ export function ContactSection() {
       <motion.div variants={fadeInUp} initial="initial" animate="animate">
         <div className="mb-4">
           <h2 className="text-3xl font-bold flex items-center gap-2">
-            <span className="text-gradient">Get in Touch</span>
+            <span className="text-gradient">Liên hệ</span>
           </h2>
           <p className="text-base text-muted-foreground mt-1">
             Let's connect and build something great together

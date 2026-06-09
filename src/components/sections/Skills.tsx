@@ -65,10 +65,10 @@ export function SkillsSection() {
         </motion.div>
       </motion.div>
 
-      {/* What to Expect - Bento Grid */}
+      {/* expect: Những gì bạn sẽ nhận được */}
       <div className="mb-4">
         <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <span className="text-gradient">What to Expect</span>
+          <span className="text-gradient">Bạn sẽ nhận được gì</span>
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">

@@ -52,11 +52,11 @@ export function AboutSection() {
       {/* Hero - Hiển thị ngay không animation */}
       <div className="w-full space-y-8 mb-8">
         <h2 className="text-5xl lg:text-6xl font-bold leading-[1.2] text-white">
-          Hi, I'm <span>{resume.name}</span>
+          Xin chào, tôi là <span>{resume.name}</span>
         </h2>
 
         <div className="text-xl lg:text-2xl font-medium flex items-center gap-2 min-h-[2rem]">
-          <span className="text-white/70">I build</span>
+          <span className="text-white/70">Tôi xây dựng</span>
           <span className="text-pink-400">
             {displayText}
             <span className="cursor-blink"></span>
@@ -116,7 +116,7 @@ export function AboutSection() {
             aria-label="View my work"
           >
             <ExternalLink className="w-4 h-4" />
-            View My Work
+            Xem dự án
           </NavLink>
           <NavLink
             to="/contact"
@@ -124,7 +124,7 @@ export function AboutSection() {
             aria-label="Get in touch"
           >
             <Send className="w-4 h-4" />
-            Get in Touch
+            Liên hệ ngay
           </NavLink>
         </motion.div>
 
@@ -136,7 +136,7 @@ export function AboutSection() {
           </div>
           <div className="flex items-center gap-2 text-base text-muted-foreground px-3 py-2 rounded-lg transition-colors">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
-            <span>Contact me for more information</span>
+            <span>Liên hệ tôi để biết thêm</span>
           </div>
         </motion.div>
       </motion.div>

@@ -6,14 +6,14 @@ export const resume: SiteConfig = {
   location: "Vinh, Vietnam",
   email: "chuquangthangftu@gmail.com",
   typewriterWords: [
-    "efficient logistics solutions.",
-    "automated enterprise workflows.",
-    "full-stack web applications.",
-    "AI-powered automation.",
+    "giải pháp logistics hiệu quả.",
+    "quy trình tự động hóa doanh nghiệp.",
+    "Ứng dụng web full-stack.",
+    "tự động hóa bằng AI.",
   ],
   bio: [
-    "I bridge the gap between Strategic Operations and Modern Technology.",
-    "Expert in optimizing multi-factory supply chains and building high-performance data platforms with React & Firebase.",
+    "Tôi kết nối Chiến lược Vận hành và Công nghệ Hiện đại.",
+    "Chuyên gia tối ưu chuỗi cung ứng đa nhà máy và xây dựng nền tảng dữ liệu hiệu suất cao với React & Firebase.",
   ],
   contact: {
     socials: [
