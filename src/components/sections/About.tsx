@@ -111,9 +111,9 @@ export function AboutSection() {
           className="flex flex-wrap gap-3"
         >
           <NavLink
-            to="/portfolio"
+            to="/scm"
             className="glass-btn px-6 py-3 text-sm font-semibold flex items-center gap-2 hover-shine touch-target voice-focus"
-            aria-label="View my projects"
+            aria-label="View my work"
           >
             <ExternalLink className="w-4 h-4" />
             View My Work
