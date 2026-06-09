@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react"
 import { useSearchParams } from "react-router-dom"
-import { Check, Send, FileText, Users, Sparkles, ArrowLeft, ShoppingCart } from "lucide-react"
+import { Check, FileText, Users, Sparkles, ArrowLeft } from "lucide-react"
 import { Link } from "react-router-dom"
 import { SEO } from "@/components/SEO"
 

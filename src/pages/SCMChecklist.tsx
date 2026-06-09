@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Helmet } from "react-helmet-async"
-import { CheckCircle2, XCircle, AlertTriangle, Download, Mail, Send } from "lucide-react"
+import { CheckCircle2, XCircle, AlertTriangle, Download, Mail } from "lucide-react"
 import { inventoryChecklist, checklistCategories, type ChecklistItem } from "@/data/lead-magnet"
 
 function SCMChecklist() {

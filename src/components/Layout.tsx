@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import {
   User,
   Mail,
-  ShoppingCart,
   Menu,
   X,
   Ghost,
@@ -47,15 +46,6 @@ const getNavPath = (id: string) => {
   if (id === "about") return "/"
   if (id === "scm") return "/scm"
   return `/${id}`
-}
-
-// Scroll anchor helper for main page sections
-const handleNavClick = (e: React.MouseEvent, id: string) => {
-  if (id === "about" && location.pathname === "/") {
-    e.preventDefault()
-    const el = document.getElementById("about")
-    el?.scrollIntoView({ behavior: "smooth" })
-  }
 }
 
 export function Layout() {
