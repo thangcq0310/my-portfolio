@@ -48,7 +48,7 @@ export function AboutSection() {
   }, [displayText, isDeleting, currentWordIndex])
 
   return (
-    <section id="about" className="min-h-[75vh] py-6" aria-label="About me">
+    <section id="about" className="min-h-[75vh] py-6" aria-label="Về tôi">
       {/* Hero - Hiển thị ngay không animation */}
       <div className="w-full space-y-8 mb-8">
         <h2 className="text-5xl lg:text-6xl font-bold leading-[1.2] text-white">
@@ -113,7 +113,7 @@ export function AboutSection() {
           <NavLink
             to="/scm"
             className="glass-btn px-6 py-3 text-sm font-semibold flex items-center gap-2 hover-shine touch-target voice-focus"
-            aria-label="View my work"
+            aria-label="Xem dự án"
           >
             <ExternalLink className="w-4 h-4" />
             Xem dự án
@@ -121,7 +121,7 @@ export function AboutSection() {
           <NavLink
             to="/contact"
             className="glass-btn-outline px-6 py-3 text-sm font-semibold flex items-center gap-2 hover-lift touch-target voice-focus"
-            aria-label="Get in touch"
+            aria-label="Liên hệ"
           >
             <Send className="w-4 h-4" />
             Liên hệ ngay

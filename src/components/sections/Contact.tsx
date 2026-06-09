@@ -41,7 +41,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-8 max-w-xl mx-auto" aria-label="Contact">
+    <section id="contact" className="py-8 max-w-xl mx-auto" aria-label="Liên hệ">
       <motion.div variants={fadeInUp} initial="initial" animate="animate">
         <div className="mb-4">
           <h2 className="text-3xl font-bold flex items-center gap-2">
@@ -87,7 +87,7 @@ export function ContactSection() {
               <input
                 id="name"
                 name="name"
-                placeholder="Your name"
+                placeholder="Họ và tên"
                 required
                 className="glass-input w-full px-4 py-3"
               />
@@ -100,7 +100,7 @@ export function ContactSection() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder="email@cuaban.com"
                 required
                 className="glass-input w-full px-4 py-3"
               />
@@ -114,7 +114,7 @@ export function ContactSection() {
             <input
               id="subject"
               name="subject"
-              placeholder="What's this about?"
+              placeholder="Nhu cầu của bạn"
               required
               className="glass-input w-full px-4 py-3"
             />
@@ -127,7 +127,7 @@ export function ContactSection() {
             <textarea
               id="message"
               name="message"
-              placeholder="Your message..."
+              placeholder="Tin nhắn của bạn..."
               rows={5}
               required
               className="glass-input w-full px-4 py-3 resize-none"

@@ -121,7 +121,7 @@ export function Layout() {
            <button
              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
              className="absolute -right-3 top-1/2 w-6 h-6 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors z-20"
-             aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+             aria-label={sidebarCollapsed ? "Mở rộng menu" : "Thu gọn menu"
            >
             <motion.div
               initial={false}
@@ -294,7 +294,7 @@ export function Layout() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="w-9 h-9 rounded-lg glass flex items-center justify-center"
             aria-expanded={mobileMenuOpen}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={mobileMenuOpen ? "Đóng menu" : "Mở menu"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>

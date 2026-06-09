@@ -24,7 +24,7 @@ const attrIcons: Record<string, React.ElementType> = {
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-8" aria-label="Skills and expertise">
+    <section id="skills" className="py-8" aria-label="Kỹ năng & Chuyên môn">
       {/* Vũ khí kỹ thuật */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

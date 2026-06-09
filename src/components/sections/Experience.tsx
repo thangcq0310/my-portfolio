@@ -17,7 +17,7 @@ const fadeInUp = {
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-8 space-y-3" aria-label="Work experience">
+    <section id="experience" className="py-8 space-y-3" aria-label="Kinh nghiệm làm việc">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

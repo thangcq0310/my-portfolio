@@ -18,7 +18,7 @@ const fadeInUp = {
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-8" aria-label="Featured projects">
+    <section id="portfolio" className="py-8" aria-label="Dự án nổi bật">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
