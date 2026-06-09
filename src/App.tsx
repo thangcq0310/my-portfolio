@@ -13,6 +13,7 @@ import SCMServices from "@/pages/SCMServices"
 import SCMBlogDetail from "@/pages/SCMBlogDetail"
 import SCMChecklist from "@/pages/SCMChecklist"
 import OrderPage from "@/pages/OrderPage"
+import BlogEditor from "@/pages/BlogEditor"
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="checklist" element={<SCMChecklist />} />
           </Route>
           <Route path="order" element={<OrderPage />} />
+          <Route path="scm/blog/new" element={<BlogEditor />} />
         </Route>
       </Routes>
     </HelmetProvider>

@@ -1,10 +1,20 @@
 import { scmBlogPosts } from "@/data/scm-blog";
+import { Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function SCMBlog() {
   return (
     <div className="min-h-[calc(100vh-4rem)] p-6">
-      <h1 className="text-2xl font-bold mb-2">SCM Blog</h1>
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="text-2xl font-bold">SCM Blog</h1>
+        <Link
+          to="/scm/blog/new"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium transition-colors"
+        >
+          <Plus className="w-4 h-4" />
+          Viết bài mới
+        </Link>
+      </div>
       <p className="text-muted-foreground mb-8">
         Đọc các bài viết thực chiến về tồn kho, logistics, và chuỗi cung ứng
       </p>
