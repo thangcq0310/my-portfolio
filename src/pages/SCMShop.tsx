@@ -7,7 +7,7 @@ const products = [
   {
     slug: "ebook-30-cong-cu-scm",
     name: "eBook: 30 Công Cụ Quản Trị Supply Chain Thực Chiến",
-    description: "Hệ thống tất cả công cụ cần thiết trong một bộ sưu tập. Từ Planning, Procurement đến Logistics.",
+    description: "Bộ công cụ thực hành giúp quản trị planning, procurement, inventory, warehouse, logistics, KPI và digital SCM trong một playbook dễ áp dụng cho doanh nghiệp Việt Nam.",
     price: "Sắp ra mắt",
     icon: BookOpen,
     badge: "Sắp ra mắt"
@@ -23,7 +23,7 @@ const products = [
   {
     slug: "procurement-pack",
     name: "Procurement Pack",
-    description: "Supplier scorecard, lead time tracking, MOQ và risk assessment.",
+    description: "Supplier scorecard, lead time tracking, MOQ và đánh giá rủi ro nhà cung cấp.",
     price: "Sắp ra mắt",
     icon: FileSpreadsheet,
     badge: "Sắp ra mắt"
@@ -47,7 +47,7 @@ const products = [
   {
     slug: "digital-scm-pack",
     name: "Digital SCM Pack",
-    description: "Master data checklist, dashboard template, ERP/WMS readiness và AI prompts.",
+    description: "Master data checklist, dashboard template, ERP/WMS readiness và bộ prompt AI.",
     price: "Sắp ra mắt",
     icon: FileCheck,
     badge: "Sắp ra mắt"

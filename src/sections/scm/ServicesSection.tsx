@@ -8,6 +8,11 @@ const services = [
     description: "Rà soát toàn diện 6 nhóm: Planning, Procurement, Inventory, Warehouse, Logistics, Data & KPI. Xác định điểm mạnh, điểm yếu và lộ trình cải thiện.",
     priceRange: "Từ 3-10 triệu",
     priceColor: "text-blue-400",
+    deliverables: [
+      "Báo cáo hiện trạng 6 trụ cột SCM",
+      "Danh sách vấn đề ưu tiên",
+      "Roadmap cải thiện 30–90 ngày",
+    ],
     href: "/scm/services"
   },
   {
@@ -16,6 +21,11 @@ const services = [
     description: "Thiết kế dashboard theo dõi forecast, tồn kho, mua hàng, kho vận, logistics cost. Kết nối Excel hoặc data nguồn.",
     priceRange: "Từ 5-20 triệu",
     priceColor: "text-cyan-400",
+    deliverables: [
+      "Dashboard forecast, tồn kho, mua hàng, logistics cost",
+      "Bộ KPI đề xuất theo chức năng",
+      "Hướng dẫn cập nhật và duy trì dữ liệu",
+    ],
     href: "/scm/services"
   },
   {
@@ -24,6 +34,11 @@ const services = [
     description: "Chuẩn hóa quy trình, KPI, biểu mẫu và SOP. Xây dựng nền tảng vững chắc trước khi số hóa.",
     priceRange: "Từ 10-50 triệu",
     priceColor: "text-indigo-400",
+    deliverables: [
+      "SOP/flow vận hành",
+      "KPI theo chức năng",
+      "RACI trách nhiệm giữa các phòng ban",
+    ],
     href: "/scm/services"
   },
   {
@@ -32,6 +47,11 @@ const services = [
     description: "Excel template, Power BI, Power Apps và AI assistant. Công cụ số hóa phù hợp với mức độ trưởng thành của doanh nghiệp.",
     priceRange: "Theo yêu cầu",
     priceColor: "text-violet-400",
+    deliverables: [
+      "Excel template / Power BI / Power Apps",
+      "Hướng dẫn sử dụng",
+      "Cấu trúc dữ liệu đầu vào",
+    ],
     href: "/scm/services"
   }
 ];
@@ -64,6 +84,16 @@ export function ServicesSection() {
               <p className="text-sm text-muted-foreground mb-4 flex-grow">
                 {service.description}
               </p>
+              {service.deliverables && (
+                <ul className="mb-4 space-y-1.5">
+                  {service.deliverables.map((d, i) => (
+                    <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                      <span className="text-blue-400 mt-0.5">•</span>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <div className="pt-4 border-t border-white/10">
                 <span className={`text-sm font-semibold ${service.priceColor}`}>
                   {service.priceRange}

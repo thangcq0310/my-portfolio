@@ -67,10 +67,10 @@ const scmServices = [
 ]
 
 const processSteps = [
-  { step: 1, title: "Liên hệ", description: "Để lại thông tin hoặc gọi điện trực tiếp" },
-  { step: 2, title: "Tư vấn", description: "Trao đổi về nhu cầu và mục tiêu của doanh nghiệp" },
-  { step: 3, title: "Báo giá", description: "Nhận báo giá chi tiết theo yêu cầu" },
-  { step: 4, title: "Triển khai", description: "Thực hiện dịch vụ và bàn giao" }
+  { step: 1, title: "Gửi thông tin", description: "Gửi file/quy trình/báo cáo hiện tại" },
+  { step: 2, title: "Rà soát hiện trạng", description: "Rà soát hiện trạng" },
+  { step: 3, title: "Đề xuất giải pháp", description: "Đề xuất vấn đề ưu tiên + roadmap" },
+  { step: 4, title: "Triển khai", description: "Triển khai dashboard/template/SOP hoặc bàn giao khuyến nghị" }
 ]
 
 const SCMServices: React.FC = () => {
@@ -103,7 +103,7 @@ const SCMServices: React.FC = () => {
               Dịch vụ <span className="text-blue-400">Supply Chain Thực Chiến</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Em mang đến những giải pháp thực tế, có thể áp dụng ngay để giải quyết triệt để các nỗi đau trong quản trị Chuỗi cung ứng.
+              Các gói dịch vụ giúp doanh nghiệp rà soát hiện trạng, chuẩn hóa dữ liệu – quy trình – KPI và xây dựng công cụ quản trị Supply Chain phù hợp với mức độ trưởng thành hiện tại.
             </p>
           </header>
 

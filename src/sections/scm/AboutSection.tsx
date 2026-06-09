@@ -1,8 +1,8 @@
 const authorInfo = {
   name: "SCM Thực Chiến",
   initials: "CQT",
-  role: "Chuyên gia Supply Chain",
-  description: "Người xây dựng SCM Thực Chiến là chuyên gia logistics & warehouse với nhiều năm kinh nghiệm xử lý các bài toán thực tế: quản lý kho lạnh, tồn kho, thuê kho ngoài, triển khai SAP, chuẩn hóa master data, planning coordination, cost optimization và digital tools. Mục tiêu là giúp doanh nghiệp Việt Nam tiếp cận kiến thức supply chain một cách thực chiến và áp dụng được.",
+  role: "Người làm Supply Chain thực chiến",
+  description: "Tôi là người làm trực tiếp trong lĩnh vực logistics, warehouse và supply chain operations tại doanh nghiệp sản xuất/xuất khẩu. SCM Thực Chiến được xây dựng để hệ thống hóa kiến thức, biểu mẫu và công cụ thực tế giúp doanh nghiệp Việt Nam quản trị chuỗi cung ứng dễ hiểu và áp dụng được hơn.",
   expertise: [
     "Warehouse & Logistics",
     "Inventory Management", 

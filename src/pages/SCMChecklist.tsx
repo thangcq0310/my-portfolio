@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Helmet } from "react-helmet-async"
 import { CheckCircle2, XCircle, AlertTriangle, Download, Mail } from "lucide-react"
-import { inventoryChecklist, checklistCategories, type ChecklistItem } from "@/data/lead-magnet"
+import { supplyChainAssessmentChecklist, checklistCategories, type ChecklistItem } from "@/data/lead-magnet"
 
 function SCMChecklist() {
   const [email, setEmail] = useState("")
@@ -62,7 +62,7 @@ function SCMChecklist() {
 
   const groupedChecklist = checklistCategories.map((category) => ({
     category,
-    items: inventoryChecklist.filter((item) => item.category === category),
+    items: supplyChainAssessmentChecklist.filter((item) => item.category === category),
   }))
 
   return (
