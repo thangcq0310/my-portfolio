@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 const navLinks = [
   { to: "/articles", label: "Bài viết", icon: BookOpen },
-  { to: "/books", label: "Sách & Template", icon: BookOpen },
+  { to: "/books", label: "Sản phẩm số", icon: BookOpen },
   { to: "/tools", label: "Công cụ", icon: Wrench },
   { to: "/services", label: "Dịch vụ", icon: Briefcase },
   { to: "/checklist", label: "Checklist", icon: ClipboardCheck },

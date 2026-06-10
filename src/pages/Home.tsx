@@ -200,7 +200,7 @@ export function Home() {
       <section className="py-16">
         <Container>
           <div className="mb-8 flex items-center justify-between">
-            <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Sách, template &amp; playbook</h2>
+            <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Sản phẩm số Supply Chain</h2>
             <Link to="/books" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
               Xem tất cả <ArrowRight className="h-4 w-4" />
             </Link>

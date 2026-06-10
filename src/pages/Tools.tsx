@@ -3,7 +3,7 @@ import Container from "../components/layout/Container"
 import ToolCard from "../components/cards/ToolCard"
 import { seedTools } from "../data/seedData"
 
-const categories = ["Tất cả", "Excel Template", "Logistics", "Cold Chain", "Cost Analysis", "Inventory", "Planning"]
+const categories = ["Tất cả", "Inventory", "Planning", "3PL", "Logistics Cost", "Warehouse"]
 
 export function Tools() {
   const [selectedCategory, setSelectedCategory] = useState("Tất cả")
@@ -16,10 +16,10 @@ export function Tools() {
   return (
     <Container>
       <div className="py-16">
-        <div className="mb-10 max-w-3xl">
+        <div className="mb-10 max-w-4xl">
           <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Công cụ</h1>
           <p className="mt-4 text-lg text-[var(--color-text-muted)]">
-            Công cụ hỗ trợ quản trị Supply Chain với cấu trúc rõ ràng cho planning, inventory, logistics và cost control.
+            Các công cụ skeleton giúp SCHub thể hiện định hướng sản phẩm: calculator, estimator và planner hỗ trợ đội ngũ Supply Chain ra quyết định nhanh hơn.
           </p>
         </div>
 
@@ -44,6 +44,19 @@ export function Tools() {
           {filtered.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))}
+        </div>
+
+        <div className="surface-panel mt-12 rounded-[var(--radius-xl)] p-8 text-center">
+          <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Muốn nhận sản phẩm khi ra mắt?</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-[var(--color-text-muted)]">
+            Để lại email để SCHub.vn gửi thông báo khi template, playbook hoặc công cụ mới được phát hành.
+          </p>
+          <a
+            href="/checklist"
+            className="focus-ring mt-6 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
+          >
+            Nhận thông báo
+          </a>
         </div>
       </div>
     </Container>

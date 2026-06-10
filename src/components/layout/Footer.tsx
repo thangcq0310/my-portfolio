@@ -6,7 +6,7 @@ const footerSections = [
     title: "Nội dung",
     links: [
       { to: "/articles", label: "Bài viết" },
-      { to: "/books", label: "Sách & Template" },
+      { to: "/books", label: "Sản phẩm số" },
       { to: "/tools", label: "Công cụ" },
     ],
   },
