@@ -5,7 +5,20 @@ import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { to: "/blog", label: "Blog", icon: BookOpen },
+  { to: "/about", label: "Về SCHub", icon: Package },
+  {
+    to: "/learning",
+    label: "Learning Hub",
+    icon: GraduationCap,
+    children: [
+      { to: "/learning/supply-chain-foundation", label: "Supply Chain Foundation" },
+      { to: "/learning/demand-analysis", label: "Demand Analysis" },
+      { to: "/learning/demand-management", label: "Demand Management" },
+      { to: "/learning/forecasting", label: "Forecasting" },
+      { to: "/learning/sop", label: "S&OP" },
+      { to: "/learning/operations-planning-control", label: "Operations Planning & Control" },
+    ],
+  },
   {
     to: "/solutions",
     label: "Giải pháp",
@@ -18,8 +31,7 @@ const navLinks = [
       { to: "/solutions/checklist", label: "Checklist" },
     ],
   },
-  { to: "/learning", label: "Học theo lộ trình", icon: GraduationCap },
-  { to: "/about", label: "Về SCHub", icon: Package },
+  { to: "/blog", label: "Blog", icon: BookOpen },
 ]
 
 function isActive(pathname: string, href: string) {
@@ -31,9 +43,15 @@ export default function Navbar() {
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [solutionsOpen, setSolutionsOpen] = useState(false)
+  const [learningOpen, setLearningOpen] = useState(false)
 
   const activeSolutions = useMemo(
     () => location.pathname === "/solutions" || location.pathname.startsWith("/solutions/"),
+    [location.pathname],
+  )
+
+  const activeLearning = useMemo(
+    () => location.pathname === "/learning" || location.pathname.startsWith("/learning/"),
     [location.pathname],
   )
 
@@ -56,36 +74,42 @@ export default function Navbar() {
             const Icon = link.icon
 
             if (link.children) {
+              const isSolutionsMenu = link.to === "/solutions"
+              const open = isSolutionsMenu ? solutionsOpen : learningOpen
+              const setOpen = isSolutionsMenu ? setSolutionsOpen : setLearningOpen
+              const activeMenu = isSolutionsMenu ? activeSolutions : activeLearning
+              const overviewLabel = isSolutionsMenu ? "Tổng quan giải pháp" : "Tổng quan Learning Hub"
+
               return (
                 <div
                   key={link.to}
                   className="group relative"
-                  onMouseEnter={() => setSolutionsOpen(true)}
-                  onMouseLeave={() => setSolutionsOpen(false)}
+                  onMouseEnter={() => setOpen(true)}
+                  onMouseLeave={() => setOpen(false)}
                 >
                   <button
                     type="button"
-                    aria-expanded={solutionsOpen}
+                    aria-expanded={open}
                     className={[
                       "focus-ring inline-flex items-center gap-2 rounded-[var(--radius-md)] px-4 py-2 text-sm font-medium transition-colors",
-                      activeSolutions
+                      activeMenu
                         ? "bg-[var(--color-primary)] text-white"
                         : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-raised)] hover:text-[var(--color-text)]",
                     ].join(" ")}
-                    onClick={() => setSolutionsOpen((open) => !open)}
+                    onClick={() => setOpen((prev) => !prev)}
                   >
                     <Icon className="h-4 w-4" />
                     {link.label}
-                    <ChevronDown className={cn("h-4 w-4 transition-transform", solutionsOpen && "rotate-180")} />
+                    <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} />
                   </button>
 
-                  {solutionsOpen && (
-                    <div className="absolute left-0 top-full mt-2 min-w-[220px] rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-2 shadow-[var(--shadow-panel-hover)]">
+                  {open && (
+                    <div className="absolute left-0 top-full mt-2 min-w-[260px] rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-2 shadow-[var(--shadow-panel-hover)]">
                       <Link
                         to={link.to}
                         className="focus-ring block rounded-[var(--radius-md)] px-3 py-2 text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-surface)]"
                       >
-                        Tổng quan giải pháp
+                        {overviewLabel}
                       </Link>
                       {link.children.map((child) => (
                         <Link
@@ -147,31 +171,37 @@ export default function Navbar() {
               const Icon = link.icon
 
               if (link.children) {
+                const isSolutionsMenu = link.to === "/solutions"
+                const open = isSolutionsMenu ? solutionsOpen : learningOpen
+                const setOpen = isSolutionsMenu ? setSolutionsOpen : setLearningOpen
+                const activeMenu = isSolutionsMenu ? activeSolutions : activeLearning
+                const overviewLabel = isSolutionsMenu ? "Tổng quan giải pháp" : "Tổng quan Learning Hub"
+
                 return (
                   <div key={link.to} className="rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)]">
                     <button
                       type="button"
-                      aria-expanded={solutionsOpen}
-                      onClick={() => setSolutionsOpen((open) => !open)}
+                      aria-expanded={open}
+                      onClick={() => setOpen((prev) => !prev)}
                       className={[
                         "focus-ring flex w-full items-center justify-between rounded-[var(--radius-md)] px-4 py-3 text-sm font-medium transition-colors",
-                        activeSolutions ? "text-[var(--color-primary)]" : "text-[var(--color-text)]",
+                        activeMenu ? "text-[var(--color-primary)]" : "text-[var(--color-text)]",
                       ].join(" ")}
                     >
                       <span className="flex items-center gap-3">
                         <Icon className="h-4 w-4" />
                         {link.label}
                       </span>
-                      <ChevronDown className={cn("h-4 w-4 transition-transform", solutionsOpen && "rotate-180")} />
+                      <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} />
                     </button>
-                    {solutionsOpen && (
+                    {open && (
                       <div className="space-y-1 px-2 pb-2">
                         <Link
                           to={link.to}
                           onClick={() => setMobileMenuOpen(false)}
                           className="focus-ring block rounded-[var(--radius-md)] px-3 py-2 text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-surface-raised)]"
                         >
-                          Tổng quan giải pháp
+                          {overviewLabel}
                         </Link>
                         {link.children.map((child) => (
                           <Link
