@@ -28,7 +28,7 @@ export function Articles() {
     <Container>
       <div className="py-16">
         <div className="mb-10 max-w-3xl">
-          <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Bài viết</h1>
+          <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Blog</h1>
           <p className="mt-4 text-lg text-[var(--color-text-muted)]">
             Các bài viết thực chiến về planning, procurement, inventory, warehouse, logistics cost và digital SCM.
           </p>

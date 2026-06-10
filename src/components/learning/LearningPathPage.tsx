@@ -19,7 +19,7 @@ function LessonActions({ lesson }: { lesson: LearningLesson }) {
   return (
     <div className="mt-4 flex flex-col gap-2 text-sm">
       {lesson.articleSlug ? (
-        <Link to={`/articles/${lesson.articleSlug}`} className="font-medium text-[var(--color-primary)] hover:underline">
+        <Link to={`/blog/${lesson.articleSlug}`} className="font-medium text-[var(--color-primary)] hover:underline">
           Đọc bài viết
         </Link>
       ) : null}
@@ -54,7 +54,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
 
   const placeholderCard = (title: string, body: string) => (
     <div className="surface-panel rounded-[var(--radius-xl)] p-5">
-      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Placeholder</p>
+      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Đang biên soạn</p>
       <h4 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{title}</h4>
       <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{body}</p>
     </div>
@@ -98,16 +98,16 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
 
         <section className="mt-10">
           <div className="mb-8 max-w-3xl">
-            <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Lesson skeleton</h2>
+            <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Bài học trong lộ trình</h2>
             <p className="mt-3 text-[var(--color-text-muted)]">
-              Đây là khung học tập ban đầu để đội ngũ vận hành đi theo từng chủ đề, chưa phải nội dung hoàn chỉnh.
+              Đây là các bài học đang được phát triển để đội ngũ vận hành học theo từng chủ đề và áp dụng dần vào thực tế.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {path.lessons.map((lesson) => (
               <div key={lesson.slug} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Lesson skeleton</p>
+                  <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Bản preview</p>
                   <span className={`rounded-full border px-3 py-1 text-xs font-medium ${statusClasses[lesson.status]}`}>
                     {lesson.status}
                   </span>
@@ -126,8 +126,8 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
             <div className="mt-4 space-y-4">
               {relatedArticles.length > 0
                 ? relatedArticles.map((article) => (
-                    <Link key={article.slug} to={`/articles/${article.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
-                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Article</p>
+                    <Link key={article.slug} to={`/blog/${article.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
+                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Bài viết</p>
                       <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{article.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{article.excerpt}</p>
                     </Link>
@@ -142,7 +142,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
               {relatedProducts.length > 0
                 ? relatedProducts.map((product) => (
                     <Link key={product.slug} to={`/solutions/products/${product.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
-                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Digital product</p>
+                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Sản phẩm số</p>
                       <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{product.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{product.description}</p>
                     </Link>
@@ -157,12 +157,12 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
               {relatedTools.length > 0
                 ? relatedTools.map((tool) => (
                     <div key={tool.slug} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
-                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Tool skeleton</p>
+                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Công cụ</p>
                       <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{tool.name}</h3>
                       <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{tool.description}</p>
                     </div>
                   ))
-                : placeholderCard("Công cụ đang được lên khung", "SCHub sẽ bổ sung calculator hoặc assessment phù hợp khi tool skeleton sẵn sàng.")}
+                : placeholderCard("Công cụ đang được phát triển", "SCHub sẽ bổ sung calculator hoặc assessment phù hợp khi nhóm công cụ sẵn sàng hơn.")}
             </div>
           </div>
         </section>

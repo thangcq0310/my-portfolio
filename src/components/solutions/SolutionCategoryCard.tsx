@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import type { SolutionCategory } from "@/data/solutions"
 
 interface SolutionCategoryCardProps {
@@ -6,7 +7,7 @@ interface SolutionCategoryCardProps {
 
 export function SolutionCategoryCard({ category }: SolutionCategoryCardProps) {
   return (
-    <article className="surface-panel card-hover rounded-[var(--radius-xl)] p-6">
+    <Link to={category.href} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
       <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
         {category.slug}
       </p>
@@ -16,6 +17,7 @@ export function SolutionCategoryCard({ category }: SolutionCategoryCardProps) {
       <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">
         {category.description}
       </p>
-    </article>
+      <div className="mt-5 text-sm font-medium text-[var(--color-primary)]">Mở nhóm giải pháp</div>
+    </Link>
   )
 }

@@ -11,7 +11,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
   return (
     <Link
-      to={`/articles/${article.slug}`}
+      to={`/blog/${article.slug}`}
       className="surface-panel card-hover flex h-full flex-col overflow-hidden rounded-[var(--radius-xl)]"
     >
       <div className="bg-[var(--color-primary)] p-5 text-white">

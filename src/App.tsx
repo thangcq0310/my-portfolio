@@ -10,6 +10,7 @@ import { Tools } from "@/pages/Tools"
 import { Services } from "@/pages/Services"
 import { Solutions } from "@/pages/Solutions"
 import { SolutionDetail } from "@/pages/SolutionDetail"
+import { Resources } from "@/pages/Resources"
 import { Checklist } from "@/pages/Checklist"
 import { About } from "@/pages/About"
 import { Learning } from "@/pages/learning/Learning"
@@ -26,8 +27,10 @@ function App() {
       <Routes>
         <Route path="/" element={<SiteLayout />}>
           <Route index element={<Home />} />
-          <Route path="articles" element={<Articles />} />
-          <Route path="articles/:slug" element={<ArticleDetail />} />
+          <Route path="blog" element={<Articles />} />
+          <Route path="blog/:slug" element={<ArticleDetail />} />
+          <Route path="articles" element={<Navigate to="/blog" replace />} />
+          <Route path="articles/:slug" element={<Navigate to="/blog" replace />} />
           <Route path="books" element={<Navigate to="/solutions/products" replace />} />
           <Route path="books/:slug" element={<Navigate to="/solutions/products" replace />} />
           <Route path="tools" element={<Navigate to="/solutions/tools" replace />} />
@@ -41,6 +44,7 @@ function App() {
           <Route path="learning/sop" element={<LearningSOP />} />
           <Route path="learning/operations-planning-control" element={<LearningOperationsPlanningControl />} />
           <Route path="solutions" element={<Solutions />} />
+          <Route path="solutions/resources" element={<Resources />} />
           <Route path="solutions/products" element={<Books />} />
           <Route path="solutions/products/:slug" element={<ProductDetail />} />
           <Route path="solutions/tools" element={<Tools />} />

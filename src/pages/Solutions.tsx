@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { Bot, Briefcase, LayoutDashboard, Settings2, Wrench } from "lucide-react"
+import { Briefcase, FileText, LayoutDashboard, Wrench } from "lucide-react"
 import Container from "@/components/layout/Container"
 import { SEO } from "@/components/SEO"
 import { SolutionCategoryCard } from "@/components/solutions/SolutionCategoryCard"
@@ -8,11 +8,10 @@ import { SolutionCard } from "@/components/solutions/SolutionCard"
 import { categories, solutions, useCases } from "@/data/solutions"
 
 const categoryIcons: Record<string, typeof Wrench> = {
+  resources: FileText,
+  products: LayoutDashboard,
   tools: Wrench,
-  "digital-products": LayoutDashboard,
   services: Briefcase,
-  templates: Settings2,
-  "ai-agents": Bot,
 }
 
 export function Solutions() {
@@ -27,7 +26,7 @@ export function Solutions() {
   return (
     <>
       <SEO
-        title="Công cụ & Giải pháp"
+        title="Giải pháp Supply Chain thực chiến"
         description="Bộ công cụ, sản phẩm số và giải pháp triển khai giúp tối ưu vận hành, quản trị dữ liệu và tự động hóa doanh nghiệp."
         url="https://schub.vn/solutions"
       />
@@ -38,13 +37,13 @@ export function Solutions() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
               <div>
                 <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-secondary)]">
-                  Solutions / Công cụ &amp; Giải pháp
+                  Solutions / Giải pháp Supply Chain
                 </p>
                 <h1 className="mt-4 font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)] md:text-5xl">
-                  Công cụ &amp; Giải pháp
+                  Giải pháp Supply Chain thực chiến
                 </h1>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">
-                  Tập hợp các công cụ số, sản phẩm số, template, automation và giải pháp triển khai giúp doanh nghiệp tối ưu vận hành, quản trị dữ liệu và ra quyết định nhanh hơn.
+                  Từ tài nguyên miễn phí, sản phẩm số, công cụ đến dịch vụ triển khai — SCHub.vn giúp doanh nghiệp bắt đầu nhỏ, áp dụng nhanh và mở rộng theo nhu cầu thực tế.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
@@ -67,7 +66,7 @@ export function Solutions() {
                   Solution architecture
                 </p>
                 <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  {categories.slice(0, 4).map((category) => {
+                  {categories.map((category) => {
                     const Icon = categoryIcons[category.slug] ?? Wrench
                     return (
                       <div key={category.slug} className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4">
@@ -86,12 +85,12 @@ export function Solutions() {
         <section className="py-16">
           <Container>
             <div className="mb-8 max-w-3xl">
-              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Nhóm giải pháp chính</h2>
+              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">4 nhóm giải pháp chính</h2>
               <p className="mt-3 text-[var(--color-text-muted)]">
-                Mỗi nhóm được thiết kế để đại diện cho một cách doanh nghiệp giải quyết bài toán vận hành: từ tool nhỏ đến nền tảng nội bộ, từ template đến automation.
+                Mỗi nhóm đại diện cho một cách doanh nghiệp bắt đầu giải quyết bài toán Supply Chain: từ tài nguyên miễn phí, sản phẩm số, công cụ đến dịch vụ triển khai.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               {categories.map((category) => (
                 <SolutionCategoryCard key={category.slug} category={category} />
               ))}
@@ -103,9 +102,9 @@ export function Solutions() {
           <Container>
             <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">
-                <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Featured solutions</h2>
+                <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Giải pháp nổi bật</h2>
                 <p className="mt-3 text-[var(--color-text-muted)]">
-                  Một số solution card mẫu để thể hiện cách SCHub có thể đóng gói công cụ, template và giải pháp triển khai cho doanh nghiệp.
+                  Một số card mẫu để thể hiện cách SCHub có thể đóng gói tài nguyên, công cụ, sản phẩm và dịch vụ cho doanh nghiệp.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -141,7 +140,7 @@ export function Solutions() {
               </div>
             ) : (
               <div className="surface-panel rounded-[var(--radius-xl)] p-8 text-center text-[var(--color-text-muted)]">
-                Chưa có featured solution cho nhóm này. Anh có thể quay lại bộ công cụ hoặc để lại nhu cầu để SCHub ưu tiên phát triển.
+                Chưa có giải pháp nổi bật cho nhóm này. SCHub sẽ bổ sung thêm khi hoàn thiện từng nhóm giải pháp.
               </div>
             )}
           </Container>
