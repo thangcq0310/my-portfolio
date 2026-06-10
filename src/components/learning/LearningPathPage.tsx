@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Container from "@/components/layout/Container"
 import { seedArticles, seedBooks, seedTools } from "@/data/seedData"
-import type { LearningPath } from "@/data/learningPaths"
+import type { LearningLesson, LearningPath } from "@/data/learningPaths"
 
 interface LearningPathPageProps {
   path: LearningPath
@@ -10,6 +10,38 @@ interface LearningPathPageProps {
 const statusClasses: Record<string, string> = {
   "Đang phát triển": "border-[var(--color-warning)]/20 bg-[var(--color-warning)]/10 text-[var(--color-warning)]",
   "Sắp ra mắt": "border-[var(--color-secondary)]/20 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]",
+  "Có bài": "border-[var(--color-success)]/20 bg-[var(--color-success)]/10 text-[var(--color-success)]",
+}
+
+function LessonActions({ lesson }: { lesson: LearningLesson }) {
+  const tool = lesson.toolSlug ? seedTools.find((item) => item.slug === lesson.toolSlug) : null
+
+  return (
+    <div className="mt-4 flex flex-col gap-2 text-sm">
+      {lesson.articleSlug ? (
+        <Link to={`/articles/${lesson.articleSlug}`} className="font-medium text-[var(--color-primary)] hover:underline">
+          Đọc bài viết
+        </Link>
+      ) : null}
+      {lesson.productSlug ? (
+        <Link to={`/solutions/products/${lesson.productSlug}`} className="font-medium text-[var(--color-primary)] hover:underline">
+          Sản phẩm liên quan
+        </Link>
+      ) : null}
+      {lesson.toolSlug ? (
+        tool ? (
+          <Link to="/solutions/tools" className="font-medium text-[var(--color-primary)] hover:underline">
+            Công cụ liên quan: {tool.name}
+          </Link>
+        ) : (
+          <span className="text-[var(--color-text-muted)]">Công cụ liên quan</span>
+        )
+      ) : null}
+      {!lesson.articleSlug && !lesson.productSlug && !lesson.toolSlug ? (
+        <span className="text-[var(--color-text-muted)]">Đang phát triển</span>
+      ) : null}
+    </div>
+  )
 }
 
 export function LearningPathPage({ path }: LearningPathPageProps) {
@@ -57,7 +89,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
             {path.description}
           </p>
           <Link
-            to="/checklist"
+            to="/solutions/checklist"
             className="focus-ring mt-8 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
           >
             Nhận thông báo khi hoàn thiện
@@ -73,17 +105,16 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {path.lessons.map((lesson) => (
-              <div key={lesson} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
-                <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Lesson skeleton</p>
-                <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{lesson}</h3>
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="rounded-full border border-[var(--color-warning)]/20 bg-[var(--color-warning)]/10 px-3 py-1 text-xs font-medium text-[var(--color-warning)]">
-                    Đang phát triển
+              <div key={lesson.slug} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Lesson skeleton</p>
+                  <span className={`rounded-full border px-3 py-1 text-xs font-medium ${statusClasses[lesson.status]}`}>
+                    {lesson.status}
                   </span>
-                  <button type="button" className="text-sm font-medium text-[var(--color-primary)] hover:underline">
-                    Xem trước
-                  </button>
                 </div>
+                <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{lesson.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">{lesson.description}</p>
+                <LessonActions lesson={lesson} />
               </div>
             ))}
           </div>
@@ -110,7 +141,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
             <div className="mt-4 space-y-4">
               {relatedProducts.length > 0
                 ? relatedProducts.map((product) => (
-                    <Link key={product.slug} to={`/books/${product.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
+                    <Link key={product.slug} to={`/solutions/products/${product.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
                       <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Digital product</p>
                       <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{product.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{product.description}</p>
@@ -142,7 +173,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
             Để lại email để nhận checklist, template và thông báo khi các bài học mới được phát hành.
           </p>
           <Link
-            to="/checklist"
+            to="/solutions/checklist"
             className="focus-ring mt-6 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-105"
           >
             Làm checklist 50 điểm

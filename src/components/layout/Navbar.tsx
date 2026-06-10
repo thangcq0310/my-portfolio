@@ -1,16 +1,13 @@
 import { Link, useLocation } from "react-router-dom"
-import { BookOpen, Briefcase, ClipboardCheck, GraduationCap, Menu, Package, Wrench, X } from "lucide-react"
+import { BookOpen, GraduationCap, Lightbulb, Menu, Package, X } from "lucide-react"
 import { useState } from "react"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
   { to: "/articles", label: "Bài viết", icon: BookOpen },
-  { to: "/books", label: "Sản phẩm số", icon: BookOpen },
-  { to: "/tools", label: "Công cụ", icon: Wrench },
+  { to: "/solutions", label: "Công cụ & Giải pháp", icon: Lightbulb },
   { to: "/learning", label: "Học theo lộ trình", icon: GraduationCap },
-  { to: "/services", label: "Dịch vụ", icon: Briefcase },
-  { to: "/checklist", label: "Checklist", icon: ClipboardCheck },
   { to: "/about", label: "Về SCHub", icon: Package },
 ]
 
@@ -58,7 +55,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:block">
-          <Link to="/checklist" className={buttonVariants({ variant: "secondary", size: "default" })}>
+          <Link to="/solutions/checklist" className={buttonVariants({ variant: "secondary", size: "default" })}>
             Tải checklist 50 điểm
           </Link>
         </div>
@@ -100,7 +97,7 @@ export default function Navbar() {
               )
             })}
             <Link
-              to="/checklist"
+              to="/solutions/checklist"
               onClick={() => setMobileMenuOpen(false)}
               className={cn(buttonVariants({ variant: "secondary", size: "default" }), "mt-2 w-full")}
             >

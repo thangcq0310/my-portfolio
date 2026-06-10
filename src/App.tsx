@@ -8,6 +8,8 @@ import { Books } from "@/pages/Books"
 import { ProductDetail } from "@/pages/ProductDetail"
 import { Tools } from "@/pages/Tools"
 import { Services } from "@/pages/Services"
+import { Solutions } from "@/pages/Solutions"
+import { SolutionDetail } from "@/pages/SolutionDetail"
 import { Checklist } from "@/pages/Checklist"
 import { About } from "@/pages/About"
 import { Learning } from "@/pages/learning/Learning"
@@ -26,9 +28,11 @@ function App() {
           <Route index element={<Home />} />
           <Route path="articles" element={<Articles />} />
           <Route path="articles/:slug" element={<ArticleDetail />} />
-          <Route path="books" element={<Books />} />
-          <Route path="books/:slug" element={<ProductDetail />} />
-          <Route path="tools" element={<Tools />} />
+          <Route path="books" element={<Navigate to="/solutions/products" replace />} />
+          <Route path="books/:slug" element={<Navigate to="/solutions/products" replace />} />
+          <Route path="tools" element={<Navigate to="/solutions/tools" replace />} />
+          <Route path="services" element={<Navigate to="/solutions/services" replace />} />
+          <Route path="checklist" element={<Navigate to="/solutions/checklist" replace />} />
           <Route path="learning" element={<Learning />} />
           <Route path="learning/supply-chain-foundation" element={<LearningSupplyChainFoundation />} />
           <Route path="learning/demand-analysis" element={<LearningDemandAnalysis />} />
@@ -36,8 +40,13 @@ function App() {
           <Route path="learning/forecasting" element={<LearningForecasting />} />
           <Route path="learning/sop" element={<LearningSOP />} />
           <Route path="learning/operations-planning-control" element={<LearningOperationsPlanningControl />} />
-          <Route path="services" element={<Services />} />
-          <Route path="checklist" element={<Checklist />} />
+          <Route path="solutions" element={<Solutions />} />
+          <Route path="solutions/products" element={<Books />} />
+          <Route path="solutions/products/:slug" element={<ProductDetail />} />
+          <Route path="solutions/tools" element={<Tools />} />
+          <Route path="solutions/services" element={<Services />} />
+          <Route path="solutions/checklist" element={<Checklist />} />
+          <Route path="solutions/:slug" element={<SolutionDetail />} />
           <Route path="about" element={<About />} />
           <Route path="scm" element={<Navigate to="/" replace />} />
           <Route path="scm/*" element={<Navigate to="/" replace />} />

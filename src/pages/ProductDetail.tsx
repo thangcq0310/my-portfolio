@@ -11,7 +11,7 @@ export function ProductDetail() {
       <Container>
         <div className="py-16">
           <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Không tìm thấy sản phẩm</h1>
-          <Link to="/books" className="mt-6 inline-flex text-sm font-medium text-[var(--color-primary)] hover:underline">
+          <Link to="/solutions/products" className="mt-6 inline-flex text-sm font-medium text-[var(--color-primary)] hover:underline">
             ← Quay lại Sản phẩm số
           </Link>
         </div>
@@ -30,7 +30,7 @@ export function ProductDetail() {
   return (
     <Container>
       <div className="py-16">
-        <Link to="/books" className="inline-flex text-sm font-medium text-[var(--color-primary)] hover:underline">
+        <Link to="/solutions/products" className="inline-flex text-sm font-medium text-[var(--color-primary)] hover:underline">
           ← Quay lại Sản phẩm số
         </Link>
 
@@ -60,7 +60,7 @@ export function ProductDetail() {
           </div>
 
           <Link
-            to="/checklist"
+            to="/solutions/checklist"
             className="focus-ring mt-8 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
           >
             {product.ctaLabel}
@@ -97,7 +97,7 @@ export function ProductDetail() {
             <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Trạng thái phát triển</h2>
             <p className="mt-3 text-[var(--color-text-muted)]">{statusMessage}</p>
             <Link
-              to="/checklist"
+              to="/solutions/checklist"
               className="focus-ring mt-6 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-105"
             >
               Để lại email nhận thông báo

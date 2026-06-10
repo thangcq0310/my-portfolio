@@ -40,7 +40,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
           <div className="mt-1 text-sm font-medium text-[var(--color-text)]">{tool.category}</div>
         </div>
         <Link
-          to="/checklist"
+          to="/solutions/checklist"
           className="focus-ring mt-5 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-4 py-3 text-sm font-medium text-white transition-colors hover:brightness-105"
         >
           {tool.ctaLabel}

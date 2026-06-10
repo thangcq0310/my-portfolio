@@ -6,16 +6,17 @@ const footerSections = [
     title: "Nội dung",
     links: [
       { to: "/articles", label: "Bài viết" },
-      { to: "/books", label: "Sản phẩm số" },
-      { to: "/tools", label: "Công cụ" },
+      { to: "/learning", label: "Học theo lộ trình" },
+      { to: "/solutions", label: "Công cụ & Giải pháp" },
     ],
   },
   {
     title: "Giải pháp",
     links: [
-      { to: "/services", label: "Tư vấn SCM" },
-      { to: "/checklist", label: "Checklist đánh giá" },
-      { to: "/about", label: "Về SCHub" },
+      { to: "/solutions/products", label: "Sản phẩm số" },
+      { to: "/solutions/tools", label: "Công cụ" },
+      { to: "/solutions/services", label: "Dịch vụ triển khai" },
+      { to: "/solutions/checklist", label: "Checklist đánh giá" },
     ],
   },
 ]

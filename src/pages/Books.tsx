@@ -53,7 +53,7 @@ export function Books() {
             Để lại email để SCHub.vn gửi checklist miễn phí và thông báo khi template, playbook hoặc công cụ mới được phát hành.
           </p>
           <a
-            href="/checklist"
+            href="/solutions/checklist"
             className="focus-ring mt-6 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-105"
           >
             Để lại email

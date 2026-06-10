@@ -44,12 +44,12 @@ export default function BookCard({ book }: BookCardProps) {
         </div>
 
         <h3 className="font-[var(--font-display)] text-xl leading-tight text-[var(--color-text)]">
-          <Link to={`/books/${book.slug}`} className="hover:text-[var(--color-primary)]">
+          <Link to={`/solutions/products/${book.slug}`} className="hover:text-[var(--color-primary)]">
             {book.title}
           </Link>
         </h3>
         <p className="mt-3 flex-1 text-sm leading-6 text-[var(--color-text-muted)]">{book.description}</p>
-        <Link to={`/books/${book.slug}`} className="mt-4 text-sm font-medium text-[var(--color-primary)] hover:underline">
+        <Link to={`/solutions/products/${book.slug}`} className="mt-4 text-sm font-medium text-[var(--color-primary)] hover:underline">
           Xem chi tiết
         </Link>
 
@@ -59,7 +59,7 @@ export default function BookCard({ book }: BookCardProps) {
         </div>
 
         <Link
-          to="/checklist"
+          to="/solutions/checklist"
           className="focus-ring mt-5 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 py-3 text-sm font-medium text-white transition-colors hover:brightness-110"
         >
           {book.ctaLabel}

@@ -83,7 +83,7 @@ export function Home() {
                 <Link to="/articles" className="rounded-[var(--radius-md)] border border-[var(--color-primary)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:bg-[#0a4242]">
                   Khám phá bài viết
                 </Link>
-                <Link to="/checklist" className="flex items-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-6 py-3 font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-border-strong)]">
+                <Link to="/solutions/checklist" className="flex items-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-6 py-3 font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-border-strong)]">
                   <ClipboardCheck className="h-5 w-5" />
                   Tải checklist 50 điểm
                 </Link>
@@ -192,7 +192,7 @@ export function Home() {
             <ClipboardCheck className="mx-auto mb-4 h-12 w-12 text-[var(--color-primary)]" />
             <h2 className="mb-4 font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Checklist 50 điểm tự đánh giá năng lực Supply Chain</h2>
             <p className="mx-auto mb-6 max-w-xl text-[var(--color-text-muted)]">Tự đánh giá 6 nhóm: Planning, Procurement, Inventory, Warehouse &amp; Logistics, Data/KPI/Digital, People/Process/Governance.</p>
-            <Link to="/checklist" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-105">
+            <Link to="/solutions/checklist" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-105">
               Tải checklist miễn phí
             </Link>
           </div>
@@ -202,8 +202,40 @@ export function Home() {
       <section className="py-16">
         <Container>
           <div className="mb-8 flex items-center justify-between">
+            <div>
+              <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Tài nguyên miễn phí</h2>
+              <p className="mt-3 max-w-2xl text-[var(--color-text-muted)]">Bắt đầu với các tài nguyên mở để đánh giá hiện trạng, kiểm tra sai số forecast và chuẩn hóa tư duy supply chain.</p>
+            </div>
+            <Link to="/solutions/tools" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
+              Xem tài nguyên miễn phí <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <Link to="/solutions/checklist" className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
+              <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Free resource</p>
+              <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">Checklist 50 điểm tự đánh giá Supply Chain</h3>
+            </Link>
+            <Link to="/solutions/tools" className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
+              <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Free resource</p>
+              <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">Supply Chain Maturity Assessment</h3>
+            </Link>
+            <Link to="/solutions/tools" className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
+              <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Free resource</p>
+              <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">Forecast Error Calculator</h3>
+            </Link>
+            <Link to="/solutions/products/master-data-audit-checklist" className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
+              <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Free resource</p>
+              <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">Master Data Audit Checklist</h3>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16">
+        <Container>
+          <div className="mb-8 flex items-center justify-between">
             <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Sản phẩm số Supply Chain</h2>
-            <Link to="/books" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
+            <Link to="/solutions/products" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
               Xem tất cả <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -219,7 +251,7 @@ export function Home() {
         <Container>
           <div className="mb-8 flex items-center justify-between">
             <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Công cụ miễn phí &amp; template vận hành</h2>
-            <Link to="/tools" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
+            <Link to="/solutions/tools" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
               Xem tất cả <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -268,7 +300,7 @@ export function Home() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <Link to="/services" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:bg-[#0a4242]">
+            <Link to="/solutions/services" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:bg-[#0a4242]">
               Xem chi tiết dịch vụ
             </Link>
           </div>
@@ -284,7 +316,7 @@ export function Home() {
             <p className="mb-8 text-slate-300">
               Tự đánh giá năng lực SCM của doanh nghiệp và nhận kế hoạch cải thiện phù hợp với mức độ trưởng thành hiện tại.
             </p>
-            <Link to="/checklist" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-8 py-4 font-medium text-white transition-colors hover:brightness-105">
+            <Link to="/solutions/checklist" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-8 py-4 font-medium text-white transition-colors hover:brightness-105">
               Tải checklist miễn phí
             </Link>
           </div>
