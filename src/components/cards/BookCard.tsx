@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 
 interface Product {
   id: string
+  slug: string
   title: string
   category: string
   status: string
@@ -42,8 +43,15 @@ export default function BookCard({ book }: BookCardProps) {
           </span>
         </div>
 
-        <h3 className="font-[var(--font-display)] text-xl leading-tight text-[var(--color-text)]">{book.title}</h3>
+        <h3 className="font-[var(--font-display)] text-xl leading-tight text-[var(--color-text)]">
+          <Link to={`/books/${book.slug}`} className="hover:text-[var(--color-primary)]">
+            {book.title}
+          </Link>
+        </h3>
         <p className="mt-3 flex-1 text-sm leading-6 text-[var(--color-text-muted)]">{book.description}</p>
+        <Link to={`/books/${book.slug}`} className="mt-4 text-sm font-medium text-[var(--color-primary)] hover:underline">
+          Xem chi tiết
+        </Link>
 
         <div className="mt-5 border-t border-[var(--color-border)] pt-5">
           <div className="text-sm text-[var(--color-text-muted)]">Giá</div>

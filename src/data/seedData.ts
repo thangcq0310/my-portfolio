@@ -378,6 +378,19 @@ export const seedBooks = [
     featured: false,
     addedAt: { seconds: 1703721600, nanoseconds: 0 },
   },
+  {
+    id: "6",
+    title: "30 Công Cụ Quản Trị Supply Chain Thực Chiến",
+    slug: "30-cong-cu-quan-tri-supply-chain-thuc-chien",
+    category: "Playbook / eBook",
+    status: "Đang phát triển",
+    description:
+      "Mini eBook hệ thống hóa 30 công cụ thực chiến cho Planning, Inventory, Warehouse, Logistics Cost và KPI, giúp đội ngũ Supply Chain áp dụng nhanh vào vận hành doanh nghiệp Việt Nam.",
+    price: "199.000 – 399.000 VND",
+    ctaLabel: "Nhận thông báo khi ra mắt",
+    featured: true,
+    addedAt: { seconds: 1703635200, nanoseconds: 0 },
+  },
 ]
 
 export const seedTools = [
