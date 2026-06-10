@@ -1,4 +1,4 @@
-import { Mail, Package, Target, Database, Warehouse, BarChart3, Users, FileText } from "lucide-react"
+import { Mail, Package, Target, Database, Warehouse, BarChart3, Users, FileText, CheckCircle2 } from "lucide-react"
 import Container from "../components/layout/Container"
 
 const pillars = [
@@ -31,6 +31,24 @@ const pillars = [
     title: "People & Governance",
     description: "Thiết lập SOP, RACI và nhịp review giúp các phòng ban phối hợp thay vì xử lý sự vụ rời rạc.",
     icon: Users,
+  },
+]
+
+const trustCards = [
+  {
+    title: "Bắt đầu từ vấn đề vận hành thật",
+    description: "Nội dung không bắt đầu từ thuật ngữ, mà từ các vấn đề như tồn cao nhưng thiếu hàng, forecast sai, master data lỗi, SLA 3PL yếu và dashboard không ra quyết định.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Có lộ trình học và tài nguyên đi kèm",
+    description: "Mỗi chủ đề được kết nối với Learning Hub, bài viết, checklist, công cụ hoặc sản phẩm số liên quan.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Tập trung bối cảnh doanh nghiệp Việt Nam",
+    description: "Ưu tiên cách triển khai đơn giản, linh hoạt, phù hợp với dữ liệu phân tán, nguồn lực hạn chế và vận hành thực tế.",
+    icon: CheckCircle2,
   },
 ]
 
@@ -75,6 +93,22 @@ export function About() {
             </div>
           </aside>
         </div>
+
+        {/* Trust section */}
+        <section className="mt-10">
+          <div className="mb-8 max-w-3xl">
+            <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">SCHub.vn khác gì một blog Supply Chain thông thường?</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {trustCards.map((card) => (
+              <div key={card.title} className="surface-panel rounded-[var(--radius-xl)] p-6">
+                <card.icon className="mb-4 h-8 w-8 text-[var(--color-primary)]" />
+                <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)]">{card.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">{card.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="mt-10">
           <div className="mb-8 max-w-3xl">

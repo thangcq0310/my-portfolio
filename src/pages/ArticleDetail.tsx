@@ -11,8 +11,8 @@ export function ArticleDetail() {
     return (
       <Container>
         <div className="py-12 text-center">
-          <h1 className="text-2xl font-bold text-[#0F172A] mb-4">Bài viết không tồn tại</h1>
-          <Link to="/articles" className="text-[#072C2C] hover:opacity-80">← Quay lại bài viết</Link>
+          <h1 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)] mb-4">Bài viết không tồn tại</h1>
+          <Link to="/blog" className="text-[var(--color-primary)] hover:opacity-80">← Quay lại Blog</Link>
         </div>
       </Container>
     )
@@ -26,45 +26,67 @@ export function ArticleDetail() {
     <Container>
       <div className="py-12">
         <article className="max-w-3xl">
-        <Link to="/articles" className="inline-flex items-center gap-1 text-[#072C2C] hover:opacity-80 mb-6">
-          <ArrowLeft className="w-4 h-4" /> Quay lại
+        <Link to="/blog" className="focus-ring inline-flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80 mb-6">
+          <ArrowLeft className="h-4 w-4" /> Quay lại Blog
         </Link>
         
         <div className="flex flex-wrap gap-2 mb-4">
           {article.tags.map(tag => (
-            <span key={tag} className="px-2 py-1 bg-[#072C2C]/10 text-[#072C2C] text-xs rounded-full">
+            <span key={tag} className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-3 py-1 text-xs font-medium text-[var(--color-text-muted)]">
               {tag}
             </span>
           ))}
         </div>
         
-        <h1 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">{article.title}</h1>
+        <h1 className="font-[var(--font-display)] text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">{article.title}</h1>
         
-        <div className="flex items-center gap-6 text-sm text-slate-500 mb-8">
+        <div className="flex items-center gap-6 text-sm text-[var(--color-text-muted)] mb-8">
           <span className="flex items-center gap-1">
-            <User className="w-4 h-4" />
+            <User className="h-4 w-4" />
             {article.authorName}
           </span>
           <span className="flex items-center gap-1">
-            <Clock className="w-4 h-4" />
+            <Clock className="h-4 w-4" />
             {article.readTimeMinutes} phút đọc
           </span>
         </div>
         
         <div className="prose prose-slate max-w-none">
-          <p className="text-lg text-slate-600 mb-8">{article.excerpt}</p>
-          <div className="whitespace-pre-wrap">{article.body}</div>
+          <p className="text-lg text-[var(--color-text-muted)] mb-8">{article.excerpt}</p>
+          <div className="whitespace-pre-wrap text-[var(--color-text)]">{article.body}</div>
         </div>
       </article>
       
+      {/* CTA at end of article */}
+      <section className="surface-panel mt-12 rounded-[var(--radius-xl)] p-8 text-center">
+        <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Muốn áp dụng vào vận hành?</h2>
+        <p className="mx-auto mt-3 max-w-2xl text-[var(--color-text-muted)]">
+          Bắt đầu bằng checklist 50 điểm hoặc xem các tài nguyên liên quan trong Solutions để chuyển từ đọc bài sang hành động.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
+          <Link
+            to="/solutions/checklist"
+            className="focus-ring inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
+          >
+            Làm checklist 50 điểm
+          </Link>
+          <Link
+            to="/solutions"
+            className="focus-ring inline-flex items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-6 py-3 font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-border-strong)]"
+          >
+            Xem Solutions
+          </Link>
+        </div>
+      </section>
+      
       {related.length > 0 && (
-          <div className="mt-12 pt-12 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-[#0F172A] mb-6">Bài viết liên quan</h2>
+          <div className="mt-12 pt-12 border-t border-[var(--color-border)]">
+            <h2 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-6">Bài viết liên quan</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {related.map(a => (
-                <Link key={a.id} to={`/articles/${a.slug}`} className="block bg-white rounded-xl border border-slate-200 p-4 hover:shadow-md transition-shadow">
-                  <h3 className="font-semibold text-[#0F172A] mb-2">{a.title}</h3>
-                  <p className="text-sm text-slate-500 line-clamp-2">{a.excerpt}</p>
+                <Link key={a.id} to={`/blog/${a.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
+                  <h3 className="font-[var(--font-display)] text-lg text-[var(--color-text)] mb-2">{a.title}</h3>
+                  <p className="text-sm text-[var(--color-text-muted)] line-clamp-2">{a.excerpt}</p>
                 </Link>
               ))}
             </div>

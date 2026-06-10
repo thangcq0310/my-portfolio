@@ -12,9 +12,9 @@ export function Learning() {
     <Container>
       <div className="py-16">
         <div className="mb-10 max-w-4xl">
-          <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Học Supply Chain theo lộ trình</h1>
+          <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Learning Hub Supply Chain</h1>
           <p className="mt-4 text-lg text-[var(--color-text-muted)]">
-            Bắt đầu từ nền tảng chuỗi cung ứng, sau đó đi vào demand analysis, demand management, forecasting, S&amp;OP và operations planning.
+            Các lộ trình học thực chiến giúp bạn đi từ nền tảng Supply Chain đến demand analysis, demand management, forecasting, S&OP và operations planning.
           </p>
         </div>
 
@@ -26,7 +26,7 @@ export function Learning() {
                   {path.status}
                 </span>
               </div>
-              <p className="mt-4 font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Learning path</p>
+              <p className="mt-4 font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Lộ trình học</p>
               <h2 className="mt-3 font-[var(--font-display)] text-2xl text-[var(--color-text)]">{path.vietnameseTitle}</h2>
               <p className="mt-2 text-sm text-[var(--color-text-muted)]">{path.title}</p>
               <p className="mt-4 text-sm leading-6 text-[var(--color-text-muted)]">{path.description}</p>

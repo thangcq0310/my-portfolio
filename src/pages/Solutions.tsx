@@ -43,20 +43,20 @@ export function Solutions() {
                   Giải pháp Supply Chain thực chiến
                 </h1>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">
-                  Từ tài nguyên miễn phí, sản phẩm số, công cụ đến dịch vụ triển khai — SCHub.vn giúp doanh nghiệp bắt đầu nhỏ, áp dụng nhanh và mở rộng theo nhu cầu thực tế.
+                  Từ tài nguyên miễn phí, sản phẩm số, công cụ đến dịch vụ tư vấn — SCHub.vn giúp doanh nghiệp bắt đầu nhỏ, áp dụng nhanh và mở rộng theo nhu cầu thực tế.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
-                    href="#featured-solutions"
+                    href="#categories"
                     className="focus-ring inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
                   >
-                    Khám phá giải pháp
+                    Xem 4 nhóm giải pháp
                   </a>
                   <Link
-                    to="/solutions/tools"
+                    to="/solutions/resources"
                     className="focus-ring inline-flex items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-6 py-3 font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-border-strong)]"
                   >
-                    Xem công cụ
+                    Bắt đầu với tài nguyên miễn phí
                   </Link>
                 </div>
               </div>
@@ -82,10 +82,10 @@ export function Solutions() {
           </Container>
         </section>
 
-        <section className="py-16">
+        <section id="categories" className="py-16">
           <Container>
             <div className="mb-8 max-w-3xl">
-              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">4 nhóm giải pháp chính</h2>
+              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">4 nhóm giải pháp</h2>
               <p className="mt-3 text-[var(--color-text-muted)]">
                 Mỗi nhóm đại diện cho một cách doanh nghiệp bắt đầu giải quyết bài toán Supply Chain: từ tài nguyên miễn phí, sản phẩm số, công cụ đến dịch vụ triển khai.
               </p>
@@ -98,13 +98,13 @@ export function Solutions() {
           </Container>
         </section>
 
-        <section id="featured-solutions" className="py-16">
+        <section id="solutions-list" className="py-16">
           <Container>
             <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">
-                <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Giải pháp nổi bật</h2>
+                <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Giải pháp đang được đóng gói</h2>
                 <p className="mt-3 text-[var(--color-text-muted)]">
-                  Một số card mẫu để thể hiện cách SCHub có thể đóng gói tài nguyên, công cụ, sản phẩm và dịch vụ cho doanh nghiệp.
+                  Các tài nguyên, công cụ, sản phẩm và dịch vụ đang được SCHub.vn đóng gói theo từng bài toán vận hành cụ thể.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">

@@ -30,7 +30,7 @@ export function Articles() {
         <div className="mb-10 max-w-3xl">
           <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Blog</h1>
           <p className="mt-4 text-lg text-[var(--color-text-muted)]">
-            Các bài viết thực chiến về planning, procurement, inventory, warehouse, logistics cost và digital SCM.
+            Bài viết thực chiến về planning, inventory, warehouse, 3PL, master data, KPI và logistics cost — viết ngắn, dễ hiểu và gắn với tình huống vận hành.
           </p>
         </div>
 

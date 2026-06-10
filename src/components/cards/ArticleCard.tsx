@@ -16,7 +16,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     >
       <div className="bg-[var(--color-primary)] p-5 text-white">
         <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-white/70">
-          SCHUB.VN PLAYBOOK
+          THỰC CHIẾN SCM
         </p>
         <div className="mt-5 h-px w-12 bg-[var(--color-secondary)]" />
         <p className="mt-4 text-xs uppercase tracking-wide text-white/70">

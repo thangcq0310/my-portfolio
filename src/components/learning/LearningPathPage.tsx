@@ -64,7 +64,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
     <Container>
       <div className="py-16">
         <div className="mb-6 text-sm text-[var(--color-text-muted)]">
-          <Link to="/learning" className="hover:text-[var(--color-primary)]">Learning</Link>
+          <Link to="/learning" className="hover:text-[var(--color-primary)]">Learning Hub</Link>
           <span className="mx-2">/</span>
           <span>{path.vietnameseTitle}</span>
         </div>
@@ -75,7 +75,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
               {path.status}
             </span>
             <span className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-3 py-1 text-xs font-medium text-[var(--color-text-muted)]">
-              Learning Path
+              Lộ trình học
             </span>
           </div>
           <p className="mt-5 font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
@@ -92,7 +92,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
             to="/solutions/checklist"
             className="focus-ring mt-8 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
           >
-            Nhận thông báo khi hoàn thiện
+            Nhận tài nguyên khi hoàn thiện
           </Link>
         </section>
 
@@ -100,7 +100,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
           <div className="mb-8 max-w-3xl">
             <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Bài học trong lộ trình</h2>
             <p className="mt-3 text-[var(--color-text-muted)]">
-              Đây là các bài học đang được phát triển để đội ngũ vận hành học theo từng chủ đề và áp dụng dần vào thực tế.
+              Mỗi bài học tập trung vào một khái niệm hoặc tình huống vận hành, kèm bài viết, công cụ hoặc sản phẩm liên quan nếu đã có.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -120,57 +120,60 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
           </div>
         </section>
 
-        <section className="mt-12 grid gap-8 lg:grid-cols-3">
-          <div>
-            <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Bài viết liên quan</h2>
-            <div className="mt-4 space-y-4">
-              {relatedArticles.length > 0
-                ? relatedArticles.map((article) => (
-                    <Link key={article.slug} to={`/blog/${article.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
-                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Bài viết</p>
-                      <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{article.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{article.excerpt}</p>
-                    </Link>
-                  ))
-                : placeholderCard("Bài viết đang được biên soạn", "SCHub sẽ bổ sung bài viết thực chiến cho chủ đề này khi Learning Hub hoàn thiện hơn.")}
+        <section className="mt-12">
+          <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)] mb-6">Tài nguyên đi kèm</h2>
+          <div className="grid gap-8 lg:grid-cols-3">
+            <div>
+              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Bài viết liên quan</h3>
+              <div className="space-y-4">
+                {relatedArticles.length > 0
+                  ? relatedArticles.map((article) => (
+                      <Link key={article.slug} to={`/blog/${article.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
+                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Bài viết</p>
+                        <h4 className="mt-3 font-[var(--font-display)] text-lg text-[var(--color-text)]">{article.title}</h4>
+                        <p className="mt-2 text-sm text-[var(--color-text-muted)]">{article.excerpt}</p>
+                      </Link>
+                    ))
+                  : placeholderCard("Bài viết đang được biên soạn", "SCHub sẽ bổ sung bài viết thực chiến cho chủ đề này khi Learning Hub hoàn thiện hơn.")}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Sản phẩm liên quan</h2>
-            <div className="mt-4 space-y-4">
-              {relatedProducts.length > 0
-                ? relatedProducts.map((product) => (
-                    <Link key={product.slug} to={`/solutions/products/${product.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
-                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Sản phẩm số</p>
-                      <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{product.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{product.description}</p>
-                    </Link>
-                  ))
-                : placeholderCard("Sản phẩm đang được chuẩn bị", "Khi có template hoặc playbook phù hợp, SCHub sẽ gắn vào lộ trình này.")}
+            <div>
+              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Sản phẩm liên quan</h3>
+              <div className="space-y-4">
+                {relatedProducts.length > 0
+                  ? relatedProducts.map((product) => (
+                      <Link key={product.slug} to={`/solutions/products/${product.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
+                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Sản phẩm số</p>
+                        <h4 className="mt-3 font-[var(--font-display)] text-lg text-[var(--color-text)]">{product.title}</h4>
+                        <p className="mt-2 text-sm text-[var(--color-text-muted)]">{product.description}</p>
+                      </Link>
+                    ))
+                  : placeholderCard("Sản phẩm đang được chuẩn bị", "Khi có template hoặc playbook phù hợp, SCHub sẽ gắn vào lộ trình này.")}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Công cụ liên quan</h2>
-            <div className="mt-4 space-y-4">
-              {relatedTools.length > 0
-                ? relatedTools.map((tool) => (
-                    <div key={tool.slug} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
-                      <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Công cụ</p>
-                      <h3 className="mt-3 font-[var(--font-display)] text-xl text-[var(--color-text)]">{tool.name}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{tool.description}</p>
-                    </div>
-                  ))
-                : placeholderCard("Công cụ đang được phát triển", "SCHub sẽ bổ sung calculator hoặc assessment phù hợp khi nhóm công cụ sẵn sàng hơn.")}
+            <div>
+              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Công cụ liên quan</h3>
+              <div className="space-y-4">
+                {relatedTools.length > 0
+                  ? relatedTools.map((tool) => (
+                      <div key={tool.slug} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
+                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Công cụ</p>
+                        <h4 className="mt-3 font-[var(--font-display)] text-lg text-[var(--color-text)]">{tool.name}</h4>
+                        <p className="mt-2 text-sm text-[var(--color-text-muted)]">{tool.description}</p>
+                      </div>
+                    ))
+                  : placeholderCard("Công cụ đang được phát triển", "SCHub sẽ bổ sung calculator hoặc assessment phù hợp khi nhóm công cụ sẵn sàng hơn.")}
+              </div>
             </div>
           </div>
         </section>
 
         <section className="surface-panel mt-12 rounded-[var(--radius-xl)] p-8 text-center">
-          <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Muốn học theo lộ trình thực chiến?</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-[var(--color-text-muted)]">
-            Để lại email để nhận checklist, template và thông báo khi các bài học mới được phát hành.
+          <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Muốn đi từ học đến áp dụng?</h2>
+          <p className="mx-auto mt-3 max-w-xl text-[var(--color-text-muted)]">
+            Bắt đầu với checklist 50 điểm để xác định điểm nghẽn hiện tại, sau đó chọn lộ trình và tài nguyên phù hợp.
           </p>
           <Link
             to="/solutions/checklist"
