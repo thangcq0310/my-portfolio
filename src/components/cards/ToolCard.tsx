@@ -6,9 +6,9 @@ interface ToolCardProps {
 
 export default function ToolCard({ tool }: ToolCardProps) {
   const pricingColors = {
-    free: "bg-teal-50 text-teal-700 border-teal-200",
-    freemium: "bg-amber-50 text-amber-700 border-amber-200",
-    paid: "bg-red-50 text-red-700 border-red-200",
+    free: "bg-[#072C2C]/10 text-[#072C2C] border-[#072C2C]/20",
+    freemium: "bg-[#D97706]/10 text-[#D97706] border-[#D97706]/20",
+    paid: "bg-[#DC2626]/10 text-[#DC2626] border-[#DC2626]/20",
   };
   
   const pricingLabels = {
@@ -18,9 +18,9 @@ export default function ToolCard({ tool }: ToolCardProps) {
   };
   
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-amber-400 hover:shadow-md transition-all h-full flex flex-col">
-      {/* Visual header - amber for tools */}
-      <div className="h-2 bg-amber-600" />
+    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-slate-300 hover:shadow-md transition-all h-full flex flex-col">
+      {/* Secondary orange header for tools */}
+      <div className="h-2 bg-[#FF5F03]" />
       <div className="p-5 flex-1 flex flex-col">
         <h3 className="font-semibold text-slate-900 mb-1">{tool.name}</h3>
         <p className="text-sm text-slate-600 mb-3 line-clamp-2">{tool.description}</p>

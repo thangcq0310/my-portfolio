@@ -10,10 +10,10 @@ export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link
       to={`/articles/${article.slug}`}
-      className="block bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-sky-400 hover:shadow-md transition-all h-full"
+      className="block bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-slate-300 hover:shadow-md transition-all h-full"
     >
-      {/* Minimal cover - editorial gradient */}
-      <div className="h-2 bg-gradient-to-r from-slate-800 to-slate-600" />
+      {/* Primary color header */}
+      <div className="h-2 bg-[#072C2C]" />
       <div className="p-5">
         {/* Label */}
         <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">

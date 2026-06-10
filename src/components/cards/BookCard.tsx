@@ -7,9 +7,9 @@ interface BookCardProps {
 
 export default function BookCard({ book }: BookCardProps) {
   const difficultyColors = {
-    beginner: "bg-teal-50 text-teal-700 border-teal-200",
-    intermediate: "bg-amber-50 text-amber-700 border-amber-200",
-    advanced: "bg-red-50 text-red-700 border-red-200",
+    beginner: "bg-[#072C2C]/10 text-[#072C2C] border-[#072C2C]/20",
+    intermediate: "bg-[#D97706]/10 text-[#D97706] border-[#D97706]/20",
+    advanced: "bg-[#DC2626]/10 text-[#DC2626] border-[#DC2626]/20",
   };
   
   const difficultyLabels = {
@@ -19,9 +19,9 @@ export default function BookCard({ book }: BookCardProps) {
   };
   
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-teal-400 hover:shadow-md transition-all h-full flex flex-col">
-      {/* Visual header - teal */}
-      <div className="h-2 bg-teal-700" />
+    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-slate-300 hover:shadow-md transition-all h-full flex flex-col">
+      {/* Primary color header */}
+      <div className="h-2 bg-[#072C2C]" />
       <div className="p-5 flex-1 flex flex-col">
         <h3 className="font-semibold text-slate-900 mb-1">{book.title}</h3>
         <p className="text-sm text-slate-500 mb-2">{book.author}</p>
