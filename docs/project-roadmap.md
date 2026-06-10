@@ -48,6 +48,13 @@ Initial learning paths:
 - S&OP
 - Operations Planning & Control
 
+## Content Architecture
+
+SCHub.vn content should connect:
+Learning Path → Lesson → Article → Tool/Product → Lead CTA
+
+Each pillar article must map to one learning path and one product/tool skeleton.
+
 ## MVP Website Routes
 
 - /

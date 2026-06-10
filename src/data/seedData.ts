@@ -310,6 +310,204 @@ Không cần quá nhiều KPI. 10-15 KPI là đủ.`,
     featured: false,
     publishedAt: { seconds: 1703635200, nanoseconds: 0 },
   },
+  {
+    id: "7",
+    title: "Supply Chain là gì và khác Logistics như thế nào?",
+    slug: "supply-chain-la-gi-khac-logistics-nhu-the-nao",
+    excerpt: "Supply Chain rộng hơn logistics vì bao gồm cả lập kế hoạch, mua hàng, sản xuất, tồn kho, phân phối và cơ chế ra quyết định toàn chuỗi.",
+    body: `# Supply Chain là gì và khác Logistics như thế nào?
+
+## Vấn đề thực tế
+
+Nhiều doanh nghiệp gọi mọi việc liên quan đến kho vận là logistics, trong khi gốc vấn đề lại nằm ở planning, mua hàng hoặc phối hợp giữa các phòng ban.
+
+## Khái niệm cốt lõi
+
+Supply Chain là hệ thống điều phối dòng vật chất, thông tin và quyết định từ nhà cung cấp đến khách hàng cuối. Logistics là một phần trong hệ thống đó, tập trung nhiều hơn vào vận chuyển, lưu kho và thực thi dòng hàng.
+
+## Áp dụng tại doanh nghiệp Việt Nam
+
+Nếu chỉ tối ưu giao nhận mà không chạm vào forecast, master data hoặc chính sách tồn kho, doanh nghiệp rất dễ giảm được chi phí cục bộ nhưng vẫn thiếu hàng hoặc dư hàng toàn hệ thống.
+
+## Template / tool liên quan
+
+Có thể bắt đầu bằng Supply Chain Maturity Assessment để xác định doanh nghiệp đang yếu ở logistics execution hay ở năng lực quản trị chuỗi cung ứng tổng thể.
+
+## Kết luận hành động
+
+Trước khi sửa một chỉ số logistics, hãy xác định vấn đề đang nằm ở execution hay ở cấu trúc supply chain rộng hơn.`,
+    type: "article" as const,
+    tags: ["SCM", "Logistics", "Governance"],
+    authorName: "SCHub.vn",
+    readTimeMinutes: 7,
+    featured: false,
+    publishedAt: { seconds: 1703548800, nanoseconds: 0 },
+  },
+  {
+    id: "8",
+    title: "Trend, Seasonality, Cycle và Random Variation khác nhau thế nào?",
+    slug: "trend-seasonality-cycle-random-variation",
+    excerpt: "Muốn forecast tốt hơn, trước hết cần hiểu dữ liệu đang tăng trưởng dài hạn, lặp theo mùa hay chỉ nhiễu ngắn hạn.",
+    body: `# Trend, Seasonality, Cycle và Random Variation khác nhau thế nào?
+
+## Vấn đề thực tế
+
+Nhiều đội planning nhìn doanh số tăng giảm theo vài tháng rồi kết luận vội rằng thị trường đang tăng mạnh hoặc sản phẩm đã yếu đi.
+
+## Khái niệm cốt lõi
+
+Trend là xu hướng dài hạn, seasonality là mô hình lặp theo mùa, cycle là biến động theo chu kỳ kinh doanh dài hơn và random variation là nhiễu không có quy luật rõ ràng.
+
+## Áp dụng tại doanh nghiệp Việt Nam
+
+Nếu không phân biệt đúng các dạng biến động, doanh nghiệp dễ tăng tồn kho trước một biến động ngắn hạn hoặc cắt mua hàng quá sớm khi nhu cầu đang mang tính mùa vụ.
+
+## Template / tool liên quan
+
+Demand Pattern Analyzer có thể là khung đầu tiên để nhóm planning ghi nhận và phân loại từng dạng biến động trước khi chọn phương pháp forecast.
+
+## Kết luận hành động
+
+Đừng tranh luận bằng cảm giác. Hãy đọc dữ liệu theo pattern rồi mới quyết định mô hình forecast và mức độ can thiệp thủ công.`,
+    type: "article" as const,
+    tags: ["Demand Planning", "Forecasting"],
+    authorName: "SCHub.vn",
+    readTimeMinutes: 7,
+    featured: false,
+    publishedAt: { seconds: 1703462400, nanoseconds: 0 },
+  },
+  {
+    id: "9",
+    title: "Demand Management không phải chỉ là Forecast",
+    slug: "demand-management-khong-phai-chi-la-forecast",
+    excerpt: "Forecast chỉ là một đầu vào. Demand management còn bao gồm điều chỉnh thương mại, truyền thông giả định và đồng bộ quyết định giữa sales với supply.",
+    body: `# Demand Management không phải chỉ là Forecast
+
+## Vấn đề thực tế
+
+Nhiều công ty có file forecast nhưng khi sale chạy chương trình, supply không biết, còn nhà máy thì vẫn sản xuất theo nhịp cũ.
+
+## Khái niệm cốt lõi
+
+Demand management là quá trình tạo, điều chỉnh, truyền thông và chốt nhu cầu thống nhất. Forecast là một thành phần, không phải toàn bộ hệ thống.
+
+## Áp dụng tại doanh nghiệp Việt Nam
+
+Doanh nghiệp nên có demand plan thể hiện lịch sử bán hàng, thay đổi thương mại, giả định thị trường và phiên bản consensus giữa sales, planning và vận hành.
+
+## Template / tool liên quan
+
+Demand Plan Template giúp lưu lại demand history, commercial adjustment và assumption log để mọi người nhìn cùng một bức tranh.
+
+## Kết luận hành động
+
+Nếu forecast đang lệch liên tục, đừng chỉ đổi công thức. Hãy xem demand management đã có cơ chế giao tiếp và chốt giả định hay chưa.`,
+    type: "article" as const,
+    tags: ["Demand Planning", "S&OP"],
+    authorName: "SCHub.vn",
+    readTimeMinutes: 8,
+    featured: false,
+    publishedAt: { seconds: 1703376000, nanoseconds: 0 },
+  },
+  {
+    id: "10",
+    title: "Forecast luôn sai — vậy tại sao vẫn phải forecast?",
+    slug: "forecast-luon-sai-vay-tai-sao-van-phai-forecast",
+    excerpt: "Forecast không phải để đoán đúng tuyệt đối mà để doanh nghiệp chuẩn bị năng lực, tồn kho, vật tư và cash flow tốt hơn hiện tại.",
+    body: `# Forecast luôn sai — vậy tại sao vẫn phải forecast?
+
+## Vấn đề thực tế
+
+Nhiều đội ngũ bỏ qua forecast vì cho rằng số nào cũng sai, nên cuối cùng chỉ phản ứng theo đơn hàng đến đâu xử lý đến đó.
+
+## Khái niệm cốt lõi
+
+Forecast là công cụ định hướng quyết định trong điều kiện không chắc chắn. Giá trị của forecast nằm ở việc giúp chuẩn bị trước, không nằm ở việc đoán trúng từng dòng SKU.
+
+## Áp dụng tại doanh nghiệp Việt Nam
+
+Doanh nghiệp có thể dùng forecast để chốt mua nguyên vật liệu, chuẩn bị năng lực kho, lên khung sản xuất và nhìn trước rủi ro thiếu hàng hoặc tồn kho dư thừa.
+
+## Template / tool liên quan
+
+Forecasting Starter Template và Forecast Error Calculator là hai khung phù hợp để bắt đầu theo dõi cả forecast lẫn sai số forecast một cách có hệ thống.
+
+## Kết luận hành động
+
+Đừng hỏi forecast có đúng 100% không. Hãy hỏi forecast hiện tại có đủ tốt để ra quyết định tốt hơn hôm qua hay chưa.`,
+    type: "article" as const,
+    tags: ["Forecasting", "Planning"],
+    authorName: "SCHub.vn",
+    readTimeMinutes: 7,
+    featured: false,
+    publishedAt: { seconds: 1703289600, nanoseconds: 0 },
+  },
+  {
+    id: "11",
+    title: "S&OP không phải là cuộc họp báo cáo",
+    slug: "sop-khong-phai-la-cuoc-hop-bao-cao",
+    excerpt: "Nếu S&OP chỉ là nơi các phòng ban đọc số liệu, doanh nghiệp sẽ không bao giờ có one-number plan thực sự để hành động.",
+    body: `# S&OP không phải là cuộc họp báo cáo
+
+## Vấn đề thực tế
+
+Nhiều cuộc họp S&OP kéo dài nhưng kết thúc mà không có quyết định nào rõ ràng về nhu cầu, năng lực hay ưu tiên khách hàng.
+
+## Khái niệm cốt lõi
+
+S&OP là cơ chế ra quyết định liên phòng ban nhằm cân bằng demand, supply và tài chính. Báo cáo chỉ là đầu vào, không phải mục tiêu cuối cùng.
+
+## Áp dụng tại doanh nghiệp Việt Nam
+
+Doanh nghiệp nên tách rõ demand review, supply review và executive review để mỗi vòng họp có câu hỏi quyết định riêng thay vì gom tất cả vào một buổi trình bày.
+
+## Template / tool liên quan
+
+S&OP Calendar & Meeting Pack và S&OP Readiness Check giúp xây nhịp họp, agenda và tiêu chí đánh giá mức độ sẵn sàng triển khai.
+
+## Kết luận hành động
+
+Nếu sau mỗi kỳ S&OP mà không có quyết định, owner và action rõ ràng, thì đó vẫn chỉ là cuộc họp báo cáo.`,
+    type: "article" as const,
+    tags: ["S&OP", "Governance"],
+    authorName: "SCHub.vn",
+    readTimeMinutes: 8,
+    featured: false,
+    publishedAt: { seconds: 1703203200, nanoseconds: 0 },
+  },
+  {
+    id: "12",
+    title: "Từ Forecast đến MRP: luồng kế hoạch sản xuất nên hiểu thế nào?",
+    slug: "tu-forecast-den-mrp-luong-ke-hoach-san-xuat",
+    excerpt: "Từ forecast đến master plan, rồi đến MRP và capacity planning là một luồng liên kết. Gãy ở bất kỳ bước nào cũng khiến kế hoạch thực thi sai lệch.",
+    body: `# Từ Forecast đến MRP: luồng kế hoạch sản xuất nên hiểu thế nào?
+
+## Vấn đề thực tế
+
+Nhiều doanh nghiệp có forecast nhưng nhà máy vẫn thiếu vật tư hoặc quá tải vì forecast không được chuyển thành một chuỗi kế hoạch có logic.
+
+## Khái niệm cốt lõi
+
+Forecast là đầu vào của planning, master plan chuyển nhu cầu thành định hướng vận hành, còn MRP và capacity planning giúp kiểm tra tính khả thi theo vật tư và nguồn lực.
+
+## Áp dụng tại doanh nghiệp Việt Nam
+
+Nếu doanh nghiệp nhảy thẳng từ forecast sang đặt mua hoặc sản xuất mà không có tầng kế hoạch trung gian, rủi ro lệch vật tư, quá tải năng lực và tồn kho sai cấu trúc sẽ tăng mạnh.
+
+## Template / tool liên quan
+
+S&OP Calendar & Meeting Pack có thể giúp doanh nghiệp chốt nhịp kế hoạch, còn Warehouse Capacity Calculator hỗ trợ nhìn sớm constraint phía kho và phân phối.
+
+## Kết luận hành động
+
+Hãy kiểm tra luồng planning từ forecast đến MRP như một chuỗi kết nối, không phải các file rời rạc chạy song song.`,
+    type: "article" as const,
+    tags: ["Planning", "MRP", "Capacity"],
+    authorName: "SCHub.vn",
+    readTimeMinutes: 8,
+    featured: false,
+    publishedAt: { seconds: 1703116800, nanoseconds: 0 },
+  },
 ]
 
 export const seedBooks = [
