@@ -36,6 +36,18 @@ Within 90 days:
 - Master Data Audit Checklist
 - S&OP Calendar & Meeting Pack
 
+## Learning Hub
+
+Learning Hub is a skeleton content architecture inspired by the CSCP Module 1 topic map but rewritten for Vietnamese practical SCM use cases. It must not copy APICS content.
+
+Initial learning paths:
+- Supply Chain Foundation
+- Demand Analysis
+- Demand Management
+- Forecasting
+- S&OP
+- Operations Planning & Control
+
 ## MVP Website Routes
 
 - /

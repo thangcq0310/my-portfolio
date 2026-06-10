@@ -5,6 +5,7 @@ import ArticleCard from "../components/cards/ArticleCard"
 import BookCard from "../components/cards/BookCard"
 import ToolCard from "../components/cards/ToolCard"
 import { seedArticles, seedBooks, seedTools } from "../data/seedData"
+import { learningPaths } from "../data/learningPaths"
 
 const topics = [
   "Tất cả", "Warehouse", "Inventory", "Cold Chain", "FEFO/FIFO", "WMS", "3PL", "S&OP",
@@ -63,6 +64,7 @@ export function Home() {
   const featuredArticles = seedArticles.filter(a => a.featured).slice(0, 6)
   const featuredBooks = seedBooks.filter(b => b.featured).slice(0, 3)
   const featuredTools = seedTools.filter(t => t.featured).slice(0, 4)
+  const featuredLearningPaths = learningPaths.filter((path) => ["supply-chain-foundation", "forecasting", "sop"].includes(path.slug))
 
   return (
     <div>
@@ -224,6 +226,30 @@ export function Home() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {featuredTools.map(tool => (
               <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16">
+        <Container>
+          <div className="mb-8 flex items-center justify-between">
+            <div>
+              <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Học Supply Chain theo lộ trình</h2>
+              <p className="mt-3 max-w-2xl text-[var(--color-text-muted)]">Các lộ trình skeleton giúp bạn đi từ nền tảng Supply Chain đến demand management, forecasting, S&amp;OP và planning control.</p>
+            </div>
+            <Link to="/learning" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
+              Xem toàn bộ lộ trình <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {featuredLearningPaths.map((path) => (
+              <Link key={path.slug} to={`/learning/${path.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
+                <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Learning path</p>
+                <h3 className="mt-3 font-[var(--font-display)] text-2xl text-[var(--color-text)]">{path.vietnameseTitle}</h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">{path.description}</p>
+                <div className="mt-5 text-sm font-medium text-[var(--color-primary)]">Xem lộ trình</div>
+              </Link>
             ))}
           </div>
         </Container>

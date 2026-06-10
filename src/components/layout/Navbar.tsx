@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import { BookOpen, Briefcase, ClipboardCheck, Menu, Package, Wrench, X } from "lucide-react"
+import { BookOpen, Briefcase, ClipboardCheck, GraduationCap, Menu, Package, Wrench, X } from "lucide-react"
 import { useState } from "react"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -8,6 +8,7 @@ const navLinks = [
   { to: "/articles", label: "Bài viết", icon: BookOpen },
   { to: "/books", label: "Sản phẩm số", icon: BookOpen },
   { to: "/tools", label: "Công cụ", icon: Wrench },
+  { to: "/learning", label: "Học theo lộ trình", icon: GraduationCap },
   { to: "/services", label: "Dịch vụ", icon: Briefcase },
   { to: "/checklist", label: "Checklist", icon: ClipboardCheck },
   { to: "/about", label: "Về SCHub", icon: Package },
