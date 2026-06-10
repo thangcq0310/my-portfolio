@@ -37,12 +37,12 @@ const pillars = [
 const trustCards = [
   {
     title: "Bắt đầu từ vấn đề vận hành thật",
-    description: "Nội dung không bắt đầu từ thuật ngữ, mà từ các vấn đề như tồn cao nhưng thiếu hàng, forecast sai, master data lỗi, SLA 3PL yếu và dashboard không ra quyết định.",
+    description: "Nội dung không bắt đầu từ thuật ngữ, mà từ các vấn đề như tồn cao nhưng thiếu hàng, forecast sai, Master Data lỗi, SLA 3PL yếu và Dashboard không ra quyết định.",
     icon: CheckCircle2,
   },
   {
-    title: "Có lộ trình học và tài nguyên đi kèm",
-    description: "Mỗi chủ đề được kết nối với Learning Hub, bài viết, checklist, công cụ hoặc sản phẩm số liên quan.",
+    title: "Có Learning Hub và resource đi kèm",
+    description: "Mỗi chủ đề được kết nối với Learning Hub, Blog, checklist, tool hoặc digital product liên quan.",
     icon: CheckCircle2,
   },
   {

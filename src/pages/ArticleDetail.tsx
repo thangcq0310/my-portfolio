@@ -61,7 +61,7 @@ export function ArticleDetail() {
       <section className="surface-panel mt-12 rounded-[var(--radius-xl)] p-8 text-center">
         <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Muốn áp dụng vào vận hành?</h2>
         <p className="mx-auto mt-3 max-w-2xl text-[var(--color-text-muted)]">
-          Bắt đầu bằng checklist 50 điểm hoặc xem các tài nguyên liên quan trong Solutions để chuyển từ đọc bài sang hành động.
+          Bắt đầu bằng checklist 50 điểm hoặc xem các resources liên quan trong Solutions để chuyển từ đọc bài sang hành động.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-4">
           <Link

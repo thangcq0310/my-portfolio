@@ -25,16 +25,16 @@ function LessonActions({ lesson }: { lesson: LearningLesson }) {
       ) : null}
       {lesson.productSlug ? (
         <Link to={`/solutions/products/${lesson.productSlug}`} className="font-medium text-[var(--color-primary)] hover:underline">
-          Sản phẩm liên quan
+          Digital Product liên quan
         </Link>
       ) : null}
       {lesson.toolSlug ? (
         tool ? (
           <Link to="/solutions/tools" className="font-medium text-[var(--color-primary)] hover:underline">
-            Công cụ liên quan: {tool.name}
+            Tool liên quan: {tool.name}
           </Link>
         ) : (
-          <span className="text-[var(--color-text-muted)]">Công cụ liên quan</span>
+          <span className="text-[var(--color-text-muted)]">Tool liên quan</span>
         )
       ) : null}
       {!lesson.articleSlug && !lesson.productSlug && !lesson.toolSlug ? (
@@ -75,7 +75,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
               {path.status}
             </span>
             <span className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-3 py-1 text-xs font-medium text-[var(--color-text-muted)]">
-              Lộ trình học
+              Learning Path
             </span>
           </div>
           <p className="mt-5 font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
@@ -92,22 +92,22 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
             to="/solutions/checklist"
             className="focus-ring mt-8 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
           >
-            Nhận tài nguyên khi hoàn thiện
+            Nhận resource khi hoàn thiện
           </Link>
         </section>
 
         <section className="mt-10">
           <div className="mb-8 max-w-3xl">
-            <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Bài học trong lộ trình</h2>
+            <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Bài học trong Learning Path</h2>
             <p className="mt-3 text-[var(--color-text-muted)]">
-              Mỗi bài học tập trung vào một khái niệm hoặc tình huống vận hành, kèm bài viết, công cụ hoặc sản phẩm liên quan nếu đã có.
+              Mỗi bài học tập trung vào một concept hoặc tình huống vận hành, kèm Blog, tool hoặc digital product liên quan nếu đã có.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {path.lessons.map((lesson) => (
               <div key={lesson.slug} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Bản preview</p>
+                  <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Preview</p>
                   <span className={`rounded-full border px-3 py-1 text-xs font-medium ${statusClasses[lesson.status]}`}>
                     {lesson.status}
                   </span>
@@ -121,50 +121,50 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
         </section>
 
         <section className="mt-12">
-          <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)] mb-6">Tài nguyên đi kèm</h2>
+          <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)] mb-6">Resources đi kèm</h2>
           <div className="grid gap-8 lg:grid-cols-3">
             <div>
-              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Bài viết liên quan</h3>
+              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Blog liên quan</h3>
               <div className="space-y-4">
                 {relatedArticles.length > 0
                   ? relatedArticles.map((article) => (
                       <Link key={article.slug} to={`/blog/${article.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
-                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Bài viết</p>
+                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Blog</p>
                         <h4 className="mt-3 font-[var(--font-display)] text-lg text-[var(--color-text)]">{article.title}</h4>
                         <p className="mt-2 text-sm text-[var(--color-text-muted)]">{article.excerpt}</p>
                       </Link>
                     ))
-                  : placeholderCard("Bài viết đang được biên soạn", "SCHub sẽ bổ sung bài viết thực chiến cho chủ đề này khi Learning Hub hoàn thiện hơn.")}
+                  : placeholderCard("Blog đang được biên soạn", "SCHub sẽ bổ sung bài viết thực chiến cho chủ đề này khi Learning Hub hoàn thiện hơn.")}
               </div>
             </div>
 
             <div>
-              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Sản phẩm liên quan</h3>
+              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Digital Product liên quan</h3>
               <div className="space-y-4">
                 {relatedProducts.length > 0
                   ? relatedProducts.map((product) => (
                       <Link key={product.slug} to={`/solutions/products/${product.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-5">
-                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Sản phẩm số</p>
+                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Digital Product</p>
                         <h4 className="mt-3 font-[var(--font-display)] text-lg text-[var(--color-text)]">{product.title}</h4>
                         <p className="mt-2 text-sm text-[var(--color-text-muted)]">{product.description}</p>
                       </Link>
                     ))
-                  : placeholderCard("Sản phẩm đang được chuẩn bị", "Khi có template hoặc playbook phù hợp, SCHub sẽ gắn vào lộ trình này.")}
+                  : placeholderCard("Digital Product đang được chuẩn bị", "Khi có template hoặc playbook phù hợp, SCHub sẽ gắn vào Learning Path này.")}
               </div>
             </div>
 
             <div>
-              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Công cụ liên quan</h3>
+              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Tool liên quan</h3>
               <div className="space-y-4">
                 {relatedTools.length > 0
                   ? relatedTools.map((tool) => (
                       <div key={tool.slug} className="surface-panel card-hover rounded-[var(--radius-xl)] p-5">
-                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Công cụ</p>
+                        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.16em] text-[var(--color-text-muted)]">Tool</p>
                         <h4 className="mt-3 font-[var(--font-display)] text-lg text-[var(--color-text)]">{tool.name}</h4>
                         <p className="mt-2 text-sm text-[var(--color-text-muted)]">{tool.description}</p>
                       </div>
                     ))
-                  : placeholderCard("Công cụ đang được phát triển", "SCHub sẽ bổ sung calculator hoặc assessment phù hợp khi nhóm công cụ sẵn sàng hơn.")}
+                  : placeholderCard("Tool đang được phát triển", "SCHub sẽ bổ sung calculator hoặc assessment phù hợp khi nhóm tool sẵn sàng hơn.")}
               </div>
             </div>
           </div>
@@ -173,7 +173,7 @@ export function LearningPathPage({ path }: LearningPathPageProps) {
         <section className="surface-panel mt-12 rounded-[var(--radius-xl)] p-8 text-center">
           <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Muốn đi từ học đến áp dụng?</h2>
           <p className="mx-auto mt-3 max-w-xl text-[var(--color-text-muted)]">
-            Bắt đầu với checklist 50 điểm để xác định điểm nghẽn hiện tại, sau đó chọn lộ trình và tài nguyên phù hợp.
+            Bắt đầu với checklist 50 điểm để xác định điểm nghẽn hiện tại, sau đó chọn Learning Path và resource phù hợp.
           </p>
           <Link
             to="/solutions/checklist"

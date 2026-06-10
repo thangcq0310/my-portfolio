@@ -26,8 +26,8 @@ export function Solutions() {
   return (
     <>
       <SEO
-        title="Giải pháp Supply Chain thực chiến"
-        description="Bộ công cụ, sản phẩm số và giải pháp triển khai giúp tối ưu vận hành, quản trị dữ liệu và tự động hóa doanh nghiệp."
+        title="Solutions cho Supply Chain thực chiến"
+        description="Resources, digital products, tools và services giúp tối ưu vận hành, quản trị dữ liệu và cải thiện Supply Chain."
         url="https://schub.vn/solutions"
       />
 
@@ -40,30 +40,30 @@ export function Solutions() {
                   Solutions / Giải pháp Supply Chain
                 </p>
                 <h1 className="mt-4 font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)] md:text-5xl">
-                  Giải pháp Supply Chain thực chiến
+                  Solutions cho Supply Chain thực chiến
                 </h1>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">
-                  Từ tài nguyên miễn phí, sản phẩm số, công cụ đến dịch vụ tư vấn — SCHub.vn giúp doanh nghiệp bắt đầu nhỏ, áp dụng nhanh và mở rộng theo nhu cầu thực tế.
+                  Từ resources miễn phí, digital products, tools đến services — SCHub.vn giúp doanh nghiệp bắt đầu nhỏ, áp dụng nhanh và mở rộng theo nhu cầu thực tế.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href="#categories"
                     className="focus-ring inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
                   >
-                    Xem 4 nhóm giải pháp
+                    Xem 4 nhóm Solutions
                   </a>
                   <Link
                     to="/solutions/resources"
                     className="focus-ring inline-flex items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-6 py-3 font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-border-strong)]"
                   >
-                    Bắt đầu với tài nguyên miễn phí
+                    Bắt đầu với Resources miễn phí
                   </Link>
                 </div>
               </div>
 
               <div className="surface-panel rounded-[var(--radius-xl)] p-6 lg:p-8">
                 <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
-                  Solution architecture
+                  Solution Architecture
                 </p>
                 <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {categories.map((category) => {
@@ -85,9 +85,9 @@ export function Solutions() {
         <section id="categories" className="py-16">
           <Container>
             <div className="mb-8 max-w-3xl">
-              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">4 nhóm giải pháp</h2>
+              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">4 nhóm Solutions</h2>
               <p className="mt-3 text-[var(--color-text-muted)]">
-                Mỗi nhóm đại diện cho một cách doanh nghiệp bắt đầu giải quyết bài toán Supply Chain: từ tài nguyên miễn phí, sản phẩm số, công cụ đến dịch vụ triển khai.
+                Mỗi nhóm đại diện cho một cách doanh nghiệp bắt đầu xử lý bài toán Supply Chain: từ resources miễn phí, digital products, tools đến services.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -102,11 +102,12 @@ export function Solutions() {
           <Container>
             <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">
-                <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Giải pháp đang được đóng gói</h2>
+                <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Solutions theo bài toán vận hành</h2>
                 <p className="mt-3 text-[var(--color-text-muted)]">
-                  Các tài nguyên, công cụ, sản phẩm và dịch vụ đang được SCHub.vn đóng gói theo từng bài toán vận hành cụ thể.
+                  Chọn theo vấn đề doanh nghiệp đang gặp: Warehouse, Logistics Cost, SOP, Inventory, system readiness hoặc Dashboard.
                 </p>
               </div>
+
               <div className="flex flex-wrap gap-2">
                 <button
                   type="button"
@@ -140,7 +141,7 @@ export function Solutions() {
               </div>
             ) : (
               <div className="surface-panel rounded-[var(--radius-xl)] p-8 text-center text-[var(--color-text-muted)]">
-                Chưa có giải pháp nổi bật cho nhóm này. SCHub sẽ bổ sung thêm khi hoàn thiện từng nhóm giải pháp.
+                Chưa có solution cho nhóm này. SCHub sẽ bổ sung thêm khi hoàn thiện từng nhóm.
               </div>
             )}
           </Container>
@@ -149,9 +150,9 @@ export function Solutions() {
         <section className="py-16">
           <Container>
             <div className="mb-8 max-w-3xl">
-              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Ứng dụng thực tế</h2>
+              <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Use cases thực tế</h2>
               <p className="mt-3 text-[var(--color-text-muted)]">
-                Các use case phổ biến giúp doanh nghiệp nhìn nhanh xem nên bắt đầu từ tool, template hay một giải pháp triển khai hoàn chỉnh.
+                Các use case giúp doanh nghiệp xác định nên bắt đầu từ resource, tool, digital product hay service.
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -171,10 +172,10 @@ export function Solutions() {
           <Container>
             <div className="surface-panel rounded-[var(--radius-xl)] border border-[var(--color-border-strong)] p-8 text-center lg:p-10">
               <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">
-                Bạn cần một công cụ hoặc giải pháp riêng cho doanh nghiệp?
+                Bạn cần một tool hoặc solution riêng cho doanh nghiệp?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-[var(--color-text-muted)]">
-                Chúng tôi có thể thiết kế công cụ, dashboard, template hoặc automation phù hợp với quy trình thực tế của bạn.
+                SCHub có thể hỗ trợ thiết kế checklist, dashboard, template hoặc internal tool phù hợp với quy trình vận hành thực tế.
               </p>
               <Link
                 to="/solutions/services"

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { ArrowRight, ClipboardCheck, TrendingUp, Warehouse, Database, BarChart3, Users, Scale, Target, Package, FileText, LayoutDashboard } from "lucide-react"
+import { ArrowRight, ClipboardCheck, TrendingUp, Warehouse, Database, BarChart3, Users, Scale, Target, Package, FileText, LayoutDashboard, CheckCircle2, BookOpen, Wrench, TrendingUp as TrendingUpIcon } from "lucide-react"
 import Container from "../components/layout/Container"
 import ArticleCard from "../components/cards/ArticleCard"
 import { seedArticles } from "../data/seedData"
@@ -9,51 +9,51 @@ import { learningPaths } from "../data/learningPaths"
 const targetUsers = [
   {
     title: "SCM / Logistics / Warehouse Manager",
-    description: "Cần chuẩn hóa quy trình, KPI, chi phí logistics, kho vận và 3PL.",
+    description: "Cần chuẩn hóa quy trình, KPI, SLA 3PL, Logistics Cost và hiệu quả vận hành kho.",
     icon: Package,
   },
   {
     title: "Planning / Procurement / Inventory",
-    description: "Cần hiểu forecast, demand planning, tồn kho, supplier lead time và chính sách bổ sung hàng.",
+    description: "Cần hiểu Forecasting, Demand Planning, Supplier Lead Time, Safety Stock và chính sách bổ sung hàng.",
     icon: FileText,
   },
   {
-    title: "SME Owner / Operations Manager",
-    description: "Cần nhìn Supply Chain bằng ngôn ngữ dễ hiểu để ra quyết định vận hành.",
+    title: "Operations Manager / SME Owner",
+    description: "Cần nhìn Supply Chain bằng ngôn ngữ dễ hiểu để ra quyết định vận hành và kiểm soát chi phí.",
     icon: Users,
   },
   {
-    title: "Đội triển khai ERP / WMS / SAP",
-    description: "Cần chuẩn hóa master data, process, RACI và readiness trước khi triển khai hệ thống.",
+    title: "ERP / WMS / SAP Project Team",
+    description: "Cần chuẩn hóa Master Data, process, RACI và readiness trước khi triển khai hệ thống.",
     icon: Database,
   },
 ]
 
-// Pain points - updated wording
+// Pain points
 const painPoints = [
   {
     title: "Tồn kho cao nhưng vẫn thiếu hàng",
-    description: "Doanh nghiệp có nhiều tồn kho nhưng SKU cần giao lại thiếu, hàng nằm sai kho hoặc chưa rõ trạng thái khả dụng.",
+    description: "Doanh nghiệp có nhiều inventory nhưng SKU cần giao lại thiếu, hàng nằm sai kho hoặc chưa rõ trạng thái khả dụng.",
     icon: Warehouse,
   },
   {
-    title: "Forecast sai, kế hoạch bị động",
-    description: "Sales, planning và production không dùng cùng một giả định nhu cầu, dẫn đến mua hàng và sản xuất thiếu ổn định.",
+    title: "Forecast sai, planning bị động",
+    description: "Sales, Planning và Production không dùng cùng một demand assumption, dẫn đến mua hàng và sản xuất thiếu ổn định.",
     icon: TrendingUp,
   },
   {
-    title: "Master data không sạch",
-    description: "Sai UoM, weight, shelf-life, batch rule hoặc location master làm sai tồn kho, chi phí và báo cáo.",
+    title: "Master Data không sạch",
+    description: "Sai UoM, gross weight, shelf-life, batch rule hoặc location master làm sai tồn kho, chi phí và báo cáo.",
     icon: Database,
   },
   {
-    title: "3PL, kho vận và chi phí khó kiểm soát",
-    description: "Doanh nghiệp có dữ liệu nhưng chưa đủ SLA, KPI, cost-to-serve và cơ chế xử lý sai lệch.",
+    title: "3PL, Warehouse và Logistics Cost khó kiểm soát",
+    description: "Doanh nghiệp có dữ liệu nhưng chưa đủ SLA, KPI, cost-to-serve và cơ chế xử lý discrepancy.",
     icon: BarChart3,
   },
   {
     title: "Dashboard không giúp ra quyết định",
-    description: "Báo cáo nhiều nhưng chưa gắn với action owner, ngưỡng cảnh báo và nhịp review.",
+    description: "Báo cáo nhiều nhưng chưa gắn với action owner, ngưỡng cảnh báo và management rhythm.",
     icon: ClipboardCheck,
   },
 ]
@@ -62,51 +62,75 @@ const painPoints = [
 const mainPaths = [
   {
     title: "About",
-    description: "Hiểu SCHub.vn là gì, dành cho ai và phương pháp tiếp cận thực chiến.",
+    description: "Hiểu SCHub.vn là gì, dành cho ai và phương pháp tiếp cận Supply Chain thực chiến.",
     href: "/about",
     cta: "Tìm hiểu SCHub",
   },
   {
     title: "Learning Hub",
-    description: "Học Supply Chain theo lộ trình từ nền tảng đến forecasting, S&OP và planning control.",
+    description: "Học Supply Chain theo lộ trình từ Foundation đến Forecasting, S&OP và Operations Planning.",
     href: "/learning",
-    cta: "Xem lộ trình học",
+    cta: "Xem Learning Hub",
   },
   {
     title: "Solutions",
-    description: "Tìm checklist, công cụ, template, sản phẩm số hoặc dịch vụ để xử lý bài toán cụ thể.",
+    description: "Tìm checklist, template, tool, digital product hoặc service để xử lý một bài toán cụ thể.",
     href: "/solutions",
-    cta: "Xem giải pháp",
+    cta: "Xem Solutions",
   },
   {
     title: "Blog",
-    description: "Đọc các bài viết thực chiến về planning, inventory, warehouse, 3PL, master data và KPI.",
+    description: "Đọc các bài viết thực chiến về Planning, Inventory, Warehouse, 3PL, Master Data, KPI và Logistics Cost.",
     href: "/blog",
-    cta: "Đọc blog",
+    cta: "Đọc Blog",
   },
 ]
 
-// Solutions 4 groups for preview
+// Solutions 4 groups
 const solutionsGroups = [
   {
-    title: "Tài nguyên",
+    title: "Resources",
     description: "Checklist, assessment và sample template để bắt đầu nhanh.",
     href: "/solutions/resources",
   },
   {
-    title: "Sản phẩm số",
+    title: "Digital Products",
     description: "Template, eBook, playbook, SOP pack và dashboard starter.",
     href: "/solutions/products",
   },
   {
-    title: "Công cụ",
+    title: "Tools",
     description: "Calculator, analyzer và mini tool hỗ trợ phân tích nhanh.",
     href: "/solutions/tools",
   },
   {
-    title: "Dịch vụ",
-    description: "Tư vấn, dashboard, chuẩn hóa KPI/SOP và triển khai công cụ nội bộ.",
+    title: "Services",
+    description: "Tư vấn, dashboard, chuẩn hóa KPI/SOP và triển khai internal tool.",
     href: "/solutions/services",
+  },
+]
+
+// SCHub Method steps
+const methodSteps = [
+  {
+    title: "Diagnose",
+    description: "Xác định điểm nghẽn trong Planning, Inventory, Warehouse, Logistics Cost, Master Data hoặc 3PL.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Learn",
+    description: "Hiểu khái niệm cốt lõi qua Learning Hub và các bài Blog thực chiến.",
+    icon: BookOpen,
+  },
+  {
+    title: "Apply",
+    description: "Sử dụng checklist, template, tool hoặc playbook phù hợp trong Solutions.",
+    icon: Wrench,
+  },
+  {
+    title: "Improve",
+    description: "Theo dõi KPI, chuẩn hóa SOP/RACI và cải tiến theo nhịp vận hành.",
+    icon: TrendingUpIcon,
   },
 ]
 
@@ -128,7 +152,7 @@ export function Home() {
                 Supply Chain thực chiến cho doanh nghiệp Việt Nam
               </h1>
               <p className="mt-6 mb-8 max-w-xl text-lg text-[var(--color-text-muted)]">
-                SCHub.vn giúp người làm Supply Chain học có hệ thống, lấy tài nguyên phù hợp và áp dụng công cụ, template, checklist vào vận hành thực tế.
+                SCHub.vn giúp người làm Supply Chain hiểu đúng vấn đề, học theo lộ trình và áp dụng các framework, checklist, template, tool vào vận hành thực tế.
               </p>
               <div className="mb-8 flex flex-wrap gap-4">
                 <Link to="/learning" className="rounded-[var(--radius-md)] border border-[var(--color-primary)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:bg-[#0a4242]">
@@ -142,41 +166,33 @@ export function Home() {
               <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
                 <li className="flex items-center gap-2">
                   <Target className="h-4 w-4 text-[var(--color-primary)]" />
-                  Tập trung vào bài toán thực tế của doanh nghiệp Việt Nam
+                  Tập trung vào các bài toán vận hành thật của doanh nghiệp Việt Nam
                 </li>
                 <li className="flex items-center gap-2">
                   <Scale className="h-4 w-4 text-[var(--color-primary)]" />
-                  Có template, checklist và playbook áp dụng ngay
+                  Kết nối Learning Hub, Blog, Solutions và Checklist thành một flow r�� ràng
                 </li>
                 <li className="flex items-center gap-2">
                   <Users className="h-4 w-4 text-[var(--color-primary)]" />
-                  Phù hợp cho SCM, Logistics, Warehouse, Planning, Procurement
+                  Phù hợp cho Planning, Inventory, Warehouse, Logistics, Procurement và Operations
                 </li>
               </ul>
             </div>
 
-            <div className="rounded-[var(--radius-xl)] bg-[var(--color-primary)] p-6 shadow-[var(--shadow-panel-hover)]">
-              <div className="mb-6 flex items-center justify-between">
-                <h3 className="font-[var(--font-display)] font-semibold text-white">SCM Control Room</h3>
-                <div className="h-2 w-2 rounded-full bg-[var(--color-secondary)] animate-pulse" />
+            {/* SCHub Method Panel */}
+            <div className="rounded-[var(--radius-xl)] bg-[#072C2C] p-6 shadow-[var(--shadow-panel-hover)]">
+              <div className="mb-6">
+                <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-white/50">SCHub Method</p>
+                <h3 className="mt-2 font-[var(--font-display)] text-xl font-semibold text-white">Từ vấn đề vận hành đến hành động cụ thể</h3>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-[var(--radius-md)] border border-white/10 bg-white/10 p-4">
-                  <p className="mb-1 text-xs text-white/60">Inventory Accuracy</p>
-                  <p className="text-xl font-bold text-[#16A34A]">98.2%</p>
-                </div>
-                <div className="rounded-[var(--radius-md)] border border-white/10 bg-white/10 p-4">
-                  <p className="mb-1 text-xs text-white/60">S&OP Rhythm</p>
-                  <p className="text-xl font-bold text-white">Monthly</p>
-                </div>
-                <div className="rounded-[var(--radius-md)] border border-white/10 bg-white/10 p-4">
-                  <p className="mb-1 text-xs text-white/60">3PL SLA</p>
-                  <p className="text-xl font-bold text-[#16A34A]">96.5%</p>
-                </div>
-                <div className="rounded-[var(--radius-md)] border border-white/10 bg-white/10 p-4">
-                  <p className="mb-1 text-xs text-white/60">Logistics Cost</p>
-                  <p className="text-xl font-bold text-[#D97706]">12.4%</p>
-                </div>
+              <div className="grid grid-cols-2 gap-4">
+                {methodSteps.map((step, i) => (
+                  <div key={i} className="rounded-[var(--radius-md)] border border-white/10 bg-white/5 p-4">
+                    <step.icon className="mb-2 h-5 w-5 text-[var(--color-secondary)]" />
+                    <p className="text-sm font-medium text-white">{step.title}</p>
+                    <p className="mt-1 text-xs text-white/60">{step.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -187,7 +203,7 @@ export function Home() {
       <section className="bg-[var(--color-surface-raised)] py-20">
         <Container>
           <h2 className="mb-4 text-center font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">SCHub.vn dành cho ai?</h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">Chọn nhóm phù hợp với vai trò và nhu cầu của bạn.</p>
+          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">Nội dung được thiết kế cho người cần hiểu đúng vấn đề Supply Chain và áp dụng được vào vận hành, không chỉ đọc lý thuyết.</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {targetUsers.map((user, i) => (
               <div key={i} className="surface-panel card-hover rounded-[var(--radius-xl)] p-6">
@@ -200,11 +216,11 @@ export function Home() {
         </Container>
       </section>
 
-      {/* 3. Pain points - updated wording */}
+      {/* 3. Pain points */}
       <section className="py-20">
         <Container>
           <h2 className="mb-4 text-center font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Những điểm nghẽn SCHub.vn tập trung giải quyết</h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">5 bài toán phổ biến trong vận hành Supply Chain tại doanh nghiệp Việt Nam.</p>
+          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">Các vấn đề thường gặp khiến doanh nghiệp vừa thiếu hàng, vừa tồn cao, vừa khó kiểm soát chi phí và dữ liệu.</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {painPoints.map((pain, i) => (
               <div key={i} className="surface-panel card-hover rounded-[var(--radius-xl)] p-6">
@@ -221,7 +237,7 @@ export function Home() {
       <section className="bg-[var(--color-surface-raised)] py-20">
         <Container>
           <h2 className="mb-4 text-center font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Bắt đầu từ đâu?</h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">Chọn một hướng phù hợp với nhu cầu hiện tại: hiểu SCHub.vn, học theo lộ trình, lấy giải pháp hoặc đọc bài viết thực chiến.</p>
+          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">Chọn một hướng phù hợp với nhu cầu hiện tại: hiểu SCHub.vn, học theo lộ trình, tìm solution hoặc đọc bài viết thực chiến.</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {mainPaths.map((path) => (
               <Link key={path.title} to={path.href} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
@@ -240,7 +256,7 @@ export function Home() {
           <div className="mb-8 flex items-center justify-between">
             <div>
               <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Learning Hub</h2>
-              <p className="mt-3 max-w-2xl text-[var(--color-text-muted)]">Các lộ trình học giúp bạn hiểu vấn đề, đọc bài viết liên quan và tìm tài nguyên phù hợp để áp dụng vào vận hành.</p>
+              <p className="mt-3 max-w-2xl text-[var(--color-text-muted)]">Các learning path giúp bạn hiểu vấn đề, đọc bài liên quan và tìm resource phù hợp để áp dụng vào vận hành.</p>
             </div>
             <Link to="/learning" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
               Xem toàn bộ Learning Hub <ArrowRight className="h-4 w-4" />
@@ -249,7 +265,7 @@ export function Home() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {featuredLearningPaths.map((path) => (
               <Link key={path.slug} to={`/learning/${path.slug}`} className="surface-panel card-hover block rounded-[var(--radius-xl)] p-6">
-                <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Lộ trình học</p>
+                <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">Learning Path</p>
                 <h3 className="mt-3 font-[var(--font-display)] text-2xl text-[var(--color-text)]">{path.vietnameseTitle}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">{path.description}</p>
                 <div className="mt-5 text-sm font-medium text-[var(--color-primary)]">Xem lộ trình</div>
@@ -265,7 +281,7 @@ export function Home() {
           <div className="mb-8 flex items-center justify-between">
             <div>
               <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Solutions</h2>
-              <p className="mt-3 max-w-2xl text-[var(--color-text-muted)]">Tài nguyên, sản phẩm số, công cụ và dịch vụ được đóng gói theo các bài toán Supply Chain thực tế.</p>
+              <p className="mt-3 max-w-2xl text-[var(--color-text-muted)]">Resources, digital products, tools và services được đóng gói theo các bài toán Supply Chain thực tế.</p>
             </div>
             <Link to="/solutions" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
               Xem tất cả Solutions <ArrowRight className="h-4 w-4" />
@@ -311,7 +327,7 @@ export function Home() {
               Bắt đầu bằng việc tự đánh giá Supply Chain
             </h2>
             <p className="mb-8 text-slate-300">
-              Làm checklist 50 điểm để xác định điểm nghẽn trong planning, procurement, inventory, warehouse & logistics, data/KPI/digital và governance.
+              Làm checklist 50 điểm để xác định điểm nghẽn trong Planning, Procurement, Inventory, Warehouse & Logistics, Data/KPI/Digital và Governance.
             </p>
             <Link to="/solutions/checklist" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-8 py-4 font-medium text-white transition-colors hover:brightness-105">
               Làm checklist 50 điểm
