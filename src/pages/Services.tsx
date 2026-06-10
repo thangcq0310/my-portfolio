@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { FileText, Package, Wrench, Send } from "lucide-react"
+import { FileText, Package, Wrench, Send, CheckCircle2 } from "lucide-react"
 import Container from "../components/layout/Container"
 
 const services = [
@@ -10,8 +10,8 @@ const services = [
     deliverables: [
       "Báo cáo hiện trạng 6 trụ cột SCM",
       "Danh sách vấn đề ưu tiên",
-      "Roadmap cải thiện 30–90 ngày"
-    ]
+      "Roadmap cải thiện 30–90 ngày",
+    ],
   },
   {
     title: "Dashboard & Reporting",
@@ -20,8 +20,8 @@ const services = [
     deliverables: [
       "Dashboard forecast, tồn kho, mua hàng, logistics cost",
       "Bộ KPI đề xuất theo chức năng",
-      "Hướng dẫn cập nhật và duy trì dữ liệu"
-    ]
+      "Hướng dẫn cập nhật và duy trì dữ liệu",
+    ],
   },
   {
     title: "Process & KPI Standardization",
@@ -30,8 +30,8 @@ const services = [
     deliverables: [
       "SOP/flow vận hành",
       "KPI theo chức năng",
-      "RACI trách nhiệm giữa các phòng ban"
-    ]
+      "RACI trách nhiệm giữa các phòng ban",
+    ],
   },
   {
     title: "Digital SCM Tools",
@@ -40,12 +40,14 @@ const services = [
     deliverables: [
       "Excel template / Power BI / Power Apps",
       "Hướng dẫn sử dụng",
-      "Cấu trúc dữ liệu đầu vào"
-    ]
-  }
+      "Cấu trúc dữ liệu đầu vào",
+    ],
+  },
 ]
 
-const serviceTypes = services.map(s => s.title)
+const serviceTypes = services.map((service) => service.title)
+const fieldClassName = "focus-ring w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-4 py-2 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]"
+const labelClassName = "mb-1 block text-sm font-medium text-[var(--color-text)]"
 
 export function Services() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", serviceType: "", message: "" })
@@ -59,24 +61,27 @@ export function Services() {
 
   return (
     <Container>
-      <div className="py-12">
-        <h1 className="text-3xl font-bold text-[#0F172A] mb-4">Dịch vụ tư vấn</h1>
-        <p className="text-slate-600 mb-12">Các gói dịch vụ giúp doanh nghiệp rà soát hiện trạng, chuẩn hóa dữ liệu – quy trình – KPI và xây dựng công cụ quản trị Supply Chain phù hợp với mức độ trưởng thành hiện tại.</p>
+      <div className="py-16">
+        <div className="mb-12 max-w-4xl">
+          <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Dịch vụ triển khai thực tế</h1>
+          <p className="mt-4 text-lg text-[var(--color-text-muted)]">
+            Các gói dịch vụ giúp doanh nghiệp rà soát hiện trạng, chuẩn hóa dữ liệu – quy trình – KPI và xây dựng công cụ quản trị Supply Chain phù hợp với mức độ trưởng thành hiện tại.
+          </p>
+        </div>
 
-        {/* Services Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {services.map((service, i) => (
-            <div key={i} className="bg-white rounded-xl border border-slate-200 p-6">
-              <service.icon className="w-10 h-10 text-[#072C2C] mb-4" />
-              <h3 className="text-xl font-semibold text-[#0F172A] mb-2">{service.title}</h3>
-              <p className="text-slate-600 mb-4">{service.description}</p>
-              <div className="border-t border-slate-200 pt-4">
-                <h4 className="font-medium text-[#0F172A] mb-2">Deliverables:</h4>
-                <ul className="space-y-1">
-                  {service.deliverables.map((item, j) => (
-                    <li key={j} className="text-sm text-slate-600 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#FF5F03] rounded-full" />
-                      {item}
+        <div className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {services.map((service) => (
+            <div key={service.title} className="surface-panel card-hover rounded-[var(--radius-xl)] p-6">
+              <service.icon className="mb-4 h-10 w-10 text-[var(--color-primary)]" />
+              <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">{service.title}</h2>
+              <p className="mt-2 text-[var(--color-text-muted)]">{service.description}</p>
+              <div className="mt-5 border-t border-[var(--color-border)] pt-4">
+                <h3 className="font-[var(--font-display)] text-lg text-[var(--color-text)]">Deliverables</h3>
+                <ul className="mt-3 space-y-2">
+                  {service.deliverables.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-[var(--color-text-muted)]">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-secondary)]" />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -85,88 +90,95 @@ export function Services() {
           ))}
         </div>
 
-        {/* Lead Form */}
-        <div className="bg-white rounded-xl border border-slate-200 p-8 max-w-2xl">
-          <h2 className="text-xl font-bold text-[#0F172A] mb-6">Yêu cầu tư vấn</h2>
+        <div className="surface-panel max-w-2xl rounded-[var(--radius-xl)] p-8">
+          <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Yêu cầu tư vấn</h2>
+          <p className="mt-2 text-[var(--color-text-muted)]">Chia sẻ nhanh nhu cầu để SCHub đề xuất hướng triển khai phù hợp.</p>
+
           {submitted ? (
-            <div className="text-center py-8">
-              <div className="w-12 h-12 bg-[#16A34A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl text-[#16A34A]">✓</span>
+            <div className="py-10 text-center">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-[var(--color-success)]/20 bg-[var(--color-success)]/10 text-[var(--color-success)]">
+                <CheckCircle2 className="h-7 w-7" />
               </div>
-              <h3 className="font-semibold text-[#0F172A] mb-2">Đã gửi yêu cầu!</h3>
-              <p className="text-slate-600">Chúng tôi sẽ liên hệ lại trong 24h.</p>
+              <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)]">Đã gửi yêu cầu!</h3>
+              <p className="mt-2 text-[var(--color-text-muted)]">Chúng tôi sẽ liên hệ lại trong 24h.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Họ tên *</label>
+                  <label className={labelClassName}>Họ tên *</label>
                   <input
                     required
                     type="text"
                     value={form.name}
-                    onChange={e => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className={fieldClassName}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Email *</label>
+                  <label className={labelClassName}>Email *</label>
                   <input
                     required
                     type="email"
                     value={form.email}
-                    onChange={e => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className={fieldClassName}
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Điện thoại</label>
+                  <label className={labelClassName}>Điện thoại</label>
                   <input
                     type="tel"
                     value={form.phone}
-                    onChange={e => setForm({ ...form, phone: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    className={fieldClassName}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Công ty</label>
+                  <label className={labelClassName}>Công ty</label>
                   <input
                     type="text"
                     value={form.company}
-                    onChange={e => setForm({ ...form, company: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
+                    onChange={(e) => setForm({ ...form, company: e.target.value })}
+                    className={fieldClassName}
                   />
                 </div>
               </div>
+
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Dịch vụ quan tâm</label>
+                <label className={labelClassName}>Dịch vụ quan tâm</label>
                 <select
                   value={form.serviceType}
-                  onChange={e => setForm({ ...form, serviceType: e.target.value })}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
+                  onChange={(e) => setForm({ ...form, serviceType: e.target.value })}
+                  className={fieldClassName}
                 >
                   <option value="">Chọn dịch vụ</option>
-                  {serviceTypes.map(type => (
-                    <option key={type} value={type}>{type}</option>
+                  {serviceTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
                   ))}
                 </select>
               </div>
+
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Nội dung</label>
+                <label className={labelClassName}>Nội dung</label>
                 <textarea
                   rows={4}
                   value={form.message}
-                  onChange={e => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className={fieldClassName}
                 />
               </div>
+
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-[#072C2C] text-white font-medium rounded-lg hover:bg-[#0a4242] transition-colors flex items-center justify-center gap-2"
+                className="focus-ring flex w-full items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
               >
-                <Send className="w-5 h-5" />
+                <Send className="h-5 w-5" />
                 Gửi yêu cầu
               </button>
             </form>

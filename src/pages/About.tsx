@@ -1,33 +1,99 @@
-import { Package, Mail } from "lucide-react"
+import { Mail, Package, Target, Database, Warehouse, BarChart3, Users, FileText } from "lucide-react"
 import Container from "../components/layout/Container"
+
+const pillars = [
+  {
+    title: "Planning & Forecast",
+    description: "Biến dữ liệu nhu cầu thành cadence ra quyết định rõ ràng cho forecast, supply plan và S&OP.",
+    icon: Target,
+  },
+  {
+    title: "Procurement & Supplier",
+    description: "Chuẩn hóa logic mua hàng, lead time, MOQ và cơ chế theo dõi nhà cung cấp theo KPI.",
+    icon: FileText,
+  },
+  {
+    title: "Inventory Control",
+    description: "Thiết kế safety stock, replenishment và dashboard để giảm tồn cao nhưng vẫn giữ service level.",
+    icon: Database,
+  },
+  {
+    title: "Warehouse & Logistics",
+    description: "Tối ưu quy trình kho, FIFO/FEFO, 3PL và cost-to-serve bằng nguyên tắc vận hành rõ ràng.",
+    icon: Warehouse,
+  },
+  {
+    title: "KPI & Digital Tools",
+    description: "Kết nối master data, reporting và công cụ số hóa để đội ngũ nhìn cùng một bức tranh vận hành.",
+    icon: BarChart3,
+  },
+  {
+    title: "People & Governance",
+    description: "Thiết lập SOP, RACI và nhịp review giúp các phòng ban phối hợp thay vì xử lý sự vụ rời rạc.",
+    icon: Users,
+  },
+]
 
 export function About() {
   return (
     <Container>
-      <div className="py-12">
-        <h1 className="text-3xl font-bold text-[#0F172A] mb-8">Ve SCHub.vn</h1>
-        <div className="bg-white rounded-xl border border-slate-200 p-8">
-          <div className="flex items-center gap-4 mb-6">
-            <Package className="w-12 h-12 text-[#072C2C]" />
-            <div>
-              <h2 className="text-xl font-bold text-[#0F172A]">SCHub.vn</h2>
-              <p className="text-slate-600">Nen tang kien thuc Supply Chain cho nguoi Viet</p>
+      <div className="py-16">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <section className="surface-panel rounded-[var(--radius-xl)] p-8 lg:p-10">
+            <div className="mb-6 flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] text-white shadow-[var(--shadow-panel)]">
+                <Package className="h-7 w-7" />
+              </div>
+              <div>
+                <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-[var(--color-text-muted)]">About SCHub.vn</p>
+                <h1 className="mt-2 font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Nền tảng kiến thức Supply Chain cho người Việt</h1>
+              </div>
             </div>
-          </div>
-          <p className="text-slate-600 mb-6">
-            SCHub.vn duoc xay dung nham giup nhung nguoi lam trong linh vuc logistics, warehouse va supply chain operations tai cac doanh nghiep san xuat/xuat khau Viet Nam tiep can kien thuc, cong cu va kinh nghiem thuc chien mot cach de hieu va ap dung duoc.
-          </p>
-          <p className="text-slate-600">
-            Chung toi cung cap: bai viet chuyen sau, sach va template thuc hanh, cong cu digital, va dich vu tu van chuyen nghiep.
-          </p>
+
+            <p className="max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">
+              SCHub.vn được xây dựng để giúp những người làm logistics, warehouse và supply chain operations tại doanh nghiệp Việt Nam tiếp cận kiến thức, công cụ và kinh nghiệm thực chiến theo cách dễ hiểu, có cấu trúc và áp dụng được ngay.
+            </p>
+
+            <div className="mt-8 border-t border-[var(--color-border)] pt-8">
+              <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">SCHub.vn tập trung vào</h2>
+              <p className="mt-3 text-[var(--color-text-muted)]">
+                Nội dung của SCHub ưu tiên các vấn đề vận hành cụ thể: thiếu hàng nhưng tồn cao, master data chưa sạch, dashboard khó dùng, quy trình chưa rõ trách nhiệm và thiếu nhịp quản trị liên phòng ban.
+              </p>
+            </div>
+          </section>
+
+          <aside className="surface-panel rounded-[var(--radius-xl)] p-8">
+            <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Liên hệ</h2>
+            <p className="mt-3 text-[var(--color-text-muted)]">Nếu anh cần checklist, template hoặc định hướng triển khai, SCHub có thể hỗ trợ từ góc nhìn vận hành thực tế.</p>
+            <div className="mt-6 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4">
+              <div className="flex items-center gap-3 text-[var(--color-text)]">
+                <Mail className="h-5 w-5 text-[var(--color-secondary)]" />
+                <a href="mailto:contact@schub.vn" className="focus-ring rounded-[var(--radius-sm)] hover:text-[var(--color-primary)]">
+                  contact@schub.vn
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
-        <div className="bg-white rounded-xl border border-slate-200 p-8 mt-8">
-          <h2 className="text-xl font-bold text-[#0F172A] mb-6">Lien he</h2>
-          <div className="flex items-center gap-3">
-            <Mail className="w-5 h-5 text-[#072C2C]" />
-            <span>contact@schub.vn</span>
+
+        <section className="mt-10">
+          <div className="mb-8 max-w-3xl">
+            <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">6 trụ cột nội dung chính</h2>
+            <p className="mt-3 text-[var(--color-text-muted)]">
+              Mỗi trụ cột được xây theo format enterprise: mô tả vấn đề, nguyên tắc quản trị, template áp dụng và KPI dùng để kiểm soát chất lượng vận hành.
+            </p>
           </div>
-        </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {pillars.map((pillar) => (
+              <div key={pillar.title} className="surface-panel card-hover rounded-[var(--radius-xl)] p-6">
+                <pillar.icon className="mb-4 h-8 w-8 text-[var(--color-primary)]" />
+                <h3 className="font-[var(--font-display)] text-xl text-[var(--color-text)]">{pillar.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">{pillar.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </Container>
   )

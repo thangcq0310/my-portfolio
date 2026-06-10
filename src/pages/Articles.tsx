@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useSearchParams } from "react-router-dom"
 import Container from "../components/layout/Container"
 import ArticleCard from "../components/cards/ArticleCard"
 import { seedArticles } from "../data/seedData"
@@ -6,43 +6,62 @@ import { seedArticles } from "../data/seedData"
 const topics = ["Tất cả", "Warehouse", "Inventory", "Cold Chain", "FEFO/FIFO", "WMS", "3PL", "S&OP", "Demand Planning", "Procurement", "Logistics Cost", "Digital SCM"]
 
 export function Articles() {
-  const [selectedTag, setSelectedTag] = useState("Tất cả")
+  const [searchParams, setSearchParams] = useSearchParams()
+  const tagFromUrl = searchParams.get("tag")
+  const selectedTag = tagFromUrl && topics.includes(tagFromUrl) ? tagFromUrl : "Tất cả"
 
-  const filtered = seedArticles.filter(article => {
+  const filtered = seedArticles.filter((article) => {
     if (selectedTag !== "Tất cả" && !article.tags.includes(selectedTag)) return false
     return true
   })
 
+  const handleSelectTag = (topic: string) => {
+    if (topic === "Tất cả") {
+      setSearchParams({})
+      return
+    }
+
+    setSearchParams({ tag: topic })
+  }
+
   return (
     <Container>
-      <div className="py-12">
-        <h1 className="text-3xl font-bold text-slate-900 mb-8">Bài viết</h1>
-      
-      <div className="flex flex-wrap gap-2 mb-8">
-        {topics.map(topic => (
-          <button
-            key={topic}
-            onClick={() => setSelectedTag(topic)}
-            className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
-              selectedTag === topic
-                ? "bg-[#072C2C] text-white"
-                : "bg-white border border-slate-200 text-slate-600 hover:border-[#072C2C] hover:text-[#072C2C]"
-            }`}
-          >
-            {topic}
-          </button>
-        ))}
-      </div>
+      <div className="py-16">
+        <div className="mb-10 max-w-3xl">
+          <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">Bài viết</h1>
+          <p className="mt-4 text-lg text-[var(--color-text-muted)]">
+            Các bài viết thực chiến về planning, procurement, inventory, warehouse, logistics cost và digital SCM.
+          </p>
+        </div>
 
-      {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map(article => (
-            <ArticleCard key={article.id} article={article} />
+        <div className="mb-8 flex flex-wrap gap-2">
+          {topics.map((topic) => (
+            <button
+              key={topic}
+              type="button"
+              onClick={() => handleSelectTag(topic)}
+              className={
+                selectedTag === topic
+                  ? "rounded-full border border-[var(--color-primary)] bg-[var(--color-primary)] px-3 py-1.5 text-sm font-medium text-white"
+                  : "rounded-full border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-3 py-1.5 text-sm font-medium text-[var(--color-text-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+              }
+            >
+              {topic}
+            </button>
           ))}
         </div>
-      ) : (
-        <p className="text-slate-500 text-center py-12">Chưa có bài viết nào.</p>
-      )}
+
+        {filtered.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((article) => (
+              <ArticleCard key={article.id} article={article} />
+            ))}
+          </div>
+        ) : (
+          <div className="surface-panel rounded-[var(--radius-xl)] px-6 py-12 text-center text-[var(--color-text-muted)]">
+            Chưa có bài viết nào cho nhóm nội dung này.
+          </div>
+        )}
       </div>
     </Container>
   )

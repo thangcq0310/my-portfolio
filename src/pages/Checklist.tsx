@@ -1,14 +1,47 @@
 import { useState } from "react"
 import { ClipboardCheck, Send, CheckCircle } from "lucide-react"
 import Container from "../components/layout/Container"
-// import { checklist50 } from "../data/seedData"
 
-const categories = ["Planning", "Procurement", "Inventory", "Warehouse & Logistics", "Data, KPI & Digital", "People, Process & Governance"]
+const checklistSections = [
+  {
+    title: "Planning",
+    description: "Kiểm tra độ chính xác forecast, cadence S&OP và cách doanh nghiệp chốt supply plan.",
+  },
+  {
+    title: "Procurement",
+    description: "Rà lead time, MOQ, năng lực nhà cung cấp và tính kỷ luật của quy trình mua hàng.",
+  },
+  {
+    title: "Inventory",
+    description: "Đánh giá safety stock, logic replenishment, aging và độ cân bằng giữa tồn kho và service level.",
+  },
+  {
+    title: "Warehouse & Logistics",
+    description: "Xem lại chuẩn FIFO/FEFO, vận hành 3PL, độ chính xác tồn kho và chi phí logistics.",
+  },
+  {
+    title: "Data, KPI & Digital",
+    description: "Kiểm tra chất lượng master data, dashboard và mức độ số hóa trong vận hành hằng ngày.",
+  },
+  {
+    title: "People, Process & Governance",
+    description: "Đo mức rõ ràng của SOP, RACI, review cadence và cơ chế ra quyết định liên phòng ban.",
+  },
+]
+
+const categories = ["Tất cả", ...checklistSections.map((section) => section.title)]
+const fieldClassName = "focus-ring w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-4 py-2 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]"
+const labelClassName = "mb-1 block text-sm font-medium text-[var(--color-text)]"
 
 export function Checklist() {
   const [form, setForm] = useState({ name: "", email: "", company: "", role: "" })
   const [submitted, setSubmitted] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("Tất cả")
+
+  const filteredSections = checklistSections.filter((section) => {
+    if (selectedCategory !== "Tất cả" && section.title !== selectedCategory) return false
+    return true
+  })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -18,95 +51,105 @@ export function Checklist() {
 
   return (
     <Container>
-      <div className="py-12">
-      <div className="text-center mb-12">
-        <ClipboardCheck className="w-16 h-16 text-[#072C2C] mx-auto mb-4" />
-        <h1 className="text-3xl font-bold text-[#0F172A] mb-4">
-          Checklist 50 điểm tự đánh giá năng lực Supply Chain
-        </h1>
-        <p className="text-slate-600 max-w-xl mx-auto">
-          Tự đánh giá 6 nhóm: Planning, Procurement, Inventory, Warehouse & Logistics, Data/KPI/Digital, People/Process/Governance.
-        </p>
-      </div>
-
-      {/* Lead Form */}
-      {!submitted ? (
-        <div className="bg-white rounded-xl border border-slate-200 p-8 max-w-xl mx-auto mb-12">
-          <h2 className="text-xl font-bold text-[#0F172A] mb-4">Nhận checklist miễn phí</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Họ tên *</label>
-              <input
-                required
-                type="text"
-                value={form.name}
-                onChange={e => setForm({ ...form, name: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Email *</label>
-              <input
-                required
-                type="email"
-                value={form.email}
-                onChange={e => setForm({ ...form, email: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Công ty</label>
-              <input
-                type="text"
-                value={form.company}
-                onChange={e => setForm({ ...form, company: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Vai trò</label>
-              <input
-                type="text"
-                value={form.role}
-                onChange={e => setForm({ ...form, role: e.target.value })}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#072C2C] focus:border-[#072C2C]"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-[#FF5F03] text-white font-medium rounded-lg hover:bg-[#ff7a33] transition-colors flex items-center justify-center gap-2"
-            >
-              <Send className="w-5 h-5" />
-              Nhận checklist
-            </button>
-          </form>
+      <div className="py-16">
+        <div className="mb-12 text-center">
+          <ClipboardCheck className="mx-auto mb-4 h-16 w-16 text-[var(--color-primary)]" />
+          <h1 className="font-[var(--font-display)] text-4xl font-bold text-[var(--color-text)]">
+            Checklist 50 điểm tự đánh giá năng lực Supply Chain
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-muted)]">
+            Tự đánh giá 6 nhóm: Planning, Procurement, Inventory, Warehouse &amp; Logistics, Data/KPI/Digital, People/Process/Governance.
+          </p>
         </div>
-      ) : (
-        <div className="text-center py-8 max-w-xl mx-auto mb-12">
-          <div className="w-16 h-16 bg-[#16A34A] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-8 h-8" />
+
+        {!submitted ? (
+          <div className="surface-panel mx-auto mb-12 max-w-xl rounded-[var(--radius-xl)] p-8">
+            <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Nhận checklist miễn phí</h2>
+            <p className="mt-2 text-[var(--color-text-muted)]">Để lại thông tin để SCHub gửi checklist và hướng dẫn áp dụng nhanh.</p>
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              <div>
+                <label className={labelClassName}>Họ tên *</label>
+                <input
+                  required
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className={fieldClassName}
+                />
+              </div>
+              <div>
+                <label className={labelClassName}>Email *</label>
+                <input
+                  required
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className={fieldClassName}
+                />
+              </div>
+              <div>
+                <label className={labelClassName}>Công ty</label>
+                <input
+                  type="text"
+                  value={form.company}
+                  onChange={(e) => setForm({ ...form, company: e.target.value })}
+                  className={fieldClassName}
+                />
+              </div>
+              <div>
+                <label className={labelClassName}>Vai trò</label>
+                <input
+                  type="text"
+                  value={form.role}
+                  onChange={(e) => setForm({ ...form, role: e.target.value })}
+                  className={fieldClassName}
+                />
+              </div>
+              <button
+                type="submit"
+                className="focus-ring flex w-full items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
+              >
+                <Send className="h-5 w-5" />
+                Nhận checklist
+              </button>
+            </form>
           </div>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-2">Checklist đã gửi!</h2>
-          <p className="text-slate-600">Vui lòng kiểm tra email để xem checklist.</p>
-        </div>
-      )}
+        ) : (
+          <div className="mx-auto mb-12 max-w-xl rounded-[var(--radius-xl)] border border-[var(--color-success)]/20 bg-[var(--color-success)]/10 px-8 py-10 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-success)] text-white">
+              <CheckCircle className="h-8 w-8" />
+            </div>
+            <h2 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Checklist đã gửi!</h2>
+            <p className="mt-2 text-[var(--color-text-muted)]">Vui lòng kiểm tra email để xem checklist.</p>
+          </div>
+        )}
 
-      {/* Categories */}
-      <div className="flex flex-wrap gap-2 mb-8 justify-center">
-        {categories.map(cat => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
-              selectedCategory === cat
-                ? "bg-[#072C2C] text-white"
-                : "bg-white border border-slate-200 text-slate-600 hover:border-[#072C2C] hover:text-[#072C2C]"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+        <div className="mb-8 flex flex-wrap justify-center gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setSelectedCategory(cat)}
+              className={
+                selectedCategory === cat
+                  ? "rounded-full border border-[var(--color-primary)] bg-[var(--color-primary)] px-3 py-1.5 text-sm font-medium text-white"
+                  : "rounded-full border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-3 py-1.5 text-sm font-medium text-[var(--color-text-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+              }
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredSections.map((section) => (
+            <div key={section.title} className="surface-panel rounded-[var(--radius-xl)] p-6">
+              <div className="mb-4 h-1.5 w-12 rounded-full bg-[var(--color-secondary)]" />
+              <h3 className="font-[var(--font-display)] text-2xl text-[var(--color-text)]">{section.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">{section.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </Container>
   )
