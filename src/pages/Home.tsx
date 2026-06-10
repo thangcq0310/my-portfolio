@@ -78,19 +78,20 @@ export function Home() {
   return (
     <div>
       {/* Hero - 2 columns */}
-      <section className="bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 py-20">
+      <section className="bg-slate-50 py-20">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Content */}
             <div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-950 leading-tight">
+              <p className="text-sm font-medium text-sky-700 uppercase tracking-wider mb-4">SCHub.vn / Supply Chain Knowledge</p>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
                 Hệ thống kiến thức &amp; công cụ Supply Chain thực chiến cho doanh nghiệp Việt Nam
               </h1>
               <p className="text-lg text-slate-600 mt-6 mb-8 max-w-xl">
                 SCHub.vn giúp nhà quản lý và đội ngũ vận hành chuẩn hóa planning, procurement, inventory, warehouse, logistics cost và digital SCM bằng bài viết thực chiến, template và playbook dễ áp dụng.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
-                <Link to="/articles" className="px-6 py-3 bg-sky-500 text-white font-medium rounded-lg hover:bg-sky-600 transition-colors">
+                <Link to="/articles" className="px-6 py-3 bg-sky-700 text-white font-medium rounded-lg hover:bg-sky-800 transition-colors">
                   Khám phá bài viết
                 </Link>
                 <Link to="/checklist" className="px-6 py-3 bg-white border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
@@ -100,15 +101,15 @@ export function Home() {
               </div>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
-                  <Target className="w-4 h-4 text-sky-500" />
+                  <Target className="w-4 h-4 text-sky-700" />
                   Tập trung vào bài toán thực tế của doanh nghiệp Việt Nam
                 </li>
                 <li className="flex items-center gap-2">
-                  <Scale className="w-4 h-4 text-sky-500" />
+                  <Scale className="w-4 h-4 text-sky-700" />
                   Có template, checklist và playbook áp dụng ngay
                 </li>
                 <li className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-sky-500" />
+                  <Users className="w-4 h-4 text-sky-700" />
                   Phù hợp cho SCM, Logistics, Warehouse, Planning, Procurement
                 </li>
               </ul>
@@ -286,6 +287,23 @@ export function Home() {
           <div className="text-center mt-8">
             <Link to="/services" className="inline-flex px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors">
               Xem chi tiết dịch vụ
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 bg-slate-900">
+        <Container>
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Bắt đầu chuẩn hóa Supply Chain từ bộ checklist 50 điểm
+            </h2>
+            <p className="text-slate-300 mb-8">
+              Tự đánh giá năng lực SCM của doanh nghiệp và nhận kế hoạch cải thiện phù hợp với mức độ trưởng thành hiện tại.
+            </p>
+            <Link to="/checklist" className="inline-flex px-8 py-4 bg-sky-700 text-white font-medium rounded-lg hover:bg-sky-800 transition-colors">
+              Tải checklist miễn phí
             </Link>
           </div>
         </Container>
