@@ -4,266 +4,68 @@
 
 @layer base {
   :root {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 346 77% 50%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 217.2 91% 50%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 63%;
-    --accent: 217.2 91% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 346 77% 50%;
+    --primary: #072C2C;
+    --primary-foreground: #FFFFFF;
+    --secondary: #FF5F03;
+    --secondary-foreground: #FFFFFF;
+    --success: #16A34A;
+    --success-foreground: #FFFFFF;
+    --warning: #D97706;
+    --warning-foreground: #FFFFFF;
+    --danger: #DC2626;
+    --danger-foreground: #FFFFFF;
+    --surface: #F8FAFC;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --border: #E2E8F0;
     --radius: 0.75rem;
   }
 
   * {
-    @apply border-border;
+    @apply border-slate-200;
   }
   
   body {
-    @apply bg-[#0a0a0a] text-white font-sans antialiased;
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
   }
 }
 
 @layer utilities {
-/* --- Gradient Text --- */
-.text-gradient {
-    @apply bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent;
-  }
-
-  .text-gradient-pink {
-    @apply bg-gradient-to-br from-pink-500 to-pink-400 bg-clip-text text-transparent;
-  }
-
-  .text-gradient-blue {
-    @apply bg-gradient-to-br from-blue-500 to-blue-400 bg-clip-text text-transparent;
-  }
-
-  /* --- Glass Card (using raw CSS since v3 @apply doesn't support opacity) --- */
-  .glass-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-    backdrop-filter: blur(20px) saturate(200%);
-    -webkit-backdrop-filter: blur(20px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 1rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-
-  /* --- Glass --- */
-  .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* --- Glass Input --- */
-  .glass-input {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 0.75rem;
-    color: white;
-    outline: none;
-    transition: all 0.2s ease;
-  }
-
-  .glass-input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-  }
-
-  .glass-input:focus {
-    border-color: rgba(236, 72, 153, 0.5);
-    box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
-  }
-
-  /* --- Typewriter Cursor --- */
-  .cursor-blink {
-    @apply inline-block w-[2px] h-[1.2em] bg-pink-500 ml-[2px] align-text-bottom;
-    animation: blink 1s step-end infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  /* --- Gradient Mesh Background --- */
-  .bg-mesh {
-    background: 
-      radial-gradient(ellipse 100% 80% at 20% 10%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse 80% 60% at 80% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 50% at 50% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse 100% 100% at 0% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
-    background-color: hsl(0, 0%, 3.9%);
-  }
-
-  /* --- Dot Pattern Background --- */
-  .bg-dots {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  /* --- Liquid Glass Effect --- */
-  .liquid-glass {
-    @apply relative rounded-3xl border border-white/15;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 40%,
-      rgba(255, 255, 255, 0.02) 100%
-    );
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
-    box-shadow: 
-      0 25px 50px -12px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .glass {
-    @apply border border-white/10;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-  }
-
-  .glass-card {
-    @apply rounded-2xl;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.03) 100%
-    );
-    backdrop-filter: blur(20px) saturate(200%);
-    -webkit-backdrop-filter: blur(20px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .glass-sidebar {
-    background: linear-gradient(
-      180deg,
-      rgba(10, 10, 10, 0.95) 0%,
-      rgba(5, 5, 5, 0.98) 100%
-    );
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .glass-btn {
-    @apply rounded-xl border border-white/20 text-white font-semibold transition-all duration-300;
-    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
-  }
-
-  .glass-btn:hover {
-    @apply -translate-y-0.5;
-    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
-  }
-
-  .glass-btn-outline {
-    @apply rounded-xl border border-white/15 text-white font-semibold transition-all duration-300;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  .glass-btn-outline:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-
-  .glass-badge {
-    @apply rounded-full px-3 py-1 text-xs;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-  }
-
   /* --- Skip Link --- */
   .skip-link {
-    @apply absolute -left-[9999px] z-[100] px-8 py-4 bg-primary text-white font-semibold rounded-br-xl;
+    @apply absolute -left-[9999px] z-[100] px-8 py-4 bg-sky-700 text-white font-semibold rounded-br-xl;
   }
 
   .skip-link:focus {
     @apply left-0;
   }
 
-  /* --- Glow Effects --- */
-  .glow-pink {
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+  /* --- Focus Ring --- */
+  .focus-ring:focus {
+    @apply outline-2 outline-offset-2 outline-sky-600;
   }
 
-  .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  /* --- Card Hover --- */
+  .card-hover {
+    @apply transition-all duration-200;
   }
 
-  /* --- Animations --- */
-  .hover-lift {
-    @apply transition-all duration-300;
+  .card-hover:hover {
+    @apply shadow-md -translate-y-0.5;
   }
 
-  .hover-lift:hover {
-    @apply -translate-y-1;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  /* --- Text Truncate --- */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .hover-scale {
-    @apply transition-transform duration-200;
-  }
-
-  .hover-scale:hover {
-    @apply scale-105;
-  }
-
-  .hover-shine {
-    @apply relative overflow-hidden;
-  }
-
-  .hover-shine::after {
-    content: '';
-    @apply absolute top-0 -left-full w-full h-full transition-all duration-500;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 100%
-    );
-  }
-
-  .hover-shine:hover::after {
-    @apply left-full;
-  }
-
-  .hover-glow {
-    @apply transition-shadow duration-300;
-  }
-
-  .hover-glow:hover {
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.2);
-  }
-
-  /* --- Touch Target --- */
-  .touch-target {
-    @apply min-h-[44px] min-w-[44px];
-  }
-
-  /* --- Voice Focus --- */
-  .voice-focus:focus {
-    @apply outline outline-2 outline-offset-2 outline-pink-500;
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

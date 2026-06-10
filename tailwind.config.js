@@ -7,19 +7,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['Fira Code', 'ui-monospace', 'Consolas', 'monospace'],
+        sans: ['Be Vietnam Pro', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'Consolas', 'monospace'],
       },
       colors: {
-        background: 'hsl(0, 0%, 3.9%)',
-        foreground: 'hsl(0, 0%, 100%)',
-        primary: 'hsl(346, 77%, 50%)',
-        secondary: 'hsl(217.2, 91%, 50%)',
-        muted: {
-          DEFAULT: 'hsl(0, 0%, 14%)',
-          foreground: 'hsl(0, 0%, 63%)',
-        },
-        border: 'hsl(0, 0%, 14%)',
+        // Enterprise theme tokens
+        primary: '#072C2C',       // Dark teal - primary brand
+        secondary: '#FF5F03',      // Orange - secondary accent
+        success: '#16A34A',        // Green - success states
+        warning: '#D97706',        // Amber - warning states
+        danger: '#DC2626',          // Red - error/danger states
+        surface: '#F8FAFC',        // Light background (slate-50 equivalent)
+        'text-primary': '#0F172A', // Dark slate for headings
+        'text-secondary': '#475569', // Medium slate for body
       },
       borderRadius: {
         DEFAULT: '0.75rem',
