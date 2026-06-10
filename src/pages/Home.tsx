@@ -136,7 +136,7 @@ const methodSteps = [
 
 export function Home() {
   const featuredArticles = seedArticles.filter(a => a.featured).slice(0, 3)
-  const featuredLearningPaths = learningPaths.filter((path) => 
+  const featuredLearningPaths = learningPaths.filter((path) =>
     ["supply-chain-foundation", "forecasting", "sop"].includes(path.slug)
   )
 
@@ -166,11 +166,11 @@ export function Home() {
               <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
                 <li className="flex items-center gap-2">
                   <Target className="h-4 w-4 text-[var(--color-primary)]" />
-                  Tập trung vào các bài toán vận hành thật của doanh nghiệp Việt Nam
+                  Tập trung vào các bài toán vận hành thực tế của doanh nghiệp Việt Nam
                 </li>
                 <li className="flex items-center gap-2">
                   <Scale className="h-4 w-4 text-[var(--color-primary)]" />
-                  Kết nối Learning Hub, Blog, Solutions và Checklist thành một flow r�� ràng
+                  Kết nối Learning Hub, Blog, Solutions và Checklist thành một flow rõ ràng
                 </li>
                 <li className="flex items-center gap-2">
                   <Users className="h-4 w-4 text-[var(--color-primary)]" />
