@@ -25,8 +25,8 @@ export function Articles() {
             onClick={() => setSelectedTag(topic)}
             className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
               selectedTag === topic
-                ? "bg-sky-500 text-white"
-                : "bg-white border border-slate-200 text-slate-600 hover:border-sky-500 hover:text-sky-600"
+                ? "bg-[#072C2C] text-white"
+                : "bg-white border border-slate-200 text-slate-600 hover:border-[#072C2C] hover:text-[#072C2C]"
             }`}
           >
             {topic}

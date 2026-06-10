@@ -3,12 +3,12 @@ import { Package, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300 py-12">
+    <footer className="bg-[#072C2C] text-slate-300 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <Package className="w-6 h-6 text-sky-500" />
+              <Package className="w-6 h-6 text-[#FF5F03]" />
               <span className="text-lg font-bold text-white">SCHub.vn</span>
             </Link>
             <p className="text-sm">Nền tảng kiến thức Supply Chain cho người Việt</p>
@@ -36,7 +36,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="border-t border-slate-800 mt-8 pt-8 text-sm text-center">
+        <div className="border-t border-white/10 mt-8 pt-8 text-sm text-center">
           © 2024 SCHub.vn. All rights reserved.
         </div>
       </div>
