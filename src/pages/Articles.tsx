@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Container from "../components/layout/Container"
 import ArticleCard from "../components/cards/ArticleCard"
 import { seedArticles } from "../data/seedData"
 
@@ -13,8 +14,9 @@ export function Articles() {
   })
 
   return (
-    <div className="py-12">
-      <h1 className="text-3xl font-bold text-slate-900 mb-8">Bài viết</h1>
+    <Container>
+      <div className="py-12">
+        <h1 className="text-3xl font-bold text-slate-900 mb-8">Bài viết</h1>
       
       <div className="flex flex-wrap gap-2 mb-8">
         {topics.map(topic => (
@@ -41,6 +43,7 @@ export function Articles() {
       ) : (
         <p className="text-slate-500 text-center py-12">Chưa có bài viết nào.</p>
       )}
-    </div>
+      </div>
+    </Container>
   )
 }

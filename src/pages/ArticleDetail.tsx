@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom"
 import { Clock, User, ArrowLeft } from "lucide-react"
+import Container from "../components/layout/Container"
 import { seedArticles } from "../data/seedData"
 
 export function ArticleDetail() {
@@ -8,10 +9,12 @@ export function ArticleDetail() {
   
   if (!article) {
     return (
-      <div className="py-12 text-center">
-        <h1 className="text-2xl font-bold text-slate-900 mb-4">Bài viết không tồn tại</h1>
-        <Link to="/articles" className="text-sky-600 hover:text-sky-700">← Quay lại bài viết</Link>
-      </div>
+      <Container>
+        <div className="py-12 text-center">
+          <h1 className="text-2xl font-bold text-slate-900 mb-4">Bài viết không tồn tại</h1>
+          <Link to="/articles" className="text-sky-600 hover:text-sky-700">← Quay lại bài viết</Link>
+        </div>
+      </Container>
     )
   }
   
@@ -20,8 +23,9 @@ export function ArticleDetail() {
     .slice(0, 3)
 
   return (
-    <div className="py-12">
-      <article className="max-w-3xl">
+    <Container>
+      <div className="py-12">
+        <article className="max-w-3xl">
         <Link to="/articles" className="inline-flex items-center gap-1 text-sky-600 hover:text-sky-700 mb-6">
           <ArrowLeft className="w-4 h-4" /> Quay lại
         </Link>
@@ -54,18 +58,19 @@ export function ArticleDetail() {
       </article>
       
       {related.length > 0 && (
-        <div className="mt-12 pt-12 border-t">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">Bài viết liên quan</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {related.map(a => (
-              <Link key={a.id} to={`/articles/${a.slug}`} className="block bg-white rounded-xl border border-slate-200 p-4 hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-slate-900 mb-2">{a.title}</h3>
-                <p className="text-sm text-slate-500 line-clamp-2">{a.excerpt}</p>
-              </Link>
-            ))}
+          <div className="mt-12 pt-12 border-t">
+            <h2 className="text-xl font-bold text-slate-900 mb-6">Bài viết liên quan</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {related.map(a => (
+                <Link key={a.id} to={`/articles/${a.slug}`} className="block bg-white rounded-xl border border-slate-200 p-4 hover:shadow-lg transition-shadow">
+                  <h3 className="font-semibold text-slate-900 mb-2">{a.title}</h3>
+                  <p className="text-sm text-slate-500 line-clamp-2">{a.excerpt}</p>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </Container>
   )
 }

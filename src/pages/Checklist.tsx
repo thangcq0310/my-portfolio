@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { ClipboardCheck, Send, CheckCircle } from "lucide-react"
+import Container from "../components/layout/Container"
 import { checklist50 } from "../data/seedData"
 
 const categories = ["Planning", "Procurement", "Inventory", "Warehouse & Logistics", "Data, KPI & Digital", "People, Process & Governance"]
@@ -17,7 +18,8 @@ export function Checklist() {
   }
 
   return (
-    <div className="py-12">
+    <Container>
+      <div className="py-12">
       <div className="text-center mb-12">
         <ClipboardCheck className="w-16 h-16 text-sky-500 mx-auto mb-4" />
         <h1 className="text-3xl font-bold text-slate-900 mb-4">
@@ -136,5 +138,6 @@ export function Checklist() {
         </div>
       </div>
     </div>
+  </Container>
   )
 }

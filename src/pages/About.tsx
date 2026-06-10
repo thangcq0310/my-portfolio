@@ -1,9 +1,11 @@
 import { Package, Mail } from "lucide-react"
+import Container from "../components/layout/Container"
 
 export function About() {
   return (
-    <div className="py-12">
-      <h1 className="text-3xl font-bold text-slate-900 mb-8">Về SCHub.vn</h1>
+    <Container>
+      <div className="py-12">
+        <h1 className="text-3xl font-bold text-slate-900 mb-8">Về SCHub.vn</h1>
       
       <div className="bg-white rounded-xl border border-slate-200 p-8 mb-8">
         <div className="flex items-center gap-4 mb-6">
@@ -33,5 +35,6 @@ export function About() {
         </div>
       </div>
     </div>
+  </Container>
   )
 }

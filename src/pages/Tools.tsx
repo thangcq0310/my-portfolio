@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Container from "../components/layout/Container"
 import ToolCard from "../components/cards/ToolCard"
 import { seedTools } from "../data/seedData"
 
@@ -13,8 +14,9 @@ export function Tools() {
   })
 
   return (
-    <div className="py-12">
-      <h1 className="text-3xl font-bold text-slate-900 mb-4">Công cụ</h1>
+    <Container>
+      <div className="py-12">
+        <h1 className="text-3xl font-bold text-slate-900 mb-4">Công cụ</h1>
       <p className="text-slate-600 mb-8">Công cụ hỗ trợ quản trị Supply Chain</p>
 
       <div className="flex flex-wrap gap-2 mb-8">
@@ -39,5 +41,6 @@ export function Tools() {
         ))}
       </div>
     </div>
+  </Container>
   )
 }

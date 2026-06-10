@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { FileText, Package, Wrench, Send } from "lucide-react"
+import Container from "../components/layout/Container"
 
 const services = [
   {
@@ -58,8 +59,9 @@ export function Services() {
   }
 
   return (
-    <div className="py-12">
-      <h1 className="text-3xl font-bold text-slate-900 mb-4">Dịch vụ tư vấn</h1>
+    <Container>
+      <div className="py-12">
+        <h1 className="text-3xl font-bold text-slate-900 mb-4">Dịch vụ tư vấn</h1>
       <p className="text-slate-600 mb-12">Các gói dịch vụ giúp doanh nghiệp rà soát hiện trạng, chuẩn hóa dữ liệu – quy trình – KPI và xây dựng công cụ quản trị Supply Chain phù hợp với mức độ trưởng thành hiện tại.</p>
 
       {/* Services Cards */}
@@ -172,5 +174,6 @@ export function Services() {
         )}
       </div>
     </div>
+  </Container>
   )
 }

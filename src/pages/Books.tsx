@@ -1,9 +1,11 @@
+import Container from "../components/layout/Container"
 import BookCard from "../components/cards/BookCard"
 import { seedBooks } from "../data/seedData"
 
 export function Books() {
   return (
-    <div className="py-12">
+    <Container>
+      <div className="py-12">
       <h1 className="text-3xl font-bold text-slate-900 mb-4">Sách & Template</h1>
       <p className="text-slate-600 mb-12">Kho sách và template về Supply Chain Management</p>
       
@@ -11,7 +13,8 @@ export function Books() {
         {seedBooks.map(book => (
           <BookCard key={book.id} book={book} />
         ))}
+        </div>
       </div>
-    </div>
+    </Container>
   )
 }
