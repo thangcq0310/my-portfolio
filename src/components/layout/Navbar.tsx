@@ -47,7 +47,7 @@ export default function Navbar() {
                   "focus-ring rounded-[var(--radius-md)] px-4 py-2 text-sm font-medium transition-colors",
                   active
                     ? "bg-[var(--color-primary)] text-white"
-                    : "text-[var(--color-text-muted)] hover:bg-white hover:text-[var(--color-text)]",
+                    : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-raised)] hover:text-[var(--color-text)]",
                 ].join(" ")}
               >
                 {link.label}
@@ -64,7 +64,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-white text-[var(--color-text)] lg:hidden"
+          className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] text-[var(--color-text)] lg:hidden"
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-menu"
           aria-label={mobileMenuOpen ? "Đóng menu" : "Mở menu"}
@@ -90,7 +90,7 @@ export default function Navbar() {
                     "focus-ring flex items-center gap-3 rounded-[var(--radius-md)] border px-4 py-3 text-sm font-medium transition-colors",
                     active
                       ? "border-[var(--color-primary)] bg-[var(--color-primary)] text-white"
-                      : "border-transparent bg-white text-[var(--color-text)] hover:border-[var(--color-border)]",
+                      : "border-transparent bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-border)]",
                   ].join(" ")}
                 >
                   <Icon className="h-4 w-4" />

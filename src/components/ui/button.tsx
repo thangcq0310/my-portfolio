@@ -12,10 +12,10 @@ const buttonVariants = cva(
         destructive:
           "border-[var(--color-danger)] bg-[var(--color-danger)] text-white shadow-[var(--shadow-panel)] hover:-translate-y-0.5 hover:brightness-95 active:translate-y-0",
         outline:
-          "border-[var(--color-border-strong)] bg-[var(--color-surface-raised)] text-[var(--color-text)] hover:-translate-y-0.5 hover:border-[var(--color-primary)] hover:bg-white active:translate-y-0",
+          "border-[var(--color-border-strong)] bg-[var(--color-surface-raised)] text-[var(--color-text)] hover:-translate-y-0.5 hover:border-[var(--color-primary)] hover:bg-[var(--color-surface)] active:translate-y-0",
         secondary:
           "border-[var(--color-secondary)] bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)] shadow-[var(--shadow-panel)] hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0",
-        ghost: "border-transparent bg-transparent text-[var(--color-text-muted)] hover:border-[var(--color-border)] hover:bg-white hover:text-[var(--color-text)]",
+        ghost: "border-transparent bg-transparent text-[var(--color-text-muted)] hover:border-[var(--color-border)] hover:bg-[var(--color-surface-raised)] hover:text-[var(--color-text)]",
         link: "h-auto rounded-none border-transparent p-0 text-[var(--color-primary)] underline-offset-4 hover:underline",
       },
       size: {

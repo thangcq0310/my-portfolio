@@ -1,36 +1,39 @@
-import type { Tool } from "../../types";
+import type { Tool } from "../../types"
 
 interface ToolCardProps {
-  tool: Tool;
+  tool: Tool
 }
 
 export default function ToolCard({ tool }: ToolCardProps) {
   const pricingColors = {
-    free: "bg-[#072C2C]/10 text-[#072C2C] border-[#072C2C]/20",
-    freemium: "bg-[#D97706]/10 text-[#D97706] border-[#D97706]/20",
-    paid: "bg-[#DC2626]/10 text-[#DC2626] border-[#DC2626]/20",
-  };
-  
+    free: "border-[var(--color-primary)]/20 bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
+    freemium: "border-[var(--color-warning)]/20 bg-[var(--color-warning)]/10 text-[var(--color-warning)]",
+    paid: "border-[var(--color-danger)]/20 bg-[var(--color-danger)]/10 text-[var(--color-danger)]",
+  }
+
   const pricingLabels = {
     free: "Miễn phí",
     freemium: "Freemium",
     paid: "Trả phí",
-  };
-  
+  }
+
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-slate-300 hover:shadow-md transition-all h-full flex flex-col">
-      {/* Secondary orange header for tools */}
-      <div className="h-2 bg-[#FF5F03]" />
-      <div className="p-5 flex-1 flex flex-col">
-        <h3 className="font-semibold text-slate-900 mb-1">{tool.name}</h3>
-        <p className="text-sm text-slate-600 mb-3 line-clamp-2">{tool.description}</p>
-        <div className="flex items-center justify-between mt-auto">
-          <span className="text-xs text-slate-500">{tool.category}</span>
-          <span className={`px-2 py-1 rounded-full text-xs font-medium border ${pricingColors[tool.pricing]}`}>
+    <div className="surface-panel card-hover flex h-full flex-col overflow-hidden rounded-[var(--radius-xl)] border-[var(--color-border)]">
+      <div className="bg-[var(--color-secondary)] p-5 text-white">
+        <p className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-white/70">SCHUB.VN TOOLKIT</p>
+        <div className="mt-5 h-px w-12 bg-white/70" />
+        <p className="mt-4 text-xs uppercase tracking-wide text-white/70">{tool.category}</p>
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-[var(--font-display)] text-xl leading-tight text-[var(--color-text)]">{tool.name}</h3>
+        <p className="mt-3 line-clamp-3 text-sm text-[var(--color-text-muted)]">{tool.description}</p>
+        <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+          <span className="text-xs uppercase tracking-wide text-[var(--color-text-muted)]">{tool.category}</span>
+          <span className={`rounded-full border px-2.5 py-1 text-xs font-medium ${pricingColors[tool.pricing]}`}>
             {pricingLabels[tool.pricing]}
           </span>
         </div>
       </div>
     </div>
-  );
+  )
 }

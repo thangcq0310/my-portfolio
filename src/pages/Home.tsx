@@ -66,54 +66,51 @@ export function Home() {
 
   return (
     <div>
-      {/* Hero - 2 columns */}
-      <section className="bg-slate-50 py-20">
+      <section className="bg-[var(--color-surface)] py-24">
         <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Content */}
+          <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="text-sm font-medium text-[#FF5F03] uppercase tracking-wider mb-4">SCHub.vn / Supply Chain Knowledge</p>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] leading-tight">
+              <p className="mb-4 text-sm font-medium uppercase tracking-wider text-[var(--color-secondary)]">SCHub.vn / Supply Chain Knowledge</p>
+              <h1 className="font-[var(--font-display)] text-3xl font-bold leading-tight text-[var(--color-text)] md:text-4xl lg:text-5xl">
                 Hệ thống kiến thức &amp; công cụ Supply Chain thực chiến cho doanh nghiệp Việt Nam
               </h1>
-              <p className="text-lg text-slate-600 mt-6 mb-8 max-w-xl">
+              <p className="mt-6 mb-8 max-w-xl text-lg text-[var(--color-text-muted)]">
                 SCHub.vn giúp nhà quản lý và đội ngũ vận hành chuẩn hóa planning, procurement, inventory, warehouse, logistics cost và digital SCM bằng bài viết thực chiến, template và playbook dễ áp dụng.
               </p>
-              <div className="flex flex-wrap gap-4 mb-8">
-                <Link to="/articles" className="px-6 py-3 bg-[#072C2C] text-white font-medium rounded-lg hover:bg-[#0a4242] transition-colors">
+              <div className="mb-8 flex flex-wrap gap-4">
+                <Link to="/articles" className="rounded-[var(--radius-md)] border border-[var(--color-primary)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:bg-[#0a4242]">
                   Khám phá bài viết
                 </Link>
-                <Link to="/checklist" className="px-6 py-3 bg-white border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
-                  <ClipboardCheck className="w-5 h-5" />
+                <Link to="/checklist" className="flex items-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-6 py-3 font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-border-strong)]">
+                  <ClipboardCheck className="h-5 w-5" />
                   Tải checklist 50 điểm
                 </Link>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-[var(--color-text-muted)]">
                 <li className="flex items-center gap-2">
-                  <Target className="w-4 h-4 text-[#072C2C]" />
+                  <Target className="h-4 w-4 text-[var(--color-primary)]" />
                   Tập trung vào bài toán thực tế của doanh nghiệp Việt Nam
                 </li>
                 <li className="flex items-center gap-2">
-                  <Scale className="w-4 h-4 text-[#072C2C]" />
+                  <Scale className="h-4 w-4 text-[var(--color-primary)]" />
                   Có template, checklist và playbook áp dụng ngay
                 </li>
                 <li className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-[#072C2C]" />
+                  <Users className="h-4 w-4 text-[var(--color-primary)]" />
                   Phù hợp cho SCM, Logistics, Warehouse, Planning, Procurement
                 </li>
               </ul>
             </div>
 
-            {/* Right: SCM Control Room Mock */}
-            <div className="bg-[#072C2C] rounded-2xl p-6 shadow-xl">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-white font-semibold">SCM Control Room</h3>
-                <div className="w-2 h-2 bg-[#FF5F03] rounded-full animate-pulse" />
+            <div className="rounded-[var(--radius-xl)] bg-[var(--color-primary)] p-6 shadow-[var(--shadow-panel-hover)]">
+              <div className="mb-6 flex items-center justify-between">
+                <h3 className="font-[var(--font-display)] font-semibold text-white">SCM Control Room</h3>
+                <div className="h-2 w-2 rounded-full bg-[var(--color-secondary)] animate-pulse" />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {scmMetrics.map((metric, i) => (
-                  <div key={i} className="bg-white/10 rounded-lg p-4">
-                    <p className="text-slate-400 text-xs mb-1">{metric.label}</p>
+                  <div key={i} className="rounded-[var(--radius-md)] border border-white/10 bg-white/10 p-4">
+                    <p className="mb-1 text-xs text-white/60">{metric.label}</p>
                     <p className={`text-xl font-bold ${
                       metric.status === "good" ? "text-[#16A34A]" :
                       metric.status === "warning" ? "text-[#D97706]" : "text-[#DC2626]"
@@ -128,45 +125,42 @@ export function Home() {
         </Container>
       </section>
 
-      {/* Pain Points Section */}
-      <section className="py-16 bg-slate-100">
+      <section className="bg-[var(--color-surface-raised)] py-20">
         <Container>
-          <h2 className="text-2xl font-bold text-[#0F172A] text-center mb-4">Doanh nghiệp thường gặp gì?</h2>
-          <p className="text-slate-600 text-center max-w-2xl mx-auto mb-12">Những bài toán phổ biến trong vận hành chuỗi cung ứng tại Việt Nam.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="mb-4 text-center font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Doanh nghiệp thường gặp gì?</h2>
+          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">Các điểm nghẽn thường làm doanh nghiệp vừa thiếu hàng, vừa tồn cao, vừa khó kiểm soát chi phí logistics.</p>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {painPoints.map((pain, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-md transition-shadow">
-                <pain.icon className="w-8 h-8 text-[#072C2C] mb-4" />
-                <h3 className="font-semibold text-[#0F172A] mb-2">{pain.title}</h3>
-                <p className="text-sm text-slate-600">{pain.description}</p>
+              <div key={i} className="surface-panel card-hover rounded-[var(--radius-xl)] p-6">
+                <pain.icon className="mb-4 h-8 w-8 text-[var(--color-primary)]" />
+                <h3 className="mb-2 font-[var(--font-display)] font-semibold text-[var(--color-text)]">{pain.title}</h3>
+                <p className="text-sm text-[var(--color-text-muted)]">{pain.description}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* 6 Pillars Section */}
       <section className="py-16">
         <Container>
-          <h2 className="text-2xl font-bold text-[#0F172A] text-center mb-4">6 trụ cột nội dung</h2>
-          <p className="text-slate-600 text-center max-w-2xl mx-auto mb-12">Kiến thức và công cụ cho toàn bộ chuỗi cung ứng.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <h2 className="mb-4 text-center font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">6 trụ cột nội dung</h2>
+          <p className="mx-auto mb-12 max-w-2xl text-center text-[var(--color-text-muted)]">Mỗi trụ cột được xây theo logic: vấn đề vận hành → nguyên tắc quản trị → template áp dụng → KPI theo dõi.</p>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {pillars.map((pillar, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-5 hover:border-[#072C2C] transition-colors">
-                <h3 className="font-semibold text-[#0F172A]">{pillar.title}</h3>
-                <p className="text-sm text-slate-500 mt-1">{pillar.description}</p>
+              <div key={i} className="surface-panel card-hover rounded-[var(--radius-xl)] p-6">
+                <h3 className="font-[var(--font-display)] font-semibold text-[var(--color-text)]">{pillar.title}</h3>
+                <p className="mt-1 text-sm text-[var(--color-text-muted)]">{pillar.description}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Topics */}
-      <section className="py-8 border-t border-slate-200">
+      <section className="border-t border-[var(--color-border)] py-8">
         <Container>
           <div className="flex flex-wrap gap-2">
             {topics.map(topic => (
-              <Link key={topic} to={`/articles?tag=${encodeURIComponent(topic)}`} className="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-sm text-slate-600 hover:border-[#072C2C] hover:text-[#072C2C] transition-colors">
+              <Link key={topic} to={`/articles?tag=${encodeURIComponent(topic)}`} className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-3 py-1.5 text-sm text-[var(--color-text-muted)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]">
                 {topic}
               </Link>
             ))}
@@ -174,16 +168,15 @@ export function Home() {
         </Container>
       </section>
 
-      {/* Featured Articles */}
       <section className="py-16">
         <Container>
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-[#0F172A]">Bài viết thực chiến mới nhất</h2>
-            <Link to="/articles" className="text-[#072C2C] hover:opacity-80 flex items-center gap-1">
-              Xem tất cả <ArrowRight className="w-4 h-4" />
+          <div className="mb-8 flex items-center justify-between">
+            <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Bài viết thực chiến mới nhất</h2>
+            <Link to="/articles" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
+              Xem tất cả <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featuredArticles.map(article => (
               <ArticleCard key={article.id} article={article} />
             ))}
@@ -191,30 +184,28 @@ export function Home() {
         </Container>
       </section>
 
-      {/* Free Checklist CTA */}
-      <section className="py-16 bg-slate-100">
+      <section className="bg-[var(--color-surface)] py-16">
         <Container>
           <div className="text-center">
-            <ClipboardCheck className="w-12 h-12 text-[#072C2C] mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-[#0F172A] mb-4">Checklist 50 điểm tự đánh giá năng lực Supply Chain</h2>
-            <p className="text-slate-600 max-w-xl mx-auto mb-6">Tự đánh giá 6 nhóm: Planning, Procurement, Inventory, Warehouse &amp; Logistics, Data/KPI/Digital, People/Process/Governance.</p>
-            <Link to="/checklist" className="inline-flex px-6 py-3 bg-[#FF5F03] text-white font-medium rounded-lg hover:bg-[#ff7a33] transition-colors">
+            <ClipboardCheck className="mx-auto mb-4 h-12 w-12 text-[var(--color-primary)]" />
+            <h2 className="mb-4 font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Checklist 50 điểm tự đánh giá năng lực Supply Chain</h2>
+            <p className="mx-auto mb-6 max-w-xl text-[var(--color-text-muted)]">Tự đánh giá 6 nhóm: Planning, Procurement, Inventory, Warehouse &amp; Logistics, Data/KPI/Digital, People/Process/Governance.</p>
+            <Link to="/checklist" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-105">
               Tải checklist miễn phí
             </Link>
           </div>
         </Container>
       </section>
 
-      {/* Books Preview */}
       <section className="py-16">
         <Container>
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-[#0F172A]">Sách, template &amp; playbook</h2>
-            <Link to="/books" className="text-[#072C2C] hover:opacity-80 flex items-center gap-1">
-              Xem tất cả <ArrowRight className="w-4 h-4" />
+          <div className="mb-8 flex items-center justify-between">
+            <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Sách, template &amp; playbook</h2>
+            <Link to="/books" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
+              Xem tất cả <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {featuredBooks.map(book => (
               <BookCard key={book.id} book={book} />
             ))}
@@ -222,16 +213,15 @@ export function Home() {
         </Container>
       </section>
 
-      {/* Tools Preview */}
-      <section className="py-16 bg-slate-50">
+      <section className="bg-[var(--color-surface-raised)] py-16">
         <Container>
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-[#0F172A]">Công cụ miễn phí &amp; template vận hành</h2>
-            <Link to="/tools" className="text-[#072C2C] hover:opacity-80 flex items-center gap-1">
-              Xem tất cả <ArrowRight className="w-4 h-4" />
+          <div className="mb-8 flex items-center justify-between">
+            <h2 className="font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Công cụ miễn phí &amp; template vận hành</h2>
+            <Link to="/tools" className="flex items-center gap-1 text-[var(--color-primary)] hover:opacity-80">
+              Xem tất cả <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {featuredTools.map(tool => (
               <ToolCard key={tool.id} tool={tool} />
             ))}
@@ -239,38 +229,36 @@ export function Home() {
         </Container>
       </section>
 
-      {/* Services */}
       <section className="py-16">
         <Container>
-          <h2 className="text-2xl font-bold text-[#0F172A] text-center mb-12">Dịch vụ triển khai thực tế</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="mb-12 text-center font-[var(--font-display)] text-2xl font-bold text-[var(--color-text)]">Dịch vụ triển khai thực tế</h2>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service, i) => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-6">
-                <service.icon className="w-10 h-10 text-[#072C2C] mb-4" />
-                <h3 className="font-semibold text-[#0F172A] mb-2">{service.title}</h3>
-                <p className="text-sm text-slate-600">{service.desc}</p>
+              <div key={i} className="surface-panel rounded-[var(--radius-xl)] p-6">
+                <service.icon className="mb-4 h-10 w-10 text-[var(--color-primary)]" />
+                <h3 className="mb-2 font-[var(--font-display)] font-semibold text-[var(--color-text)]">{service.title}</h3>
+                <p className="text-sm text-[var(--color-text-muted)]">{service.desc}</p>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link to="/services" className="inline-flex px-6 py-3 bg-[#072C2C] text-white font-medium rounded-lg hover:bg-[#0a4242] transition-colors">
+          <div className="mt-8 text-center">
+            <Link to="/services" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:bg-[#0a4242]">
               Xem chi tiết dịch vụ
             </Link>
           </div>
         </Container>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 bg-[#072C2C]">
+      <section className="bg-[var(--color-primary)] py-16">
         <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="mb-4 font-[var(--font-display)] text-2xl font-bold text-white md:text-3xl">
               Bắt đầu chuẩn hóa Supply Chain từ bộ checklist 50 điểm
             </h2>
-            <p className="text-slate-300 mb-8">
+            <p className="mb-8 text-slate-300">
               Tự đánh giá năng lực SCM của doanh nghiệp và nhận kế hoạch cải thiện phù hợp với mức độ trưởng thành hiện tại.
             </p>
-            <Link to="/checklist" className="inline-flex px-8 py-4 bg-[#FF5F03] text-white font-medium rounded-lg hover:bg-[#ff7a33] transition-colors">
+            <Link to="/checklist" className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-secondary)] px-8 py-4 font-medium text-white transition-colors hover:brightness-105">
               Tải checklist miễn phí
             </Link>
           </div>
