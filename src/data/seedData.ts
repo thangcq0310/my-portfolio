@@ -8,7 +8,7 @@ export const seedArticles = [
     body: `# Vì sao doanh nghiệp vừa tồn kho cao vừa thiếu hàng?
 
 ## Hiện tượng
-Sales báo cần giao hàng cho khách, kho báo tồn cao ngồn ngồn, nhưng khi kiểm tra thực tế thì hàng đã không có. Hoặc hàng tồn ở kho khác, hàng đang chờ check-in, hàng bị hold...
+Sales cần giao hàng cho khách, hệ thống ghi nhận tồn kho cao, nhưng lượng hàng khả dụng để xuất bán lại không đáp ứng nhu cầu thực tế. Hoặc hàng tồn ở kho khác, hàng đang chờ check-in, hàng bị hold...
 
 ## Nguyên nhân gốc
 
@@ -454,8 +454,8 @@ export const checklist50 = [
   { id: 2, category: "Planning", question: "Có quy trình lập kế hoạch năm/tháng/tuần không?", weight: 2 },
   { id: 3, category: "Planning", question: "Có dự báo cầu (demand forecasting) không?", weight: 3 },
   { id: 4, category: "Planning", question: "Có quy trình S&OP (Sales & Operations Planning) không?", weight: 2 },
-  { id: 5, category: "Planning", question: "Có hệ thống MCP (Material Requirements Planning) không?", weight: 2 },
-  { id: 6, category: "Planning", question: "Có quản lý capaticity planning không?", weight: 2 },
+  { id: 5, category: "Planning", question: "Có hệ thống MRP (Material Requirements Planning) không?", weight: 2 },
+  { id: 6, category: "Planning", question: "Có quản lý capacity planning không?", weight: 2 },
   { id: 7, category: "Planning", question: "Có benchmark với đối thủ cạnh tranh không?", weight: 1 },
   { id: 8, category: "Planning", question: "Có KPI cho bộ phận Planning không?", weight: 2 },
   { id: 9, category: "Procurement", question: "Có danh sách nhà cung cấp (supplier list) không?", weight: 2 },

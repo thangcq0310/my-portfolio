@@ -47,15 +47,15 @@ export function Tools() {
         </div>
 
         <div className="surface-panel mt-12 rounded-[var(--radius-xl)] p-8 text-center">
-          <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Muốn nhận sản phẩm khi ra mắt?</h2>
+          <h2 className="font-[var(--font-display)] text-3xl text-[var(--color-text)]">Muốn nhận checklist và thông báo sản phẩm mới?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-[var(--color-text-muted)]">
-            Để lại email để SCHub.vn gửi thông báo khi template, playbook hoặc công cụ mới được phát hành.
+            Để lại email để SCHub.vn gửi checklist miễn phí và thông báo khi template, playbook hoặc công cụ mới được phát hành.
           </p>
           <a
             href="/checklist"
             className="focus-ring mt-6 inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-6 py-3 font-medium text-white transition-colors hover:brightness-110"
           >
-            Nhận thông báo
+            Để lại email
           </a>
         </div>
       </div>
