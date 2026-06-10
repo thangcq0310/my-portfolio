@@ -6,9 +6,9 @@ interface ToolCardProps {
 
 export default function ToolCard({ tool }: ToolCardProps) {
   const pricingColors = {
-    free: "bg-emerald-100 text-emerald-700",
-    freemium: "bg-amber-100 text-amber-700",
-    paid: "bg-red-100 text-red-700",
+    free: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    freemium: "bg-amber-50 text-amber-700 border-amber-200",
+    paid: "bg-red-50 text-red-700 border-red-200",
   };
   
   const pricingLabels = {
@@ -18,14 +18,18 @@ export default function ToolCard({ tool }: ToolCardProps) {
   };
   
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-lg transition-shadow">
-      <h3 className="font-semibold text-slate-900 mb-1">{tool.name}</h3>
-      <p className="text-sm text-slate-500 mb-3 line-clamp-2">{tool.description}</p>
-      <div className="flex items-center justify-between">
-        <span className="text-xs text-slate-500">{tool.category}</span>
-        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${pricingColors[tool.pricing]}`}>
-          {pricingLabels[tool.pricing]}
-        </span>
+    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-orange-300 hover:shadow-md transition-all h-full flex flex-col">
+      {/* Visual header */}
+      <div className="h-3 bg-orange-500" />
+      <div className="p-5 flex-1 flex flex-col">
+        <h3 className="font-semibold text-slate-900 mb-1">{tool.name}</h3>
+        <p className="text-sm text-slate-500 mb-3 line-clamp-2">{tool.description}</p>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-xs text-slate-500">{tool.category}</span>
+          <span className={`px-2 py-1 rounded-full text-xs font-medium border ${pricingColors[tool.pricing]}`}>
+            {pricingLabels[tool.pricing]}
+          </span>
+        </div>
       </div>
     </div>
   );
